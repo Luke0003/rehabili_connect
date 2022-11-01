@@ -1,24 +1,35 @@
-# README
+# リハビリコネクト
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
+### サイトテーマ
+医療・介護現場における、自主トレの指導と記録を行うアプリケーションです。<br>
+セラピストがメニューを作成し、クライアントがトレーニングの記録をすることで、自主トレ効率の向上を目指します。
 
-Things you may want to cover:
+### テーマを選んだ理由
+セラピストが直接関われない時間にも、クライアントが自主トレメニューをスムーズに行えたら良いと考えたからです。<br>
+リハビリには自主トレが重要です。しかし、セラピストがクライアントに関われる時間は限られています。<br>
+このアプリを活用することで、共有した目標に向かって、効果的な訓練を継続するための支援ができたらと思います。
 
-* Ruby version
+### ターゲットユーザ
+- 理学療法士
+- 作業療法士
+- 言語聴覚士
+- 看護師
 
-* System dependencies
+その他、リハビリテーションに関わる人々
 
-* Configuration
+### 主な利用シーン
+- 訪問リハビリテーション
+- 通所リハビリテーション
+- 外来リハビリテーション
 
-* Database creation
+## 設計書
 
-* Database initialization
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## 使用素材
