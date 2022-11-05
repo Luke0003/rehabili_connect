@@ -1,4 +1,5 @@
 class Admin::ClientsController < ApplicationController
+  layout "admin_application"
   def index
   end
 

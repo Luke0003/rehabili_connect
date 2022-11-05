@@ -1,4 +1,5 @@
 class Therapist::ClientMenusController < ApplicationController
+  layout "therapist_application"
   def index
   end
 

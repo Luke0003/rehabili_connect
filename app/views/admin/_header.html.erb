@@ -1,0 +1,24 @@
+<header>
+  <nav class="navbar navbar-expand-lg navbar-light bg-secondary">
+    <%= link_to "リハコネ", admin_root_path, class: "navbar-brand" %>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div id="navbarNavDropdown">
+        <ul class="navbar-nav ml-auto">
+          <% if admin_signed_in? %>
+            <li class="nav-item btn">
+              <%= link_to "セラピスト一覧", admin_root_path, class: 'nav-link text-light' %>
+            </li>
+            <li class="nav-item btn">
+              <%= link_to "クライアント一覧", admin_clients_path, class: 'nav-link text-light' %>
+            </li>
+            <li class="nav-item btn">
+              <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link text-light' %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
