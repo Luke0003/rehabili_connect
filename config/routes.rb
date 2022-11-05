@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
 
+  devise_scope :client do
+    root "public/sessions#new"
+    get  "/clients/sign_in" => redirect("/")
+  end
+
   devise_for :clients, skip: [:passwords], controllers: {
     registrations: 'public/registrations',
     sessions: 'public/sessions'
@@ -15,7 +20,7 @@ Rails.application.routes.draw do
   }
 
   scope module: :public do
-    root "homes#top"
+    # root "sessions#new"
     get 'clients/my_page' => 'clients#show'
     get 'clients/information/edit' => 'clients#edit'
     get 'clients/information' => 'clients#update'
