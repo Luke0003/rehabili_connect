@@ -1,2 +1,36 @@
-<h1>Admin::Homes#top</h1>
-<p>Find me in app/views/admin/homes/top.html.erb</p>
+<div class="col-lg-12 mx-auto">
+    <div class="row">
+      <h4 class="col-11 mb-3">セラピスト一覧</h4>
+      <%= link_to new_therapist_registration_path do %>
+        <div class="new-btn">
+          <i class="fas fa-plus"></i>
+        </div>
+      <% end %>
+    </div>
+    <table class="table table-hover table-borderless">
+      <thead>
+        <tr class="table-active">
+          <th>セラピストID</th>
+          <th>氏名</th>
+          <th>メールアドレス</th>
+          <th>担当クライアント数</th>
+          <th>ステータス</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @therapists.each do |therapist| %>
+          <tr>
+            <td><%= therapist.id %></td>
+            <td><%= link_to therapist.last_name, admin_therapist_path(therapist), class: "text-dark text-decoration-none  border-bottom border-dark" %></td>
+            <td><%= therapist.email %></td>
+            <td><%= therapist.clients.count %></td>
+            <th><%= therapist.is_deleted %></th>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <div class="d-flex justify-content-center">
+      <%= paginate @therapists %>
+    </div>
+  </div>
+</div>
