@@ -1,4 +1,5 @@
 class Therapist::ClientRecordsController < ApplicationController
+  layout "therapist_application"
   def index
   end
 

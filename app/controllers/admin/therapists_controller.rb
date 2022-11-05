@@ -1,4 +1,5 @@
 class Admin::TherapistsController < ApplicationController
+  layout "admin_application"
   def new
   end
 
@@ -7,10 +8,10 @@ class Admin::TherapistsController < ApplicationController
 
   def edit
   end
-  
+
   def create
   end
-  
+
   def update
   end
 end

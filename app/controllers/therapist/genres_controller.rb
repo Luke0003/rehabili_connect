@@ -1,4 +1,5 @@
 class Therapist::GenresController < ApplicationController
+  layout "therapist_application"
   def index
   end
 
