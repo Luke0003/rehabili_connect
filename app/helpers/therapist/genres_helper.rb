@@ -1,0 +1,2 @@
+module Therapist::GenresHelper
+end

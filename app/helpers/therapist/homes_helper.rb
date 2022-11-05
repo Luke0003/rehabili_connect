@@ -1,0 +1,2 @@
+module Therapist::HomesHelper
+end

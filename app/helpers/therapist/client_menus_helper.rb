@@ -1,0 +1,2 @@
+module Therapist::ClientMenusHelper
+end
