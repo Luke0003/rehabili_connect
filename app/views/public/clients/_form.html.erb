@@ -1,0 +1,26 @@
+<%= form_with model: current_client, url: clients_information_path, method: :patch, local: true do |f| %>
+  <div class="field row mb-2">
+    <%= f.label :last_name, "名前", class: "col-2" %>
+    <%= f.label :last_name,"(姓)", class: "col-1" %>
+    <%= f.text_field :last_name, autofocus: true, class: "col-3" %>
+    <%= f.label :first_name,"(名)", class: "col-1" %>
+    <%= f.text_field :first_name, class: "col-3" %>
+  </div>
+  <div class="field row mb-2">
+    <%= f.label :last_name_kana,"フリガナ", class: "col-2" %>
+    <%= f.label :last_name_kana,"(セイ)", class: "col-1" %>
+    <%= f.text_field :last_name_kana, class: "col-3" %>
+    <%= f.label :first_name_kana,"(メイ)", class: "col-1" %>
+    <%= f.text_field :first_name_kana, class: "col-3" %>
+  </div>
+  <div class="field row mb-2">
+    <%= f.label :email,"メールアドレス", class: "col-3" %>
+    <%= f.text_field :email, class: "col-3" %>
+  </div>
+  <div class="row mb-3">
+    <div class="col-3"></div>
+    <div class="actions">
+      <%= f.submit "更新内容を保存",class: 'btn btn-success btn-md' %>
+    </div>
+  </div>
+<% end %>

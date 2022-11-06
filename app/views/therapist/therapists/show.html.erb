@@ -5,21 +5,21 @@
       <div class="col-2">
         <h5 class="font-weight-bold">登録情報</h5>
       </div>
-      <%= link_to "編集する", clients_information_edit_path, class: "btn btn-md btn-success" %>
+      <%= link_to "編集する", therapist_information_edit_path, class: "btn btn-md btn-success" %>
     </div>
     <div class="row">
       <table class="table table-bordered col-8 mt-3">
         <tr>
           <th class="table-active col-3">お名前</th>
-          <td><%= current_client.last_name + current_client.first_name %></td>
+          <td><%= current_therapist.last_name + current_therapist.first_name %></td>
         </tr>
         <tr>
           <th class="table-active">フリガナ</th>
-          <td><%= current_client.last_name_kana + current_client.first_name_kana %></td>
+          <td><%= current_therapist.last_name_kana + current_therapist.first_name_kana %></td>
         </tr>
         <tr>
           <th class="table-active">メールアドレス</th>
-          <td><%= current_client.email %></td>
+          <td><%= current_therapist.email %></td>
         </tr>
       </table>
     </div>
