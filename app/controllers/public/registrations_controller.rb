@@ -10,9 +10,11 @@ class Public::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    # super
+    current_therapist.clients.create!(client_params)
+    redirect_to therapist_root_path
+  end
 
   # GET /resource/edit
   # def edit
@@ -59,4 +61,9 @@ class Public::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+
+  private
+  def client_params
+    params.require(:client).permit(:first_name, :last_name, :first_name_kana, :last_name_kana, :email, :password)
+  end
 end
