@@ -12,7 +12,11 @@ class Admin::TherapistsController < ApplicationController
   def update
     @therapist = Therapist.find(params[:id])
     if @therapist.update(therapist_params)
+      flash[:notice] = "セラピスト情報の更新に成功しました"
       redirect_to admin_therapist_path(@therapist)
+    else
+      flash[:notice] = "セラピスト情報の更新に失敗しました"
+      render :edit
     end
   end
 

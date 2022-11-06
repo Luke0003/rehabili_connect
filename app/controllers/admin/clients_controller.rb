@@ -15,7 +15,11 @@ class Admin::ClientsController < ApplicationController
   def update
     @client = Client.find(params[:id])
     if @client.update(client_params)
+      flash[:notice] = "クライアント情報の更新に成功しました"
       redirect_to admin_client_path(@client)
+    else
+      flash[:notice] = "クライアント情報の更新に失敗しました"
+      render :edit
     end
   end
 
