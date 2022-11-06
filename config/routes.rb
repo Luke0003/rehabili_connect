@@ -24,22 +24,21 @@ Rails.application.routes.draw do
     # root "sessions#new"
     get 'clients/my_page' => 'clients#show'
     get 'clients/information/edit' => 'clients#edit'
-    get 'clients/information' => 'clients#update'
+    patch 'clients/information' => 'clients#update'
     resources :client_records, only: [:index, :show, :edit, :new, :create, :update]
   end
 
   namespace :therapist do
     root 'homes#top'
+    get 'my_page' => 'therapists#show'
+    get 'information/edit' => 'therapists#edit'
+    patch 'information' => 'therapists#update'
     resources :menus
     resources :genres, only: [:index, :edit, :create, :update, :destroy]
     resources :clients, only: [:show] do
       resources :client_records, only: [:index, :show]
       resources :client_menus, only: [:index, :new, :edit, :create, :update, :destroy]
     end
-  end
-  namespace :therapist do
-    get 'client_records/index'
-    get 'client_records/show'
   end
 
   namespace :admin do

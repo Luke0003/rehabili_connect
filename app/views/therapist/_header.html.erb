@@ -8,6 +8,9 @@
         <ul class="navbar-nav ml-auto">
           <% if therapist_signed_in? %>
             <li class="nav-item btn">
+              <%= link_to "マイページ", therapist_my_page_path, class: 'nav-link text-light' %>
+            </li>
+            <li class="nav-item btn">
               <%= link_to "担当クライアント一覧", therapist_root_path, class: 'nav-link text-light' %>
             </li>
             <li class="nav-item btn">

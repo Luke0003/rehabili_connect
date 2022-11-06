@@ -1,2 +1,7 @@
-<h1>Public::Clients#edit</h1>
-<p>Find me in app/views/public/clients/edit.html.erb</p>
+<div class="row my-3">
+  <h4 class="d-flex justify-content-left">クライアント情報編集</h4>
+</div>
+<div class="errors">
+  <%= render "layouts/errors", obj: current_client %>
+</div>
+<%= render "form", therapist: current_client %>
