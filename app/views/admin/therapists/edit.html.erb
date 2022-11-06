@@ -1,2 +1,8 @@
-<h1>Admin::Therapists#edit</h1>
-<p>Find me in app/views/admin/therapists/edit.html.erb</p>
+<div class="row mt-3">
+  <div class="col-12 mx-auto">
+    <h4 class="mb-3"><%= @therapist.last_name %><%= @therapist.first_name %>さんのセラピスト情報編集</h4>
+    <div id="therapist_edit">
+      <%= render "admin/therapists/edit", therapist: @therapist %>
+    </div>
+  </div>
+</div>

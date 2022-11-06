@@ -1,2 +1,8 @@
-<h1>Admin::Clients#edit</h1>
-<p>Find me in app/views/admin/clients/edit.html.erb</p>
+<div class="row mt-3">
+  <div class="col-12 mx-auto">
+    <h4 class="mb-3"><%= @client.last_name %><%= @client.first_name %>さんのクライアント情報編集</h4>
+    <div id="client_edit">
+      <%= render "admin/clients/edit", client: @client %>
+    </div>
+  </div>
+</div>

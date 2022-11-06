@@ -45,7 +45,7 @@ Rails.application.routes.draw do
   namespace :admin do
     root 'homes#top'
     resources :clients, only: [:index, :show, :edit, :update]
-    resources :therapists, only: [:new, :show, :edit, :create, :update]
+    resources :therapists, only: [:show, :edit, :update]
   end
 
 
