@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Public::RegistrationsController < Devise::RegistrationsController
+  layout "therapist_application"
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
@@ -12,8 +13,12 @@ class Public::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     # super
-    current_therapist.clients.create!(client_params)
-    redirect_to therapist_root_path
+    @client = current_therapist.clients.new(client_params)
+    if @client.save
+      redirect_to therapist_root_path
+    else
+      render :new
+    end
   end
 
   # GET /resource/edit
@@ -64,6 +69,6 @@ class Public::RegistrationsController < Devise::RegistrationsController
 
   private
   def client_params
-    params.require(:client).permit(:first_name, :last_name, :first_name_kana, :last_name_kana, :email, :password)
+    params.require(:client).permit(:first_name, :last_name, :first_name_kana, :last_name_kana, :email, :password, :password_confirmation)
   end
 end

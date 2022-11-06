@@ -3,7 +3,7 @@
 </div>
 
 <%= form_with model: @therapist, url: therapist_registration_path do |f| %>
-  <%= render "therapist/shared/error_messages", resource: resource %>
+  <%= render "layouts/errors", obj: @therapist %>
 
   <div class="field row mb-3">
     <%= f.label :last_name, "名前", class: "col-2" %>

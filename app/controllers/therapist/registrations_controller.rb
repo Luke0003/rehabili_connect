@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Therapist::RegistrationsController < Devise::RegistrationsController
-  layout "therapist_application"
+  layout "admin_application"
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
@@ -15,8 +15,12 @@ class Therapist::RegistrationsController < Devise::RegistrationsController
   # devise本来の新規登録とは異なるため、configure_sign_up_paramsやafter_sign_up_path_for(resource)は使えない
   def create
     # super
-    Therapist.create!(therapist_params)
-    redirect_to admin_root_path
+    @therapist = Therapist.new(therapist_params)
+    if @therapist.save
+      redirect_to admin_root_path
+    else
+      render :new
+    end
   end
 
   # GET /resource/edit
@@ -67,6 +71,6 @@ class Therapist::RegistrationsController < Devise::RegistrationsController
 
   private
   def therapist_params
-    params.require(:therapist).permit(:first_name, :last_name, :first_name_kana, :last_name_kana, :email, :password)
+    params.require(:therapist).permit(:first_name, :last_name, :first_name_kana, :last_name_kana, :email, :password, :password_confirmation)
   end
 end
