@@ -12,6 +12,8 @@ module RehabiliConnect
     config.load_defaults 6.1
     # エラーメッセージ表示の際、レイアウトが崩れないよう記述
     config.action_view.field_error_proc = Proc.new { |html_tag, instance| html_tag }
+    # 日本語に対応させるため記述
+    config.i18n.default_locale = :ja
 
     # Configuration for the application, engines, and railties goes here.
     #
