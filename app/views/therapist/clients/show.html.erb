@@ -1,2 +1,36 @@
-<h1>Therapist::Clients#show</h1>
-<p>Find me in app/views/therapist/clients/show.html.erb</p>
+<div class="row mt-5">
+  <div class="col-12 mb-3">
+    <h4>クライアント詳細</h4>
+  </div>
+</div>
+<table class="table table-borderless">
+  <tbody>
+    <tr>
+      <th scope="row">ID</th>
+      <td><%= @client.id%></td>
+    </tr>
+    <tr>
+      <th scope="row">氏名</th>
+      <td><%= @client.client_name %></td>
+    </tr>
+    <tr>
+      <th scope="row">フリガナ</th>
+      <td><%= @client.client_name_kana %></td>
+    </tr>
+    <tr>
+      <th scope="row">メールアドレス</th>
+      <td><%= @client.email %></td>
+    </tr>
+    <tr>
+      <th scope="row">ステータス</th>
+      <td><%= render "admin/clients/client_status", client: @client %></td>
+    </tr>
+    <tr>
+      <th></th>
+      <td>
+        <%= link_to "メニューを設定する", therapist_client_client_menus_path(@client), class: "btn btn-success btn-md" %>
+        <%= link_to "記録を見る", therapist_client_client_records_path(@client), class: "btn btn-info btn-md" %>
+      </td>
+    </tr>
+  </tbody>
+</table>
