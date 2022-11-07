@@ -37,7 +37,7 @@ Rails.application.routes.draw do
     resources :genres, only: [:index, :edit, :create, :update, :destroy]
     resources :clients, only: [:show] do
       resources :client_records, only: [:index, :show]
-      resources :client_menus, only: [:index, :new, :edit, :create, :update, :destroy]
+      resources :client_menus, only: [:index, :edit, :create, :update, :destroy]
     end
   end
 
