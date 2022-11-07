@@ -37,6 +37,9 @@ ja:
         menu_name: "メニュー名"
         menu_content: "メニュー説明"
         menu_purpose: "メニュー目的"
+      client_menu:
+        menu: "メニュー名"
+        start_date: "実施日"
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
