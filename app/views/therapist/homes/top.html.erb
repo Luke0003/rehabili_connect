@@ -10,7 +10,7 @@
     <table class="table table-hover table-borderless">
       <thead>
         <tr class="table-active">
-          <th>クライアントID</th>
+          <th>ID</th>
           <th>氏名</th>
           <th>メールアドレス</th>
           <th>ステータス</th>
@@ -20,9 +20,9 @@
         <% @clients.each do |client| %>
           <tr>
             <td><%= client.id %></td>
-            <td><%= link_to client.last_name, therapist_client_path(client), class: "text-dark text-decoration-none  border-bottom border-dark" %></td>
+            <td><%= link_to client.last_name, therapist_client_path(client), class: "text-dark text-decoration-none" %></td>
             <td><%= client.email %></td>
-            <th><%= client.is_deleted %></th>
+            <th><%= render "admin/clients/client_status", client: client %></th>
           </tr>
         <% end %>
       </tbody>
