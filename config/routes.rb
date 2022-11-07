@@ -11,12 +11,12 @@ Rails.application.routes.draw do
     sessions: 'public/sessions'
   }
 
-  devise_for :therapists, skip: [:passwords], controllers: {
+  devise_for :therapist, skip: [:passwords], controllers: {
     registrations: 'therapist/registrations',
     sessions: 'therapist/sessions'
   }
 
-  devise_for :admins, skip: [:registrations, :passwords], controllers: {
+  devise_for :admin, skip: [:registrations, :passwords], controllers: {
     sessions: 'admin/sessions'
   }
 
