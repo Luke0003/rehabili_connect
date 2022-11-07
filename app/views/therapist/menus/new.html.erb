@@ -1,2 +1,34 @@
-<h1>Therapist::Menus#new</h1>
-<p>Find me in app/views/therapist/menus/new.html.erb</p>
+<div class="row mt-3">
+  <div class="row col-12">
+    <h4 class="mb-3">商品新規登録</h4>
+  </div>
+  <%= render "layouts/errors", obj: @menu %>
+  <div class="row col-12">
+    <div class="col-3"></div>
+    <%= form_with model: @menu, url: therapist_menus_path, local: true, class: "col-5 mb-5" do |f| %>
+      <div class="form-group row">
+        <%= f.label :menu_video, "メニュー動画", class: "col-4" %>
+        <%= f.file_field :menu_video, accept: "video/*", class: "col-8 pl-0" %>
+      </div>
+      <div class="form-group row">
+        <%= f.label :menu_name, "メニュー名", class: "col-4" %>
+        <%= f.text_field :menu_name, placeholder: "メニュー名", class: "col-8" %>
+      </div>
+      <div class="form-group row">
+        <%= f.label :menu_content, "メニュー説明", class: "col-4" %>
+        <%= f.text_area :menu_content, rows: "5", placeholder: "ここに説明文を記述します", class: "col-8" %>
+      </div>
+      <div class="form-group row">
+        <%= f.label :menu_purpose, "メニュー目的", class: "col-4" %>
+        <%= f.text_field :menu_purpose, placeholder: "ここに目的を記述します", class: "col-7" %>
+      </div>
+      <div class="form-group row">
+        <%= f.label :genre_id, "ジャンル", class: "col-4" %>
+        <%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :genre_name), {include_blank: '選択してください'}, {class: "col-8 select"} %>
+      </div>
+      <div class="form-group text-center">
+        <%= f.submit "新規登録", class: "btn btn-success btn-lg" %>
+      </div>
+    <% end %>
+  </div>
+</div>

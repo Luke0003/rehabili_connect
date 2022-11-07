@@ -31,7 +31,12 @@ ja:
         email: "メールアドレス"
         password: "パスワード"
       genre:
-        genre_name: "ジャンル名"
+        genre_id: "ジャンル名"
+      menu:
+        genre: "ジャンル名"
+        menu_name: "メニュー名"
+        menu_content: "メニュー説明"
+        menu_purpose: "メニュー目的"
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'

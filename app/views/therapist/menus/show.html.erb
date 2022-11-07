@@ -1,2 +1,39 @@
-<h1>Therapist::Menus#show</h1>
-<p>Find me in app/views/therapist/menus/show.html.erb</p>
+<div class="row d-flex mt-3">
+  <h4 class="mb-3">メニュー詳細</h4>
+  <div class="col-12 d-flex justify-content-left">
+    <% if @menu.menu_video.attached? %>
+      <div>
+        <video src="<%= rails_blob_path(@menu.menu_video) %>" type="video/mp4" width="200" height="300" controls></video>
+      </div>
+    <% end %>
+    <table class="col-6 ml-5">
+      <thead></thead>
+      <tbody>
+        <tr>
+          <th scope="row" class="col-3 pl-0">メニュー名</th>
+          <td><%= @menu.menu_name %></td>
+        </tr>
+        <tr>
+          <th scope="row" class="d-flex pl-0 align-items-start">メニュー説明</th>
+          <td><%= @menu.menu_content %></td>
+        </tr>
+        <tr>
+          <th scope="row" class="d-flex pl-0 align-items-start">メニュー目的</th>
+          <td><%= @menu.menu_purpose %></td>
+        </tr>
+        <tr>
+          <th scope="row" class="col-3 pl-0">ジャンル</th>
+          <td><%= @menu.genre.genre_name %></td>
+        </tr>
+        <tr>
+          <th scope="row"></th>
+          <th>
+            <%= link_to "編集する", edit_therapist_menu_path(@menu), class: "btn btn-lg btn-success mt-3" %>
+            <%= link_to "削除する", therapist_menu_path(@menu), method: :delete, class: "btn btn-lg btn-danger mt-3" %>
+          </th>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
