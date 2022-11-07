@@ -16,6 +16,7 @@ import '@fortawesome/fontawesome-free/js/all'
 
 import '../stylesheets/header.css'
 import '../stylesheets/footer.css'
+import '../stylesheets/simple_calendar.css'
 
 Rails.start()
 Turbolinks.start()

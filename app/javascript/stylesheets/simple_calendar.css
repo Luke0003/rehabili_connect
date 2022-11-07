@@ -1,0 +1,28 @@
+.wday-0 a{
+  color: red;
+}
+.wday-6 a{
+  color: blue;
+}
+.wday-1 a, .wday-2 a, .wday-3 a, .wday-4 a, .wday-5 a{
+  color: black;
+}
+
+.prev-month a{
+  display: none;
+}
+.next-month a{
+  display: none;
+}
+
+.today{
+  background-color: #fff4ea;
+}
+
+.day{
+  height: 100px;
+}
+
+.calendar-heading{
+  font-size: 30px;
+}
