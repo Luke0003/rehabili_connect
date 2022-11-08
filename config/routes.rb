@@ -24,8 +24,7 @@ Rails.application.routes.draw do
     get 'clients/my_page' => 'clients#show'
     get 'clients/information/edit' => 'clients#edit'
     patch 'clients/information' => 'clients#update'
-    resources :client_records, only: [:index, :show, :edit, :new, :create, :update]
-    # patch 'client_menus/:id' => 'client_records#client_menu_update', as: 'client_menu'
+    resources :client_records, only: [:index, :show, :create, :update]
   end
 
   namespace :therapist do

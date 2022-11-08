@@ -10,13 +10,6 @@ class Public::ClientRecordsController < ApplicationController
     @client_menus = current_client.client_menus.where(start_date: @day)
   end
 
-  def edit
-  end
-
-  def new
-
-  end
-
   def create
     @client_record = current_client.client_records.new(client_record_params)
     @client_record.save
