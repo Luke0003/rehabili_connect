@@ -1,2 +1,31 @@
-<h1>Public::ClientRecords#show</h1>
-<p>Find me in app/views/public/client_records/show.html.erb</p>
+<h4><%= @day.strftime("%Y年%m月%d日") %>のリハビリ</h4>
+
+<%= form_with model: @client_record, local: true do |f| %>
+  <div class="form-group">
+    <%= f.radio_button :condition, 1, checked: true %>
+    <%= f.label :condition, "良い" %>
+    <%= f.radio_button :condition, 2 %>
+    <%= f.label :condition, "普通" %>
+    <%= f.radio_button :condition, 3 %>
+    <%= f.label :condition, "悪い" %>
+  </div>
+ 
+  <% @client_menus.each do |client_menu| %>
+    <%# hidden_fieldでまずはfalseをセットして絶対データを送る仕組みを作っている。%>
+    <%= hidden_field_tag "client_menus[#{client_menu.id}]", false %>
+    <label>
+      <%# 第一引数 : name, 第二引数 : 送信値, 第三引数 : 初期値(client_menu.is_completed), 第四引数 : オプション %>
+      <%= check_box_tag "client_menus[#{client_menu.id}]", true, client_menu.is_completed, {} %> <%= client_menu.menu.menu_name %>
+    </label>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.text_area :comment, rows: "5", placeholder: "ここにコメントを記述してください", class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.hidden_field :record_date, value: @day %>
+  </div>
+  <div class="form-group">
+    <%= f.submit "記録する", class: "btn btn-success" %>
+  </div>
+<% end %>
