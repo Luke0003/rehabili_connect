@@ -9,18 +9,16 @@
     <%= f.radio_button :condition, 3 %>
     <%= f.label :condition, "悪い" %>
   </div>
-  <div class="form-group">
-    <% @client_menus.each do |client_menu| %>
-      <%= form_with model: client_menu, url: client_menu_path, local: true do |f| %>
-        <%= f.label :is_completed, client_menu.menu.menu_name %>
-        <%= f.check_box :is_completed, {}, "true", "false" %>
-        <%= f.submit "更新" %>
-      <% end %>
-    <% end %>
-  </div>
-  <%= form_with model: @client_menu, url: client_menu_path, local: true do |f| %>
-    <%= f.collection_check_boxes :is_completed, @client_menus, :id, :menu_id %>
+ 
+  <% @client_menus.each do |client_menu| %>
+    <%# hidden_fieldでまずはfalseをセットして絶対データを送る仕組みを作っている。%>
+    <%= hidden_field_tag "client_menus[#{client_menu.id}]", false %>
+    <label>
+      <%# 第一引数 : name, 第二引数 : 送信値, 第三引数 : 初期値(client_menu.is_completed), 第四引数 : オプション %>
+      <%= check_box_tag "client_menus[#{client_menu.id}]", true, client_menu.is_completed, {} %> <%= client_menu.menu.menu_name %>
+    </label>
   <% end %>
+
   <div class="form-group">
     <%= f.text_area :comment, rows: "5", placeholder: "ここにコメントを記述してください", class: "form-control" %>
   </div>
