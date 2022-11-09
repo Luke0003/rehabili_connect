@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Therapist::OmniauthCallbacksController < Devise::OmniauthCallbacksController
+  before_action :authenticate_therapist!
   layout "therapist_application"
   # You should configure your model like this:
   # devise :omniauthable, omniauth_providers: [:twitter]

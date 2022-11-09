@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Therapist::UnlocksController < Devise::UnlocksController
+  before_action :authenticate_therapist!
   layout "therapist_application"
   # GET /resource/unlock/new
   # def new
