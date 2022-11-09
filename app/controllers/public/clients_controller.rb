@@ -18,6 +18,6 @@ class Public::ClientsController < ApplicationController
 
   private
   def client_params
-    params.require(:client).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :purpose, :email)
+    params.require(:client).permit(:client_image, :last_name, :first_name, :last_name_kana, :first_name_kana, :purpose, :email)
   end
 end
