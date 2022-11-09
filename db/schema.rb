@@ -83,6 +83,7 @@ ActiveRecord::Schema.define(version: 2022_11_05_051138) do
     t.string "first_name_kana", null: false
     t.boolean "is_deleted", default: false, null: false
     t.integer "therapist_id", null: false
+    t.string "purpose", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_clients_on_email", unique: true
