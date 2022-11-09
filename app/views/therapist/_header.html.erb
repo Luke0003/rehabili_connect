@@ -1,29 +1,37 @@
-<header>
-  <nav class="navbar navbar-expand-lg navbar-light bg-secondary">
-    <%= link_to "リハコネ", therapist_root_path, class: "navbar-brand" %>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div id="navbarNavDropdown">
-        <ul class="navbar-nav ml-auto">
-          <% if therapist_signed_in? %>
-            <li class="nav-item btn">
-              <%= link_to "マイページ", therapist_my_page_path, class: 'nav-link text-light' %>
-            </li>
-            <li class="nav-item btn">
-              <%= link_to "担当クライアント一覧", therapist_root_path, class: 'nav-link text-light' %>
-            </li>
-            <li class="nav-item btn">
-              <%= link_to "メニュー一覧", therapist_menus_path, class: 'nav-link text-light' %>
-            </li>
-            <li class="nav-item btn">
-              <%= link_to "ジャンル一覧", therapist_genres_path, class: 'nav-link text-light' %>
-            </li>
-            <li class="nav-item btn">
-              <%= link_to "ログアウト", destroy_therapist_session_path, method: :delete, class: 'nav-link text-light' %>
-            </li>
-          <% end %>
-        </ul>
+<header class="shadow-sm">
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container-fluid">
+      <%= link_to "リハコネ", therapist_root_path, class: "navbar-brand text-light col-12 col-sm-3" %>
+        <% if client_signed_in? %>
+          <h6 class="text-light ml-3 ml-sm-5 mt-2">こんにちは、<%= current_therapist.therapist_name %>さん！</h6>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div id="navbarNavDropdown" class="collapse navbar-collapse">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item btn">
+                <%= link_to therapist_root_path, class: 'nav-link active text-light text-right' do %>
+                  <i class="fas fa-users mr-1"></i>担当クライアント
+                <% end %>
+              </li>
+              <li class="nav-item btn">
+                <%= link_to therapist_menus_path, class: 'nav-link active text-light text-right' do %>
+                  <i class="fas fa-running mr-1"></i>自主トレメニュー
+                <% end %>
+              </li>
+              <li class="nav-item btn">
+                <%= link_to therapist_my_page_path, class: 'nav-link active text-light text-right' do %>
+                  <i class="fas fa-user mr-1"></i>セラピスト情報
+                <% end %>
+              </li>
+              <li class="nav-item btn">
+                <%= link_to destroy_therapist_session_path, method: :delete, class: 'nav-link active text-light text-right' do %>
+                  <i class="fas fa-sign-out-alt mr-1"></i>ログアウト
+                <% end %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
       </div>
     </div>
   </nav>
