@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Therapist::PasswordsController < Devise::PasswordsController
+  before_action :authenticate_therapist!
   layout "therapist_application"
   # GET /resource/password/new
   # def new

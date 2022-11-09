@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Therapist::ConfirmationsController < Devise::ConfirmationsController
+  before_action :authenticate_therapist!
   layout "therapist_application"
   # GET /resource/confirmation/new
   # def new

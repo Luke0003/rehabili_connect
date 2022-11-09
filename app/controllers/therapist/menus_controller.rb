@@ -1,4 +1,5 @@
 class Therapist::MenusController < ApplicationController
+  before_action :authenticate_therapist!
   layout "therapist_application"
   def index
     @menus = Menu.page(params[:page])

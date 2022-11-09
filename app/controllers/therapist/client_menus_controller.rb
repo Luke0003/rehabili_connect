@@ -1,4 +1,5 @@
 class Therapist::ClientMenusController < ApplicationController
+  before_action :authenticate_therapist!
   layout "therapist_application"
   def index
     @client = Client.find(params[:client_id])
