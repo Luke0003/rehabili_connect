@@ -37,12 +37,14 @@ class DeviseCreateClients < ActiveRecord::Migration[6.1]
       t.string :first_name, null: false
       t.string :last_name_kana, null: false
       t.string :first_name_kana, null: false
-      
+
       # クライアントステータス
       t.boolean :is_deleted, null: false, default: false
-      
+
       # 担当セラピスト
       t.integer :therapist_id, null: false
+
+      t.string :purpose, null: false
 
 
       t.timestamps null: false

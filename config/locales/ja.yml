@@ -1,7 +1,7 @@
 ja:
   simple_calendar:
-    previous: "前月"
-    next: "翌月"
+    previous: "<<前月"
+    next: "翌月>>"
   devise:
     sessions:
       client:
@@ -24,6 +24,7 @@ ja:
         first_name: "(名)"
         last_name_kana: "(セイ)"
         first_name_kana: "(メイ)"
+        purpose: "リハビリ目的"
         email: "メールアドレス"
         password: "パスワード"
       therapist:

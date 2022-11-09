@@ -23,6 +23,15 @@
   height: 100px;
 }
 
-.calendar-heading{
-  font-size: 30px;
+.calendar-heading span{
+  font-size: 40px;
+}
+#calendar-year{
+  font-size: 20px;
+  color: gray;
+}
+
+.calendar-heading a{
+  font-size: 20px;
+  line-height: 75px;
 }

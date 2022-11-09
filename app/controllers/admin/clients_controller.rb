@@ -25,6 +25,6 @@ class Admin::ClientsController < ApplicationController
 
   private
   def client_params
-    params.require(:client).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :email, :is_deleted)
+    params.require(:client).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :purpose, :email, :is_deleted)
   end
 end

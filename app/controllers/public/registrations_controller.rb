@@ -69,6 +69,6 @@ class Public::RegistrationsController < Devise::RegistrationsController
 
   private
   def client_params
-    params.require(:client).permit(:first_name, :last_name, :first_name_kana, :last_name_kana, :email, :password, :password_confirmation)
+    params.require(:client).permit(:first_name, :last_name, :first_name_kana, :last_name_kana, :email, :purpose, :password, :password_confirmation)
   end
 end
