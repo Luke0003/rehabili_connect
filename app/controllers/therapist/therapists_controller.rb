@@ -20,7 +20,7 @@ class Therapist::TherapistsController < ApplicationController
 
   private
   def therapist_params
-    params.require(:therapist).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :email)
+    params.require(:therapist).permit(:therapist_image, :last_name, :first_name, :last_name_kana, :first_name_kana, :email)
   end
 
 end

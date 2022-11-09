@@ -5,7 +5,12 @@
       <div class="col-2">
         <h5 class="font-weight-bold">登録情報</h5>
       </div>
-      <%= link_to "編集する", clients_information_edit_path, class: "btn btn-md btn-success" %>
+      <div>
+        <%= image_tag current_client.get_client_image(50, 50) %>
+      </div>
+      <div>
+        <%= link_to "編集する", clients_information_edit_path, class: "btn btn-md btn-success" %>
+      </div>
     </div>
     <div class="row">
       <table class="table table-bordered col-8 mt-3">

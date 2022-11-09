@@ -1,5 +1,9 @@
 <%= form_with model: current_client, url: clients_information_path, method: :patch, local: true do |f| %>
   <div class="field row mb-2">
+    <%= f.label :client_image, "プロフィール画像", class: "col-3" %>
+    <%= f.file_field :client_image, accept: "image/*" %>
+  </div>
+  <div class="field row mb-2">
     <%= f.label :last_name, "名前", class: "col-2" %>
     <%= f.label :last_name,"(姓)", class: "col-1" %>
     <%= f.text_field :last_name, autofocus: true, class: "col-3" %>
