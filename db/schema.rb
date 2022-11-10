@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(version: 2022_11_05_051138) do
     t.integer "client_id", null: false
     t.integer "menu_id", null: false
     t.integer "client_record_id"
-    t.date "start_date", null: false
+    t.date "start_time", null: false
     t.boolean "is_completed", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

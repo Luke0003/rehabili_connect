@@ -1,6 +1,13 @@
 class Public::ClientRecordsController < ApplicationController
   before_action :authenticate_client!
   def index
+    @client_menus = current_client.client_menus
+    @client_records = current_client.client_records
+    # キーを登録記録日、バリューを体調としたハッシュを取得
+    @conditions = {}
+    @client_records.each do |client_record|
+      @conditions[client_record.record_date] = client_record.condition
+    end
   end
 
   def show
@@ -8,7 +15,7 @@ class Public::ClientRecordsController < ApplicationController
 
     @client_record = ClientRecord.find_by(record_date: @day)
     @client_record = ClientRecord.new if @client_record.nil?
-    @client_menus = current_client.client_menus.where(start_date: @day)
+    @client_menus = current_client.client_menus.where(start_time: @day)
   end
 
   def create

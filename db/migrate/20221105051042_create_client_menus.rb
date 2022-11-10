@@ -4,7 +4,7 @@ class CreateClientMenus < ActiveRecord::Migration[6.1]
       t.integer :client_id, null: false
       t.integer :menu_id, null: false
       t.integer :client_record_id  # nullを許可
-      t.date :start_date, null: false
+      t.date :start_time, null: false # カレンダーのカラム名に合わせた
       t.boolean :is_completed, null: false, default: false
 
       t.timestamps
