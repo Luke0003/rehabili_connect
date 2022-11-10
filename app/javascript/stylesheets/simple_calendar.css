@@ -21,6 +21,7 @@
 
 .day{
   height: 100px;
+  width : calc(100% / 7) ;
 }
 
 .calendar-heading span{
