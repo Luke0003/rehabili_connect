@@ -1,0 +1,18 @@
+<h1><%= @client.client_name %>さんとのチャット</h1>
+
+<div class="message" style="width: 400px;">
+  <% @chats.each do |chat| %>
+    <% if chat.therapist_id == current_therapist.id %>
+      <p style="text-align: right;"><%= chat.message %></p>
+    <% else %>
+      <p style="text-align: left;"><%= chat.message %></p>
+    <% end %>
+  <% end %>
+</div>
+
+<%= render "layouts/errors", obj: @chat %>
+
+<%= form_with model: @chat, url: therapist_client_chats_path, local: true do |f| %>
+  <%= f.text_field :message %>
+  <%= f.hidden_field :room_id, value: @room.id %>
+<% end %>

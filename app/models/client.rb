@@ -7,6 +7,8 @@ class Client < ApplicationRecord
   belongs_to :therapist
   has_many :client_records
   has_many :client_menus
+  has_many :chats
+  has_one :room
   has_one_attached :client_image
 
   validates :last_name, presence: :true, format: {with:/\A[一-龥ぁ-ん]/,message: "は、漢字・ひらがなのどちらかで入力して下さい"}
@@ -14,7 +16,7 @@ class Client < ApplicationRecord
   validates :last_name_kana, presence: :true, format: {with:/\A[ァ-ヶー－]+\z/, message: "は、全角カタカナのみで入力して下さい"}
   validates :first_name_kana, presence: :true, format: {with:/\A[ァ-ヶー－]+\z/, message: "は、全角カタカナのみで入力して下さい"}
   validates :purpose, presence: true
-  
+
   # クライアント画像を取得しリサイズ
   def get_client_image(width, height)
     unless client_image.attached?

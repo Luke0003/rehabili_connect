@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     get 'clients/information/edit' => 'clients#edit'
     patch 'clients/information' => 'clients#update'
     resources :client_records, only: [:show, :create, :update]
+    resources :chats, only: [:show, :create]
   end
 
   namespace :therapist do
@@ -32,6 +33,7 @@ Rails.application.routes.draw do
     resources :clients, only: [:show] do
       resources :client_records, only: [:index, :show]
       resources :client_menus, only: [:index, :edit, :create, :update, :destroy]
+      resources :chats, only: [:show, :create]
     end
   end
 

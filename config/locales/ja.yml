@@ -44,6 +44,8 @@ ja:
       client_menu:
         menu: "メニュー名"
         start_date: "実施日"
+      chat:
+        message: "メッセージ"
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
