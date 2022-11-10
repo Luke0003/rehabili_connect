@@ -1,26 +1,21 @@
-<h2>Log in</h2>
+<div class="row">
+  <div class="col-10 col-md-5 col-lg-4 mx-auto text-center mt-5">
+    <h2 class="mb-5"><strong>セラピスト<br>ログイン</strong></h2>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= form_with model: @client, url: therapist_session_path, local: true do |f| %>
+      <div class="row field mb-3">
+        <%= f.label :email, "メール", class: "form-label" %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "セラピストe-mail", class: "form-control" %>
+      </div>
+
+      <div class="row field mb-5">
+        <%= f.label :password, "パスワード", class: "form-label" %><br />
+        <%= f.password_field :password, autocomplete: "current-password", placeholder: "セラピストパスワード", class: "form-control" %>
+      </div>
+
+      <div class="row actions">
+        <%= f.submit "ログイン", class: "btn btn-info btn-lg form-control" %>
+      </div>
+    <% end %>
   </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
-
-<%= render "therapist/shared/links" %>
+</div>
