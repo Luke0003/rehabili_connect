@@ -1,11 +1,5 @@
 Rails.application.routes.draw do
 
-  # deviseのURLを変更
-  # devise_scope :client do
-  #   root "public/sessions#new"
-  #   get  "/clients/sign_in" => redirect("/")
-  # end
-
   devise_for :clients, skip: [:passwords], controllers: {
     registrations: 'public/registrations',
     sessions: 'public/sessions'
