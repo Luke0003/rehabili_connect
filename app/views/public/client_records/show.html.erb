@@ -9,7 +9,7 @@
     <%= f.radio_button :condition, 3 %>
     <%= f.label :condition, "悪い" %>
   </div>
- 
+
   <% @client_menus.each do |client_menu| %>
     <%# hidden_fieldでまずはfalseをセットして絶対データを送る仕組みを作っている。%>
     <%= hidden_field_tag "client_menus[#{client_menu.id}]", false %>
