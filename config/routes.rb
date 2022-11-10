@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
 
   # deviseのURLを変更
-  devise_scope :client do
-    root "public/sessions#new"
-    get  "/clients/sign_in" => redirect("/")
-  end
+  # devise_scope :client do
+  #   root "public/sessions#new"
+  #   get  "/clients/sign_in" => redirect("/")
+  # end
 
   devise_for :clients, skip: [:passwords], controllers: {
     registrations: 'public/registrations',
@@ -21,10 +21,11 @@ Rails.application.routes.draw do
   }
 
   scope module: :public do
+    root 'homes#top'
     get 'clients/my_page' => 'clients#show'
     get 'clients/information/edit' => 'clients#edit'
     patch 'clients/information' => 'clients#update'
-    resources :client_records, only: [:index, :show, :create, :update]
+    resources :client_records, only: [:show, :create, :update]
   end
 
   namespace :therapist do
