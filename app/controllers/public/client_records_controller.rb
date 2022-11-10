@@ -15,7 +15,7 @@ class Public::ClientRecordsController < ApplicationController
 
     @client_record = ClientRecord.find_by(record_date: @day)
     @client_record = ClientRecord.new if @client_record.nil?
-    @client_menus = current_client.client_menus.where(start_time: @day)
+    @client_menus = current_client.client_menus.where(start_date: @day)
   end
 
   def create

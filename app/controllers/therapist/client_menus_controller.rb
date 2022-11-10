@@ -48,6 +48,6 @@ class Therapist::ClientMenusController < ApplicationController
 
   private
   def client_menu_params
-    params.require(:client_menu).permit(:menu_id, :start_time)
+    params.require(:client_menu).permit(:menu_id, :start_date)
   end
 end
