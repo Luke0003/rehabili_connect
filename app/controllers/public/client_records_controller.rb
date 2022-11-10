@@ -15,8 +15,10 @@ class Public::ClientRecordsController < ApplicationController
 
     # check_box_tagのデータをkey, valueで分けて繰り返し、
     # ClientMenuのis_completedを更新する
-    params[:client_menus].each do |key, value|
-      ClientMenu.find(key).update(is_completed: value, client_record_id: @client_record.id)
+    unless params[:client_menus].nil?
+      params[:client_menus].each do |key, value|
+        ClientMenu.find(key).update(is_completed: value, client_record_id: @client_record.id)
+      end
     end
 
     redirect_to root_path
@@ -25,8 +27,10 @@ class Public::ClientRecordsController < ApplicationController
   def update
     @client_record = ClientRecord.find_by(record_date: client_record_params[:record_date])
     @client_record.update(client_record_params)
-    params[:client_menus].each do |key, value|
-      ClientMenu.find(key).update(is_completed: value,  client_record_id: @client_record.id)
+    unless params[:client_menus].nil?
+      params[:client_menus].each do |key, value|
+        ClientMenu.find(key).update(is_completed: value,  client_record_id: @client_record.id)
+      end
     end
     redirect_to root_path
   end
