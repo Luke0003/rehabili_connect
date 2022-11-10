@@ -1,3 +1,4 @@
+<h2>リハゴール: <%= current_client.purpose %></h2>
 <%= month_calendar(attribute: :start_date, events: @client_menus) do |date, client_menus| %>
   <%= link_to client_record_path(date), class: "text-decoration-none" do %>
     <%= date.day %>
