@@ -29,4 +29,4 @@
   </tr>
 </table>
 <%= link_to "編集する", clients_information_edit_path, class: "btn btn-md btn-success" %>
-<%= link_to "チャットをする", root_path, class: "btn btn-md btn-info" %>
+<%= link_to "チャットをする", chat_path(current_client.id), class: "btn btn-md btn-info" %>
