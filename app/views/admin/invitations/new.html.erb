@@ -1,0 +1,31 @@
+<h2><%= t "devise.invitations.new.header" %></h2>
+
+<%= form_with model: @therapist, url: therapist_invitation_path, local: true do |f| %>
+  <%= render "layouts/errors", obj: @therapist %>
+  <div class="field row mb-3">
+    <%= f.label :last_name, "名前", class: "col-2" %>
+    <%= f.label :last_name,"(姓)", class: "col-1" %>
+    <%= f.text_field :last_name, autofocus: true, class: "col-3", placeholder: "名字" %>
+    <%= f.label :first_name,"(名)", class: "col-1" %>
+    <%= f.text_field :first_name, class: "col-3", placeholder: "名前" %>
+  </div>
+
+  <div class="field row mb-3">
+    <%= f.label :last_name_kana,"フリガナ", class: "col-2" %>
+    <%= f.label :last_name_kana,"(セイ)", class: "col-1" %>
+    <%= f.text_field :last_name_kana, class: "col-3", placeholder: "ミョウジ" %>
+    <%= f.label :first_name_kana,"(メイ)", class: "col-1" %>
+    <%= f.text_field :first_name_kana, class: "col-3", placeholder: "ナマエ" %>
+  </div>
+
+  <% resource.class.invite_key_fields.each do |field| -%>
+    <div class="field">
+      <%= f.label field %><br />
+      <%= f.text_field field %>
+    </div>
+  <% end -%>
+
+  <div class="actions">
+    <%= f.submit t("devise.invitations.new.submit_button") %>
+  </div>
+<% end %>

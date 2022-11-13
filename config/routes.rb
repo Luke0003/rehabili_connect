@@ -2,16 +2,18 @@ Rails.application.routes.draw do
 
   devise_for :clients, skip: [:passwords], controllers: {
     registrations: 'public/registrations',
-    sessions: 'public/sessions'
+    sessions: 'public/sessions',
+    invitations: 'therapist/invitations'
   }
 
   devise_for :therapist, skip: [:passwords], controllers: {
     registrations: 'therapist/registrations',
-    sessions: 'therapist/sessions'
+    sessions: 'therapist/sessions',
+    invitations: 'admin/invitations'
   }
 
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
-    sessions: 'admin/sessions'
+    sessions: 'admin/sessions',
   }
 
   scope module: :public do
