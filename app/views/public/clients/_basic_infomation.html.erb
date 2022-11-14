@@ -1,0 +1,31 @@
+<h3>基本情報</h3>
+<div class="row justify-content-center">
+  <%= image_tag current_client.get_client_image(100, 100), class: "rounded-circle" %>
+</div>
+<div class="row justify-content-center">
+  <table class="table table-borderless col-6 mt-3">
+    <tr>
+      <th scope="row">お名前</th>
+      <td><%= current_client.client_name %></td>
+    </tr>
+    <tr>
+      <th scope="row">フリガナ</th>
+      <td><%= current_client.client_name_kana %></td>
+    </tr>
+    <tr>
+      <th scope="row">リハゴール</th>
+      <td><%= current_client.purpose %></td>
+    </tr>
+    <tr>
+      <th scope="row">メールアドレス</th>
+      <td><%= current_client.email %></td>
+    </tr>
+    <tr>
+      <th scope="row">担当セラピスト</th>
+      <td><%= current_client.therapist.therapist_name %></td>
+    </tr>
+  </table>
+</div>
+<div class="row justify-content-center">
+  <%= link_to "編集する", clients_information_edit_path, class: "btn btn-md btn-success" %>
+<div class="row justify-content-center">

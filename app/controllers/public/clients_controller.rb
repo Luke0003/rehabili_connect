@@ -16,6 +16,10 @@ class Public::ClientsController < ApplicationController
     end
   end
 
+  def switch
+    @therapist = current_client.therapist
+  end
+
   private
   def client_params
     params.require(:client).permit(:client_image, :last_name, :first_name, :last_name_kana, :first_name_kana, :purpose, :email)

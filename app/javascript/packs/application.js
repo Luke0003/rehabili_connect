@@ -18,6 +18,8 @@ import '../stylesheets/header.css'
 import '../stylesheets/footer.css'
 import '../stylesheets/simple_calendar.css'
 import '../stylesheets/fontawesome.css'
+import '../stylesheets/profile_card.css'
+import '../stylesheets/chat.css'
 
 Rails.start()
 Turbolinks.start()

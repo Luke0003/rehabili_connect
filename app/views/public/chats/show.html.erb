@@ -1,17 +1,36 @@
-<h1><%= @therapist.therapist_name %>さんとのチャット</h1>
+<div class="row mt-5">
+  <div class="col-12 mb-3">
+    <h4><%= @therapist.therapist_name %>さんとのチャット</h4>
+  </div>
+</div>
 
-<div class="message" style="width: 400px;">
+<div>
   <% @chats.each do |chat| %>
     <% if chat.client_id == current_client.id %>
-      <p style="text-align: right;"><%= chat.message %></p>
+      <div class="d-flex justify-content-end">
+        <%= image_tag current_client.get_client_image(50, 50), class: "mb-2 rounded-circle" %>
+      </div>
+      <div class="d-flex justify-content-end">
+        <p class="text-left my_chat mr-5">
+          <%= chat.message %><br>
+          <%= chat.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
+        </p>
+      </div>
     <% else %>
-      <p style="text-align: left;"><%= chat.message %></p>
+      <div class="d-flex justify-content-start">
+        <%= image_tag @therapist.get_therapist_image(50, 50), class: "mb-2 rounded-circle" %>
+      </div>
+      <div class="d-flex justify-content-start">
+        <p class="another_chat ml-5">
+          <%= chat.message %><br>
+          <%= chat.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
+        </p>
+      </div>
     <% end %>
   <% end %>
 </div>
 
 <%= render "layouts/errors", obj: @chat %>
-
 <%= form_with model: @chat, local: true do |f| %>
   <%= f.text_field :message %>
   <%= f.hidden_field :room_id, value: @room.id %>
