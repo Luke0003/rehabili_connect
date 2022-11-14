@@ -13,6 +13,7 @@ class Therapist::InvitationsController < Devise::InvitationsController
   end
 
   def create
+    print(2222222222222)
     super
   end
 
