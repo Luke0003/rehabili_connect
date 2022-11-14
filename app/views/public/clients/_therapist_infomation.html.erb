@@ -1,0 +1,24 @@
+<h3>セラピスト情報</h3>
+<div class="row justify-content-center">
+  <%= image_tag therapist.get_therapist_image(100, 100), class: "rounded-circle" %>
+</div>
+
+<div class="row justify-content-center">
+  <table class="table table-borderless col-6 mt-3">
+    <tr>
+      <th scope="row">お名前</th>
+      <td><%= therapist.therapist_name %></td>
+    </tr>
+    <tr>
+      <th scope="row">フリガナ</th>
+      <td><%= therapist.therapist_name_kana %></td>
+    </tr>
+    <tr>
+      <th scope="row">メールアドレス</th>
+      <td><%= therapist.email %></td>
+    </tr>
+  </table>
+</div>
+<div class="row justify-content-center">
+  <%= link_to "チャットをする", chat_path(current_client.id), class: "btn btn-md btn-info" %>
+</div>

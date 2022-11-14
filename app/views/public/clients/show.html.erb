@@ -1,44 +1,23 @@
 <div class="row mt-5">
-  <div class="mb-3">
-    <h4>クライアント詳細</h4>
+  <div class="col-12 mb-3">
+    <h4>マイページ</h4>
   </div>
 </div>
-<div class="row">
-  <div class="col-4">
-    <div class="card" style="width: 18rem;">
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">基本情報</li>
-        <li class="list-group-item">パスワード</li>
-        <li class="list-group-item">記録履歴</li>
-        <li class="list-group-item"></li>
-      </ul>
-    </div>
-  </div>
-  <div class="col-8">
-      <%= image_tag current_client.get_client_image(100, 100), class: "d-block ml-5 rounded-circle" %>
-    <table class="table table-borderless col-6 mt-3">
-      <tr>
-        <th scope="row">お名前</th>
-        <td><%= current_client.last_name + current_client.first_name %></td>
-      </tr>
-      <tr>
-        <th scope="row">フリガナ</th>
-        <td><%= current_client.last_name_kana + current_client.first_name_kana %></td>
-      </tr>
-      <tr>
-        <th scope="row">リハゴール</th>
-        <td><%= current_client.purpose %></td>
-      </tr>
-      <tr>
-        <th scope="row">メールアドレス</th>
-        <td><%= current_client.email %></td>
-      </tr>
-      <tr>
-        <th scope="row">担当セラピスト</th>
-        <td><%= current_client.therapist.therapist_name %></td>
-      </tr>
+<div class=row>
+  <div class="col-3">
+    <table class="table table-bordered table-hover">
+      <thead>
+        <tr>
+          <th class="text-center">登録情報</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><%= link_to "基本情報", switches_path, id: "basic_infomation", class: "text-dark text-decoration-none", remote: true %></td></tr>
+        <tr><td><%= link_to "セラピスト情報", switches_path, id: "therapist_infomation", class: "text-dark text-decoration-none", remote: true %></td></tr>
+      </tbody>
     </table>
-    <%= link_to "編集する", clients_information_edit_path, class: "btn btn-md btn-success" %>
-    <%= link_to "チャットをする", chat_path(current_client.id), class: "btn btn-md btn-info" %>
+  </div>
+  <div class="col-8 offset-1 profile_card" id="infomation">
+    <%= render "basic_infomation" %>
   </div>
 </div>
