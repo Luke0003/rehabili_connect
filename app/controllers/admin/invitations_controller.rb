@@ -49,13 +49,13 @@ class Admin::InvitationsController < Devise::InvitationsController
     devise_parameter_sanitizer.permit(:invite, keys: [:first_name, :last_name, :first_name_kana, :last_name_kana])
   end
 
-  def therapist_invite_resource(&block)
-    resource_class.invite!(invite_params, admin_inviter, &block)
-  end
-
-  # 管理者がログインしているかを確認
+   # 管理者がログインしているかを確認
   def authenticate_inviter_admin!
     send(:"authenticate_admin!", force: true)
+  end
+
+  def therapist_invite_resource(&block)
+    resource_class.invite!(invite_params, admin_inviter, &block)
   end
 
   def admin_inviter
