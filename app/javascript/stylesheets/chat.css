@@ -34,3 +34,7 @@
   border-right: 18px solid #ebebeb;
   transform: rotate(35deg);
 }
+
+.message{
+  width: 70%;
+}
