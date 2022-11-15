@@ -5,6 +5,10 @@ body{
   font-family: "ヒラギノ角ゴシック";
 }
 
+main{
+  min-height: calc(100vh - 56px);
+}
+
 thead tr{
   background-color: #eff7ff;
 }

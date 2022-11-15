@@ -2,7 +2,10 @@
   margin: 2em auto;
   padding: 1em;
   background-color: white;
-  color: #606060;
   box-shadow: 0 0 5px 1px #b2b2b2;
   border-radius: 10px;
+}
+
+.profile_card h3{
+  color: #606060;
 }
