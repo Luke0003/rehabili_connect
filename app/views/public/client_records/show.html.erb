@@ -28,8 +28,9 @@
       <% end %>
     </div>
 
+    <h4>今日の一言</h4>
     <div class="form-group">
-      <%= f.text_area :comment, rows: "5", placeholder: "ここにコメントを記述してください", class: "form-control" %>
+      <%= f.text_area :comment, rows: "5", placeholder: "", class: "form-control" %>
     </div>
     <div class="form-group">
       <%= f.hidden_field :record_date, value: @day %>
