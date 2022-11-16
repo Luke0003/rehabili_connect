@@ -82,7 +82,7 @@ ActiveRecord::Schema.define(version: 2022_11_14_131622) do
   create_table "client_records", force: :cascade do |t|
     t.integer "client_id", null: false
     t.integer "condition", null: false
-    t.string "comment", null: false
+    t.string "comment"
     t.date "record_date", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
