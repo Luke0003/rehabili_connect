@@ -31,7 +31,7 @@ class Public::ClientRecordsController < ApplicationController
       params[:client_menus].each do |key, value|
         ClientMenu.find(key).update(is_completed: value,  client_record_id: @client_record.id)
       end
-    __END__
+    end
     redirect_to root_path
   end
 
