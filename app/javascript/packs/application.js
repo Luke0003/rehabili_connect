@@ -20,12 +20,14 @@ import '../stylesheets/simple_calendar.css'
 import '../stylesheets/fontawesome.css'
 import '../stylesheets/profile_card.css'
 import '../stylesheets/chat.css'
+import '../stylesheets/client_record.css'
 
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
-$(function(){
+// 他のページから遷移した際、うまくいかなかったため、turbolinks:loadを加えた
+$(document).on('turbolinks:load', function () {
   $('#basic_infomation').on('click', function() {
     $('#basic_infomation_content').removeClass('d-none');
     $('#therapist_infomation_content').addClass('d-none');
