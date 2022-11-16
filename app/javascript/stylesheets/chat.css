@@ -35,6 +35,10 @@
   transform: rotate(35deg);
 }
 
+.created_at{
+  font-size: 12px;
+}
+
 .message{
   width: 70%;
 }
