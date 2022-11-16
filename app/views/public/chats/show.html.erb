@@ -4,7 +4,7 @@
   </div>
 </div>
 
-<div>
+<div id="messages_all">
   <% @chats.each do |chat| %>
     <% if chat.client_id == current_client.id %>
       <div class="d-flex justify-content-end">
@@ -37,9 +37,10 @@
     <% end %>
   <% end %>
 </div>
-
-<%= render "layouts/errors", obj: @chat %>
-<%= form_with model: @chat, local: true, class: "mb-3 d-flex justify-content-center" do |f| %>
+<div id="errors">
+  <%= render "layouts/errors", obj: @chat %>
+</div>
+<%= form_with model: @chat, local: false, class: "mb-3 d-flex justify-content-center" do |f| %>
   <%= f.text_field :message, placeholder: "メッセージを入力してください", class: "message" %>
   <%= f.hidden_field :room_id, value: @room.id %>
   <%= f.submit "送信", class: "btn btn-info" %>

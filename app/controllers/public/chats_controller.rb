@@ -16,14 +16,7 @@ class Public::ChatsController < ApplicationController
 
   def create
     @chat = current_client.chats.new(chat_params)
-    if @chat.save
-      redirect_to chat_path(chat_params[:room_id])
-    else
-      @therapist = current_client.therapist
-      @room = current_client.room
-      @chats = @room.chats.all
-      render :show
-    end
+    render :validater unless @chat.save
   end
 
   private
