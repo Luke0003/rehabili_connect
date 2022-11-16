@@ -19,7 +19,6 @@ Rails.application.routes.draw do
   scope module: :public do
     root 'homes#top'
     get 'clients/my_page' => 'clients#show'
-    get "switches" => "clients#switch"
     get 'clients/information/edit' => 'clients#edit'
     patch 'clients/information' => 'clients#update'
     resources :client_records, only: [:show, :create, :update]

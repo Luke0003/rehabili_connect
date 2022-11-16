@@ -1,6 +1,7 @@
 class Public::ClientsController < ApplicationController
   before_action :authenticate_client!
   def show
+    @therapist = current_client.therapist
   end
 
   def edit
@@ -14,10 +15,6 @@ class Public::ClientsController < ApplicationController
       flash[:notice] = "クライアント情報の更新に失敗しました。"
       render :edit
     end
-  end
-
-  def switch
-    @therapist = current_client.therapist
   end
 
   private
