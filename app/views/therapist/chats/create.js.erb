@@ -1,0 +1,16 @@
+$('#messages_all').append(`
+  <div class="d-flex justify-content-end">
+    <%= image_tag current_therapist.get_therapist_image(50, 50), class: "mb-2 rounded-circle" %>
+  </div>
+  <div class="d-flex justify-content-end">
+    <p class="text-left my_chat mr-5 mb-0">
+      <%= @chat.message %>
+    </p>
+  </div>
+  <div class="d-flex justify-content-end">
+    <p class="text-left mr-5">
+      <span class="created_at"><%= @chat.created_at.strftime('%m/%d %H:%M') %></span>
+    </p>
+  </div>
+`);
+$('.message').val("")

@@ -21,6 +21,7 @@ import '../stylesheets/fontawesome.css'
 import '../stylesheets/profile_card.css'
 import '../stylesheets/chat.css'
 import '../stylesheets/client_record.css'
+import '../stylesheets/btn.css'
 
 Rails.start()
 Turbolinks.start()
@@ -34,6 +35,17 @@ $(document).on('turbolinks:load', function () {
   })
   $('#therapist_infomation').on('click', function() {
     $('#therapist_infomation_content').removeClass('d-none');
+    $('#basic_infomation_content').addClass('d-none');
+  })
+})
+
+$(document).on('turbolinks:load', function () {
+  $('#basic_infomation').on('click', function() {
+    $('#basic_infomation_content').removeClass('d-none');
+    $('#client_infomation_content').addClass('d-none');
+  })
+  $('#client_infomation').on('click', function() {
+    $('#client_infomation_content').removeClass('d-none');
     $('#basic_infomation_content').addClass('d-none');
   })
 })
