@@ -1,25 +1,26 @@
-<h4><%= @day.strftime("%Y年%m月%d日") %>のリハビリ</h4>
-<div>
-  体調:
-  <% if @client_record.condition == 1 %>
-    良い
-  <% elsif @client_record.condition == 2 %>
-    普通
-  <% else %>
-    悪い
-  <% end %>
+<div class="row mt-5">
+  <div class="col-12 mb-3">
+    <h3><%= @day.strftime("%Y年%m月%d日") %>のリハビリ</h3>
+  </div>
 </div>
-
 <div>
-  <% @client_record.client_menus.each do |client_menu| %>
-    <%= client_menu.menu.menu_name %>
-    <%= client_menu.is_completed %><br>
-  <% end %>
+<div class="table-responsive">
+  <table class="table text-nowrap table-borderless">
+    <tr>
+      <th scope="row">体調</th>
+      <td>
+        <%= @client_record.condition_to_string %>
+      </td>
+    </tr>
+    <% @client_record.client_menus.each do |client_menu| %>
+      <tr>
+        <th scope="row"><%= client_menu.menu.menu_name %></th>
+        <td><%= client_menu.is_completed_to_string %></td>
+      </tr>
+    <% end %>
+    <tr>
+      <th scope="row">コメント</th>
+      <td><%= @client_record.comment %></td>
+    </tr>
+  </table>
 </div>
-
-<div>
-  コメント:<%= @client_record.comment %>
-</div>
-
-
-

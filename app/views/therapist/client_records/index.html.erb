@@ -5,21 +5,28 @@
   <table class="table table-hover table-borderless">
     <thead>
       <tr>
-        <th>ID</th>
-        <th>体調</th>
         <th>日付</th>
+        <th>体調</th>
+        <th>メニュー達成率</th>
       </tr>
     </thead>
     <tbody>
       <% @client_records.each do |client_record| %>
         <tr>
           <td>
-            <%= link_to therapist_client_client_record_path(@client, client_record) do %>
-              <%= client_record.id %>
+            <%= link_to therapist_client_client_record_path(@client, client_record), class: "text-dark text-decoration-none" do %>
+            　<%= client_record.record_date.strftime("%Y年%m月%d日") %>
             <% end %>
           </td>
-          <td><%= client_record.condition %></td>
-          <td><%= client_record.record_date %></td>
+          <td><%= client_record.condition_to_string %></td>
+          <td>
+            <% if client_record.client_menus.empty? %>
+              メニューなし
+            <% else %>
+              <% @achievement_rate = ClientMenu.is_completed_count(client_record) / client_record.client_menus.count.to_f %>
+              <%= (@achievement_rate * 100).round %>%
+            <% end %>
+          </td>
         </tr>
       <% end %>
     </tbody>

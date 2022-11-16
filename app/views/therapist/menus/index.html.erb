@@ -1,35 +1,37 @@
-<div class="row mt-3">
-  <div class="col-lg-12 mx-auto">
-    <div class="row">
-      <h4 class="col-11 mb-3">メニュー一覧</h4>
-      <%= link_to new_therapist_menu_path do %>
-        <div class="new-btn">
-          <i class="fas fa-plus"></i>
-        </div>
-      <% end %>
-    </div>
-    <table class="table table-hover table-borderless">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>メニュー名</th>
-          <th>メニュー目的</th>
-          <th>ジャンル</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @menus.each do |menu| %>
-          <tr>
-            <td><%= menu.id %></td>
-            <td><%= link_to menu.menu_name, therapist_menu_path(menu), class: "text-dark text-decoration-none" %></td>
-            <td><%= menu.menu_purpose %></td>
-            <td><%= menu.genre.genre_name %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-    <div class="d-flex justify-content-center">
-      <%= paginate @menus %>
-    </div>
+<div class="row mt-5">
+  <div class="col-md-11 col-sm-10 col-12 mb-3">
+    <h3>メニュー一覧</h3>
   </div>
+  <div class="col-md-1 col-2 px-0 ml-auto">
+    <%= link_to new_therapist_menu_path do %>
+      <div class="new-btn">
+        <i class="fas fa-plus"></i>
+      </div>
+    <% end %>
+  </div>
+</div>
+<div class="table-responsive">
+  <table class="table text-nowrap table-hover table-borderless">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>メニュー名</th>
+        <th>メニュー目的</th>
+        <th>ジャンル</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @menus.each do |menu| %>
+        <tr>
+          <td><%= menu.id %></td>
+          <td><%= link_to menu.menu_name, therapist_menu_path(menu), class: "text-dark text-decoration-none" %></td>
+          <td><%= menu.menu_purpose %></td>
+          <td><%= menu.genre.genre_name %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<div class="d-flex justify-content-center">
+  <%= paginate @menus %>
 </div>

@@ -3,6 +3,7 @@ class Therapist::TherapistsController < ApplicationController
   layout "therapist_application"
 
   def show
+    @client = current_therapist.clients.first
   end
 
   def edit

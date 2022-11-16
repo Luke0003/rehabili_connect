@@ -1,32 +1,43 @@
-<div class="row mt-3">
-  <div class="col-12">
-    <h4 class="mb-3">マイページ</h4>
-    <div class="row">
-      <div class="col-2">
-        <h5 class="font-weight-bold">登録情報</h5>
+<div class="row mt-5">
+  <div class="col-12 mb-3">
+    <h3>マイページ</h3>
+  </div>
+</div>
+
+
+  <div class="col-md-8 offset-md-1 profile_card">
+    <div id="basic_infomation_content">
+      <h3>基本情報</h3>
+      <div class="row justify-content-center">
+        <div class="col-10">
+          <%= image_tag current_therapist.get_therapist_image(100, 100), class: "rounded-circle" %>
+        </div>
       </div>
-      <div>
-        <%= image_tag current_therapist.get_therapist_image(50, 50) %>
+      <div class="row justify-content-center">
+        <table class="table table-borderless col-10 mt-3">
+          <tr>
+            <th scope="row" class="d-block d-md-table-cell col-lg-4 col-xl-3">お名前</th>
+            <td class="d-block d-md-table-cell"><%= current_therapist.therapist_name %></td>
+          </tr>
+          <tr>
+            <th scope="row" class="d-block d-md-table-cell col-lg-4 col-xl-3">フリガナ</th>
+            <td class="d-block d-md-table-cell"><%= current_therapist.therapist_name_kana %></td>
+          </tr>
+          <tr>
+            <th scope="row" class="d-block d-md-table-cell col-lg-4 col-xl-3">メールアドレス</th>
+            <td class="d-block d-md-table-cell"><%= current_therapist.email %></td>
+          </tr>
+          <tr>
+            <th scope="row" class="d-block d-md-table-cell col-lg-4 col-xl-3">担当クライアント</th>
+            <td class="d-block d-md-table-cell"><%= current_therapist.clients.count %>人</td>
+          </tr>
+        </table>
       </div>
-      <div>
-        <%= link_to "編集する", therapist_information_edit_path, class: "btn btn-md btn-success" %>
+      <div class="row justify-content-md-end">
+        <div class="col-5 ml-auto col-md-4">
+          <%= link_to "編集する", therapist_information_edit_path, class: "btn btn-md btn-success" %>
+        </div>
       </div>
-    </div>
-    <div class="row">
-      <table class="table table-bordered col-8 mt-3">
-        <tr>
-          <th class="table-active col-3">お名前</th>
-          <td><%= current_therapist.last_name + current_therapist.first_name %></td>
-        </tr>
-        <tr>
-          <th class="table-active">フリガナ</th>
-          <td><%= current_therapist.last_name_kana + current_therapist.first_name_kana %></td>
-        </tr>
-        <tr>
-          <th class="table-active">メールアドレス</th>
-          <td><%= current_therapist.email %></td>
-        </tr>
-      </table>
     </div>
   </div>
 </div>

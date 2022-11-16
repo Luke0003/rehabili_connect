@@ -6,6 +6,6 @@
   border-radius: 10px;
 }
 
-.profile_card h3{
+.profile_card h3, .profile_card h4{
   color: #606060;
 }
