@@ -24,3 +24,15 @@ import '../stylesheets/chat.css'
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+$(function(){
+  $('#basic_infomation').on('click', function() {
+    $('#basic_infomation_content').removeClass('d-none');
+    $('#therapist_infomation_content').addClass('d-none');
+  })
+  $('#therapist_infomation').on('click', function() {
+    $('#therapist_infomation_content').removeClass('d-none');
+    $('#basic_infomation_content').addClass('d-none');
+  })
+})
+

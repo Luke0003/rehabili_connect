@@ -1,6 +1,7 @@
 class Public::ClientsController < ApplicationController
   before_action :authenticate_client!
   def show
+    @therapist = current_client.therapist
   end
 
   def edit
@@ -17,7 +18,9 @@ class Public::ClientsController < ApplicationController
   end
 
   def switch
-    @therapist = current_client.therapist
+    # @client_image = current_client.get_client_image(100, 100)
+    # @therapist = current_client.therapist
+    # @therapist_image  = @therapist.get_therapist_image(100, 100)
   end
 
   private
