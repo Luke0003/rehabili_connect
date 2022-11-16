@@ -1,5 +1,5 @@
 <div class="row mt-5">
-  <div class="col-12 mb-3">
+  <div class="col-12">
     <h3><%= @day.strftime("%Y年%m月%d日") %>のリハビリ</h3>
   </div>
 </div>
@@ -7,7 +7,7 @@
 <div class="profile_card">
   <h4>体調</h4>
   <%= form_with model: @client_record, local: true do |f| %>
-    <div class="client_record form-group">
+    <div class="client_record form-group col-12">
       <%= f.radio_button :condition, 1, checked: true %>
       <%= f.label :condition, "良い" %>
       <%= f.radio_button :condition, 2 %>
@@ -17,20 +17,23 @@
     </div>
 
     <h4>やったメニューチェック</h4>
-    <div class="client_record form-group">
+    <div class="client_record form-group col-12">
       <% @client_menus.each do |client_menu| %>
         <%# hidden_fieldでまずはfalseをセットして絶対データを送る仕組みを作っている。%>
         <%= hidden_field_tag "client_menus[#{client_menu.id}]", false %>
-        <label>
+        <div>
           <%# 第一引数 : name, 第二引数 : 送信値, 第三引数 : 初期値(client_menu.is_completed), 第四引数 : オプション %>
-          <%= check_box_tag "client_menus[#{client_menu.id}]", true, client_menu.is_completed, {} %> <%= client_menu.menu.menu_name %>
-        </label>
+          <%= check_box_tag "client_menus[#{client_menu.id}]", true, client_menu.is_completed, {} %>
+          <label class="mr-3">
+            <%= client_menu.menu.menu_name %>
+          </label>
+        </div>
       <% end %>
     </div>
 
     <h4>今日の一言</h4>
-    <div class="form-group">
-      <%= f.text_area :comment, rows: "5", placeholder: "", class: "form-control" %>
+    <div class="form-group col-12">
+      <%= f.text_area :comment, rows: "3", placeholder: "頑張れたことや、困ったことがありましたら、お書きください。", class: "form-control" %>
     </div>
     <div class="form-group">
       <%= f.hidden_field :record_date, value: @day %>
@@ -38,7 +41,11 @@
     <div class="row justify-content-md-end">
       <div class="col-5 ml-auto col-md-2 ml-md-0">
         <div class="form-group">
-          <%= f.submit "記録する", class: "btn btn-success" %>
+          <% if @client_record.id.nil? %>
+            <%= f.submit "記録する", class: "btn btn-success" %>
+          <% else %>
+            <%= f.submit "更新する", class: "btn btn-primary" %>
+          <% end %>
         </div>
       </div>
     </div>
