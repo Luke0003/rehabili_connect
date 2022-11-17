@@ -8,10 +8,16 @@
   <div id="client_infomation_content">
   <h3>クライアント情報</h3>
   <div class="row justify-content-center">
-    <div class="col-10">
+    <div class="mb-3 mb-lg-0 ml-3 col-12 col-lg-3">
       <%= image_tag @client.get_client_image(100, 100), class: "rounded-circle" %>
     </div>
-  </div>
+    <div class="col-lg-8 mt-auto d-flex justify-content-between">
+      <%= link_to "メニュー設定", therapist_client_client_menus_path(@client), class: "mb-2 d-block btn btn-info btn-md" %>
+      <%= link_to "記録確認", therapist_client_client_records_path(@client), class: "mb-2 d-block btn btn-warning btn-md" %>
+      <%= link_to "チャット", therapist_client_chat_path(@client), class: "mb-2 d-block btn btn_pink btn-md" %>
+    </div>
+    </div>
+   </div>
   <div class="row justify-content-center">
     <table class="table table-borderless col-10 mt-3">
       <tr>
@@ -36,14 +42,9 @@
       </tr>
     </table>
   </div>
-  <div class="row justify-content-center">
-    <div class="col-10">
-    <!--<div class="col-5 ml-auto col-md-4">-->
+  <div class="row justify-content-md-end">
+    <div class="col-6 ml-auto col-md-4">
       <%= link_to "編集する", edit_therapist_client_path, class: "btn btn-md btn-success mr-3" %>
-      <%= link_to "メニューを設定する", therapist_client_client_menus_path(@client), class: "btn btn-success btn-md mr-3" %>
-      <%= link_to "記録を見る", therapist_client_client_records_path(@client), class: "btn btn-info btn-md mr-3" %>
-      <%= link_to "チャットをする", therapist_client_chat_path(@client), class: "btn btn-info btn-md" %>
-    <!--</div>-->
     </div>
   </div>
 </div>
