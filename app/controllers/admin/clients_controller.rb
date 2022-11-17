@@ -7,6 +7,7 @@ class Admin::ClientsController < ApplicationController
 
   def show
     @client = Client.find(params[:id])
+    @therapist = @client.therapist
   end
 
   def edit

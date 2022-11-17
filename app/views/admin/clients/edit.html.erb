@@ -1,40 +1,42 @@
 <div class="row mt-5">
   <div class="col-12 mb-3">
-    <h4>クライアント情報編集</h4>
+    <h3>クライアント情報編集</h3>
   </div>
 </div>
-<%= form_with model: @client, url: admin_client_path, local: true do |f| %>
-  <%= render "layouts/errors", obj: @client %>
-  <div class="mb-3 field">
-    <%= f.label :client, "ID", class: "col-1 col-lg-2" %>
-    <%= @client.id %>
-  </div>
-  <div class="mb-3 field">
-    <%= f.label :last_name, "氏名", class: "col-lg-2" %>
-    <%= f.text_field :last_name, autofocus: true, class: "col-5 col-lg-3" %>
-    <%= f.text_field :first_name, class: "col-5 col-lg-3" %>
-  </div>
-  <div class="mb-3 field">
-    <%= f.label :last_name_kana, "フリガナ", class: "col-lg-2" %>
-    <%= f.text_field :last_name_kana, class: "col-5 col-lg-3" %>
-    <%= f.text_field :first_name_kana, class: "col-5 col-lg-3" %>
-  </div>
-  <div class="mb-3 field">
-    <%= f.label :purpose,"リハゴール", class: "col-lg-2" %>
-    <%= f.text_field :purpose, class: "col-10 col-lg-3", placeholder: "目的を記述してください" %>
-  </div>
-  <div class="mb-3 field">
-    <%= f.label :email, "メールアドレス", class: "col-lg-2" %>
-    <%= f.text_field :email, class: "col-10 col-lg-3" %>
-  </div>
-  <div class="mb-3 field">
-    <%= f.label :is_deleted, "ステータス", class: "col-lg-2" %>
-    <%= f.radio_button :is_deleted, :false, checked: true %>
-    <%= f.label :is_deleted, "利用中" %>
-    <%= f.radio_button :is_deleted, :true, class: "ml-3" %>
-    <%= f.label :is_deleted, "終了" %>
-  </div>
-  <div class="field">
-  <%= f.submit "変更を保存", class: "btn btn-success btn-md ml-3" %>
-  </div>
-<% end %>
+<div class="card_box">
+  <%= form_with model: @client, url: admin_client_path, local: true do |f| %>
+    <%= render "layouts/errors", obj: @client %>
+    <div class="field row mb-3">
+      <%= f.label :last_name, "名前", class: "col-12 col-md-2 col-lg-2" %>
+      <%= f.label :last_name,"(姓)", class: "col-3 col-md-2 col-lg-1" %>
+      <%= f.text_field :last_name, autofocus: true, class: "col-3 col-md-3 col-lg-3" %>
+      <%= f.label :first_name,"(名)", class: "col-3 col-md-2 col-lg-1" %>
+      <%= f.text_field :first_name, class: "col-3 col-md-3 col-lg-3" %>
+    </div>
+    <div class="field row mb-3">
+      <%= f.label :last_name_kana,"フリガナ", class: "col-12 col-md-2 col-lg-2" %>
+      <%= f.label :last_name_kana,"(セイ)", class: "pr-0 col-3 col-md-2 col-lg-1" %>
+      <%= f.text_field :last_name_kana, class: "col-3 col-md-3 col-lg-3" %>
+      <%= f.label :first_name_kana,"(メイ)", class: "pr-0 col-3 col-md-2 col-lg-1" %>
+      <%= f.text_field :first_name_kana, class: "col-3 col-md-3 col-lg-3" %>
+    </div>
+    <div class="field row mb-3">
+      <%= f.label :purpose,"リハゴール", class: "col-12 col-md-4 col-lg-3" %>
+      <%= f.text_field :purpose, class: "ml-3 ml-md-0 col-md-8 col-lg-7" %>
+    </div>
+    <div class="field row mb-3">
+      <%= f.label :email,"メールアドレス", class: "col-12 col-md-4 col-lg-3" %>
+      <%= f.text_field :email, class: "ml-3 ml-md-0 col-md-8 col-lg-3" %>
+    </div>
+    <div class="field row mb-3">
+      <%= f.label :is_deleted, "ステータス", class: "col-12 col-md-4 col-lg-3" %>
+      <%= f.radio_button :is_deleted, :false, checked: true, class: "ml-4 ml-md-0 mb-2 mr-1" %>
+      <%= f.label :is_deleted, "利用中" %>
+      <%= f.radio_button :is_deleted, :true, class: "mb-2 ml-3 mr-1" %>
+      <%= f.label :is_deleted, "終了" %>
+    </div>
+    <div class="form-group d-flex justify-content-end">
+      <%= f.submit "更新内容を保存",class: 'btn btn-primary btn-md' %>
+    </div>
+  <% end %>
+</div>

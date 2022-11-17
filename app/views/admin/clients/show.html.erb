@@ -1,37 +1,102 @@
 <div class="row mt-5">
   <div class="col-12 mb-3">
-    <h4>クライアント詳細</h4>
+    <h3>クライアント詳細</h3>
   </div>
 </div>
-<table class="table table-borderless">
-  <tbody>
-    <tr>
-      <th scope="row">ID</th>
-      <td><%= @client.id%></td>
-    </tr>
-    <tr>
-      <th scope="row">氏名</th>
-      <td><%= @client.client_name %></td>
-    </tr>
-    <tr>
-      <th scope="row">フリガナ</th>
-      <td><%= @client.client_name_kana %></td>
-    </tr>
-    <tr>
-      <th scope="row">リハゴール</th>
-      <td><%= @client.purpose %></td>
-    </tr>
-    <tr>
-      <th scope="row">メールアドレス</th>
-      <td><%= @client.email %></td>
-    </tr>
-    <tr>
-      <th scope="row">ステータス</th>
-      <td><%= render "admin/clients/client_status", client: @client %></td>
-    </tr>
-    <tr>
-      <th></th>
-      <td><%= link_to "編集する", edit_admin_client_path, class: "btn btn-success btn-md" %></td>
-    </tr>
-  </tbody>
-</table>
+
+<div class=row>
+  <div class="col-md-3">
+    <table class="table table-bordered table-hover">
+      <thead>
+        <tr>
+          <th class="text-center">登録情報</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td id="basic_infomation" role="button">基本情報</td></tr>
+        <tr><td id="therapist_infomation" role="button">セラピスト情報</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-md-8 offset-md-1 card_box">
+    <div id="basic_infomation_content">
+      <h3>基本情報</h3>
+      <div class="row justify-content-center">
+        <div class="col-10">
+          <%= image_tag @client.get_client_image(100, 100), class: "rounded-circle" %>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <table class="table table-borderless col-10 mt-3">
+          <tr>
+            <th scope="row" class="d-block d-md-table-cell col-lg-4 col-xl-3">お名前</th>
+            <td class="d-block d-md-table-cell"><%= @client.client_name %></td>
+          </tr>
+          <tr>
+            <th scope="row" class="d-block d-md-table-cell col-lg-4 col-xl-3">フリガナ</th>
+            <td class="d-block d-md-table-cell"><%= @client.client_name_kana %></td>
+          </tr>
+          <tr>
+            <th scope="row" class="d-block d-md-table-cell col-lg-4 col-xl-3">リハゴール</th>
+            <td class="d-block d-md-table-cell"><%= @client.purpose %></td>
+          </tr>
+          <tr>
+            <th scope="row" class="d-block d-md-table-cell col-lg-4 col-xl-3">メールアドレス</th>
+            <td class="d-block d-md-table-cell"><%= @client.email %></td>
+          </tr>
+          <tr>
+            <th scope="row" class="d-block d-md-table-cell col-lg-4 col-xl-3">担当セラピスト</th>
+            <td class="d-block d-md-table-cell"><%= @client.therapist.therapist_name %></td>
+          </tr>
+          <tr>
+            <th scope="row" class="d-block d-md-table-cell col-lg-4 col-xl-3">ステータス</th>
+            <td class="d-block d-md-table-cell"><%= render "admin/clients/client_status", client: @client %></td>
+          </tr>
+        </table>
+      </div>
+      <div class="row justify-content-md-end">
+        <div class="col-5 ml-auto col-md-4">
+          <%= link_to "編集する", edit_admin_client_path, class: "btn btn-md btn-success" %>
+        </div>
+      </div>
+    </div>
+
+    <div id="therapist_infomation_content" class="d-none">
+      <h3>セラピスト情報</h3>
+      <div class="row justify-content-center">
+        <div class="col-10">
+          <%= image_tag  @therapist.get_therapist_image(100, 100), class: "rounded-circle" %>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <table class="table table-borderless col-10 mt-3">
+          <tr>
+            <th scope="row" class="d-block d-md-table-cell col-lg-4 col-xl-3">お名前</th>
+            <td class="d-block d-md-table-cell"><%= @therapist.therapist_name %></td>
+          </tr>
+          <tr>
+            <th scope="row" class="d-block d-md-table-cell col-lg-4 col-xl-3">フリガナ</th>
+            <td class="d-block d-md-table-cell"><%= @therapist.therapist_name_kana %></td>
+          </tr>
+          <tr>
+            <th scope="row" class="d-block d-md-table-cell col-lg-4 col-xl-3">メールアドレス</th>
+            <td class="d-block d-md-table-cell"><%= @therapist.email %></td>
+          </tr>
+          <tr>
+            <th scope="row" class="d-block d-md-table-cell col-lg-4 col-xl-3">担当クライアント</th>
+            <td class="d-block d-md-table-cell"><%= @therapist.clients.count %>人</td>
+          </tr>
+          <tr>
+            <th scope="row" class="d-block d-md-table-cell col-lg-4 col-xl-3">ステータス</th>
+            <td class="d-block d-md-table-cell"><%= render "admin/therapists/therapist_status", therapist: @therapist %></td>
+          </tr>
+        </table>
+      </div>
+      <div class="row justify-content-md-end">
+        <div class="col-5 ml-auto col-md-4 ml-md-0">
+          <%= link_to "編集する", edit_admin_therapist_path, class: "btn btn-success btn-md" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
