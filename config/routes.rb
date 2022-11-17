@@ -32,7 +32,7 @@ Rails.application.routes.draw do
     patch 'information' => 'therapists#update'
     resources :menus
     resources :genres, only: [:index, :edit, :create, :update, :destroy]
-    resources :clients, only: [:show] do
+    resources :clients, only: [:show, :edit, :update] do
       resources :client_records, only: [:index, :show]
       resources :client_menus, only: [:index, :edit, :create, :update, :destroy]
       resources :chats, only: [:show, :create]
