@@ -5,7 +5,7 @@
 </div>
 <%= render "layouts/errors", obj: @client_menu %>
 <h4>登録フォーム</h4>
-<div class="profile_card">
+<div class="card_box">
   <%= form_with model: [@client, @client_menu], url: therapist_client_client_menus_path, local: true do |f| %>
     <div class="form-group row">
       <%= f.label :menu_id, "メニュー名", class: "col-12 col-md-2" %>
