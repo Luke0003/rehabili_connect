@@ -1,12 +1,17 @@
-<div class="row mb-3">
-  <h4>ジャンル一覧・追加</h4>
+<div class="row mt-5">
+  <div class="col-12 mb-3">
+    <h3>ジャンル一覧・追加</h3>
+  </div>
 </div>
+
+<div class="card_box">
 <%= render "layouts/errors", obj: @genre %>
 <%= form_with model: @genre, url: therapist_genres_path, class: "row mb-3" do |f| %>
-  <%= f.label :genre_name, "ジャンル名", class: "field small font-weight-bold col-1 mb-0 mr-5 d-flex align-items-center" %>
+  <%= f.label :genre_name, "ジャンル名", class: "col-2 mb-0 d-flex align-items-center" %>
   <%= f.text_field :genre_name, placeholder: "ジャンル名", class: "col-2 ml-5 mr-5" %>
   <%= f.submit "  新規登録  ", class: "btn btn-success btn-md" %>
 <% end %>
+</div>
 <div class="row">
   <table class="table table-hover col-4">
     <thead>

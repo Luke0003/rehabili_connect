@@ -14,10 +14,14 @@
                   <i class="fas fa-users mr-1"></i>担当クライアント
                 <% end %>
               </li>
-              <li class="nav-item btn">
-                <%= link_to therapist_menus_path, class: 'nav-link active text-light text-right' do %>
+              <li class="nav-item dropdown btn">
+                <%= link_to therapist_menus_path, class: 'nav-link dropdown-toggle active text-light text-right', id: "navbarDropdown", "data-toggle": :dropdown, "aria-haspopup": :true, "aria-expanded": :false do %>
                   <i class="fas fa-running mr-1"></i>自主トレメニュー
                 <% end %>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <%= link_to "自主トレメニュー", therapist_menus_path, class: "dropdown-item" %>
+                  <%= link_to "ジャンル", therapist_genres_path, class: "dropdown-item" %>
+                </div>
               </li>
               <li class="nav-item btn">
                 <%= link_to therapist_my_page_path, class: 'nav-link active text-light text-right' do %>

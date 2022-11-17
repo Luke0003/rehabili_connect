@@ -17,3 +17,26 @@
   color: grey;
   font-size: 15px;
 }
+
+.btn{
+  text-shadow: 0 1px 1px rgb(0 0 0 / 30%);
+}
+
+.btn_pink{
+  color: #fff;
+  background-color: #ff577b;
+  border-color:#ff577b;
+}
+.btn_pink:hover{
+  color: #fff;
+  background-color: #e04a6a;
+  border-color: #e04a6a;
+}
+
+.btn-warning{
+  color: white;
+}
+
+.btn-warning:hover{
+  color: white;
+}
