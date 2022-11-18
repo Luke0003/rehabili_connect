@@ -35,6 +35,7 @@ ja:
         email: "メールアドレス"
         password: "パスワード"
       genre:
+        genre_name: "ジャンル名"
         genre_id: "ジャンル名"
       menu:
         genre: "ジャンル名"

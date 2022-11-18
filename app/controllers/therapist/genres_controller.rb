@@ -11,30 +11,21 @@ class Therapist::GenresController < ApplicationController
   end
 
   def create
+    @genres = Genre.all
     @genre = Genre.new(genre_params)
-    if @genre.save
-      flash[:notice] = "ジャンルの登録に成功しました"
-      redirect_to therapist_genres_path
-    else
-      @genres = Genre.all
-      flash[:notice] = "ジャンルの登録に失敗しました"
-      render :index
-    end
+    render :validater_create unless @genre.save
   end
 
   def update
+    @genres = Genre.all
     @genre = Genre.find(params[:id])
-    if @genre.update(genre_params)
-      flash[:notice] = "ジャンルの更新に成功しました"
-      redirect_to therapist_genres_path
-    else
-      flash[:notice] = "ジャンルの更新に失敗しました"
-      @genres = Genre.all
-      render :index
-    end
+    render :validater_update unless @genre.update(genre_params)
   end
 
   def destroy
+    @genres = Genre.all
+    @genre = Genre.find(params[:id])
+    @genre.destroy
   end
 
   private

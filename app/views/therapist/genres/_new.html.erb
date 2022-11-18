@@ -1,15 +1,15 @@
 <div class="col-md-8 mb-3">
-  <h3>ジャンル編集</h3>
+  <h3>ジャンル登録</h3>
 </div>
 <div class="row justify-content-center">
   <div class="col-10">
     <div id="errors">
-      <%= render "layouts/errors", obj: @genre %>
+      <%= render "layouts/errors", obj: genre %>
     </div>
-    <%= form_with model: @genre, url: therapist_genre_path, local: false, class: "row mb-3" do |f| %>
+    <%= form_with model: genre, url: therapist_genres_path, local: false, class: "row mb-3" do |f| %>
       <%= f.label :genre_name, "ジャンル名", class: "col-md-3 col-lg-2 mb-1 mb-md-0 d-flex align-items-center" %>
       <%= f.text_field :genre_name, placeholder: "ジャンル名", class: "col-md-4 mb-3 mb-md-0 ml-md-5 mr-md-5" %>
-      <%= f.submit "  更新する  ", class: "btn btn-success btn-md ml-auto ml-md-0" %>
+      <%= f.submit "  新規登録  ", class: "btn btn-success btn-md ml-auto ml-md-0" %>
     <% end %>
   </div>
 </div>
