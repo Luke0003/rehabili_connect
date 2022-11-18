@@ -1,0 +1,3 @@
+$('#genre_edit_<%= @genre.id %>').on('click', function() {
+  $('#genre').html('<%= j(render "edit", genre: @genre) %>');
+})

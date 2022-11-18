@@ -29,7 +29,8 @@ class Therapist::GenresController < ApplicationController
       redirect_to therapist_genres_path
     else
       flash[:notice] = "ジャンルの更新に失敗しました"
-      render :edit
+      @genres = Genre.all
+      render :index
     end
   end
 

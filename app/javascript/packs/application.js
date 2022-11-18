@@ -49,4 +49,3 @@ $(document).on('turbolinks:load', function () {
     $('#basic_infomation_content').addClass('d-none');
   })
 })
-
