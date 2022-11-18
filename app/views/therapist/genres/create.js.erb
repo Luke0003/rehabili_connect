@@ -1,0 +1,4 @@
+$('#table').html('<%= j(render "table", genres: @genres) %>');
+$('#genre').html('<%= j(render "new", genre: Genre.new) %>');
+$('#genre_genre_name').val("");
+$('#notice').html("ジャンルの登録に成功しました");
