@@ -5,7 +5,7 @@
 </div>
 <%= render "layouts/errors", obj: @client_menu %>
 <div class="card_box">
-  <%= form_with model: [@client, @client_menu], url: therapist_client_client_menus_path, local: true do |f| %>
+  <%= form_with model: [@client, @client_menu], url: therapist_client_client_menu_path, local: true do |f| %>
     <div class="form-group row">
       <%= f.label :menu_id, "メニュー名", class: "col-12 col-md-2" %>
       <%= f.select :menu_id, options_from_collection_for_select(Menu.all, :id, :menu_name), {include_blank: '選択してください'}, {class: "col-12 col-md-8"} %>

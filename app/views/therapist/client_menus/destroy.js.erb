@@ -1,0 +1,3 @@
+$('#table').html('<%= j(render "table", client_menus: @client_menus, client: @client) %>');
+$('#notice').html("クライアントメニューを削除しました");
+$('#errors').html("<%= j(render 'layouts/errors', obj: @client_menu) %>");
