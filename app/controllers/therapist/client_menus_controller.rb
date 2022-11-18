@@ -13,18 +13,11 @@ class Therapist::ClientMenusController < ApplicationController
   end
 
   def create
+    @client_menus = ClientMenu.page(params[:page])
     @client = Client.find(params[:client_id])
     @client_menu = ClientMenu.new(client_menu_params)
     @client_menu.client_id = @client.id
-    if @client_menu.save
-      flash[:notice] = "クライアントメニューの登録に成功しました"
-      redirect_to therapist_client_client_menus_path
-    else
-      flash[:notice] = "クライアントメニューの登録に失敗しました"
-      @client = Client.find(params[:client_id])
-      @client_menus = ClientMenu.page(params[:page])
-      render :index
-    end
+    render :validater_create unless @client_menu.save
   end
 
   def update
@@ -40,10 +33,10 @@ class Therapist::ClientMenusController < ApplicationController
   end
 
   def destroy
+    @client_menus = ClientMenu.page(params[:page])
+    @client = Client.find(params[:client_id])
     @client_menu = ClientMenu.find(params[:id])
     @client_menu.destroy
-    flash[:notice] = "クライアントメニューを削除しました"
-    redirect_to therapist_client_client_menus_path
   end
 
   private
