@@ -14,3 +14,4 @@ $('#messages_all').append(`
   </div>
 `);
 $('.message').val("")
+$('#errors').html('<%= j(render "layouts/errors", obj: @chat) %>')
