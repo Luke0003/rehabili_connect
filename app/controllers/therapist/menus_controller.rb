@@ -42,6 +42,7 @@ class Therapist::MenusController < ApplicationController
   def destroy
     @menu = Menu.find(params[:id])
     @menu.destroy
+    flash[:notice] = "メニューを削除しました"
     redirect_to therapist_menus_path
   end
 

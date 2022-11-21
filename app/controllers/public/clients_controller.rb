@@ -9,10 +9,10 @@ class Public::ClientsController < ApplicationController
 
   def update
     if current_client.update(client_params)
-      flash[:notice] = "クライアント情報が更新されました。"
+      flash[:notice] = "クライアント情報が更新されました"
       redirect_to clients_my_page_path
     else
-      flash[:notice] = "クライアント情報の更新に失敗しました。"
+      flash[:notice] = "クライアント情報の更新に失敗しました"
       render :edit
     end
   end
