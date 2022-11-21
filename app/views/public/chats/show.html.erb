@@ -4,7 +4,7 @@
   </div>
 </div>
 
-<div id="messages_all">
+<div id="messages_all" class="mx-auto">
   <% @chats.each do |chat| %>
     <% if chat.client_id == current_client.id %>
       <div class="d-flex justify-content-end">
@@ -37,6 +37,7 @@
     <% end %>
   <% end %>
 </div>
+
 <div id="errors">
   <%= render "layouts/errors", obj: @chat %>
 </div>

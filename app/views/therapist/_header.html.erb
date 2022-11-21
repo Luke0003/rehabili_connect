@@ -19,8 +19,9 @@
                   <i class="fas fa-running mr-1"></i>自主トレメニュー
                 <% end %>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <%= link_to "自主トレメニュー", therapist_menus_path, class: "dropdown-item" %>
-                  <%= link_to "ジャンル", therapist_genres_path, class: "dropdown-item" %>
+                  <%= link_to "自主トレメニュー一覧", therapist_menus_path, class: "dropdown-item" %>
+                  <%= link_to "自主トレメニュー新規登録", new_therapist_menu_path, class: "dropdown-item" %>
+                  <%= link_to "ジャンル一覧", therapist_genres_path, class: "dropdown-item" %>
                 </div>
               </li>
               <li class="nav-item btn">
@@ -33,9 +34,9 @@
                   <i class="fas fa-sign-out-alt mr-1"></i>ログアウト
                 <% end %>
               </li>
-            <% end %>
-          </ul>
-        </div>
+            </ul>
+          </div>
+        <% end %>
       </div>
     </div>
   </nav>

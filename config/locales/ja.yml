@@ -5,18 +5,19 @@ ja:
   devise:
     sessions:
       client:
-        signed_in: "ログインに成功しました。"
-        signed_out: "ログアウトしました。"
+        signed_in: "ログインに成功しました"
+        signed_out: "ログアウトしました"
       therapist:
-        signed_in: "ログインに成功しました。"
-        signed_out: "ログアウトしました。"
+        signed_in: "ログインに成功しました"
+        signed_out: "ログアウトしました"
       admin:
-        signed_in: "ログインに成功しました。"
-        signed_out: "ログアウトしました。"
+        signed_in: "ログインに成功しました"
+        signed_out: "ログアウトしました"
     registrations:
-      customer:
-        signed_up: "サインアップに成功しました。"
-      therapist: "サインアップに成功しました。"
+      client:
+        signed_up: "サインアップに成功しました"
+      therapist:
+        signed_up: "サインアップに成功しました"
   activerecord:
     attributes:
       client:

@@ -17,3 +17,12 @@ thead tr{
 h3{
   text-shadow: 0 1px 1px rgb(0 0 0 / 30%);
 }
+
+@media screen and (max-width: 767px) {
+  .th_responsive{
+    padding-bottom: 0.25rem !important;
+  }
+  .td_responsive{
+    padding-top: 0.25rem !important;
+  }
+}

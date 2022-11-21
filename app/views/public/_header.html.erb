@@ -1,5 +1,5 @@
 <header class="shadow-sm">
-  <nav class="navbar navbar-expand-lg navbar-light">
+  <nav class="navbar navbar-expand-xl navbar-light">
     <div class="container-fluid">
       <%= link_to "リハコネ", root_path, class: "navbar-brand text-light col-12 col-sm-3" %>
         <% if client_signed_in? %>
@@ -20,13 +20,18 @@
                 <% end %>
               </li>
               <li class="nav-item btn">
+                <%= link_to chat_path(current_client), class: 'nav-link active text-light text-right' do %>
+                  <i class="far fa-comment-dots mr-1"></i>チャット
+                <% end %>
+              </li>
+              <li class="nav-item btn">
                 <%= link_to destroy_client_session_path, method: :delete, class: 'nav-link active text-light text-right' do %>
                   <i class="fas fa-sign-out-alt mr-1"></i>ログアウト
                 <% end %>
               </li>
-            <% end %>
-          </ul>
-        </div>
+            </ul>
+          </div>
+        <% end %>
       </div>
     </div>
   </nav>

@@ -42,3 +42,9 @@
 .message{
   width: 70%;
 }
+
+@media screen and (min-width: 1024px) {
+  #messages_all{
+    width: 80%;
+  }
+}
