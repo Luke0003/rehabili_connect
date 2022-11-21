@@ -38,14 +38,3 @@ $(document).on('turbolinks:load', function () {
     $('#basic_infomation_content').addClass('d-none');
   })
 })
-
-$(document).on('turbolinks:load', function () {
-  $('#basic_infomation').on('click', function() {
-    $('#basic_infomation_content').removeClass('d-none');
-    $('#client_infomation_content').addClass('d-none');
-  })
-  $('#client_infomation').on('click', function() {
-    $('#client_infomation_content').removeClass('d-none');
-    $('#basic_infomation_content').addClass('d-none');
-  })
-})
