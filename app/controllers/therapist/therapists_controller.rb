@@ -11,10 +11,10 @@ class Therapist::TherapistsController < ApplicationController
 
   def update
     if current_therapist.update(therapist_params)
-      flash[:notice] = "セラピスト情報が更新されました。"
+      flash[:notice] = "セラピスト情報が更新されました"
       redirect_to therapist_my_page_path
     else
-      flash[:notice] = "セラピスト情報が更新されました。"
+      flash[:notice] = "セラピスト情報が更新されました"
       render :edit
     end
   end
