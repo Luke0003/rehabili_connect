@@ -9,8 +9,8 @@
     <% genres.each do |genre| %>
       <tr>
         <td><%= genre.genre_name %></td>
-        <td class="text-right"><span id="genre_edit_<%= genre.id %>"><%= link_to "編集する", edit_therapist_genre_path(genre), class: "btn btn-success btn-sm", remote: true %></span>
-        <%= link_to "削除する", therapist_genre_path(genre), method: :delete, remote: true, class: "btn btn-danger btn-sm" %></td>
+        <td class="text-right"><span id="genre_edit_<%= genre.id %>"><%= link_to "編集", edit_therapist_genre_path(genre), class: "btn btn-success btn-lg", remote: true %></span>
+        <%= link_to "削除", therapist_genre_path(genre), method: :delete, remote: true, class: "btn btn-danger btn-lg" %></td>
       </tr>
     <% end %>
   </tbody>

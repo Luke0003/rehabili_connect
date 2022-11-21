@@ -40,3 +40,15 @@
 .btn-warning:hover{
   color: white;
 }
+
+.btn_update{
+  color: #fff;
+  background-color: #ffa347;
+  border-color: #ffa347;
+}
+
+.btn_update:hover{
+  color: #fff;
+  background-color: #eb933b;
+  border-color: #eb933b;
+}

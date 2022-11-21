@@ -37,8 +37,8 @@
       <tr>
         <th scope="row"></th>
         <th>
-          <%= link_to "編集する", edit_therapist_menu_path(@menu), class: "btn btn-success mt-3" %>
-          <%= link_to "削除する", therapist_menu_path(@menu), method: :delete, class: "btn btn-danger mt-3" %>
+          <%= link_to "編集", edit_therapist_menu_path(@menu), class: "btn btn-success btn-lg mt-3" %>
+          <%= link_to "削除", therapist_menu_path(@menu), method: :delete, data: {confirm: "本当に消しますか？"}, class: "btn btn-danger btn-lg mt-3" %>
         </th>
       </tr>
     </tbody>
