@@ -60,6 +60,7 @@ gem 'kaminari','~> 1.2.1'
 gem 'simple_calendar'
 gem 'dotenv-rails'
 gem 'devise_invitable'
+gem 'autosize'
 gem 'net-smtp'
 gem "net-pop"
 gem "net-imap"
