@@ -15,24 +15,24 @@
     <div class="row justify-content-center">
       <table class="table table-borderless col-10 mt-3">
         <tr>
-          <th scope="row" class="d-block d-md-table-cell col-lg-4 col-xl-3">お名前</th>
-          <td class="d-block d-md-table-cell"><%= @therapist.therapist_name %></td>
+          <th scope="row" class="d-block d-md-table-cell col-lg-4 col-xl-3 th_responsive">お名前</th>
+          <td class="d-block d-md-table-cell td_responsive"><%= @therapist.therapist_name %></td>
         </tr>
         <tr>
-          <th scope="row" class="d-block d-md-table-cell col-lg-4 col-xl-3">フリガナ</th>
-          <td class="d-block d-md-table-cell"><%= @therapist.therapist_name_kana %></td>
+          <th scope="row" class="d-block d-md-table-cell col-lg-4 col-xl-3 th_responsive">フリガナ</th>
+          <td class="d-block d-md-table-cell td_responsive"><%= @therapist.therapist_name_kana %></td>
         </tr>
         <tr>
-          <th scope="row" class="d-block d-md-table-cell col-lg-4 col-xl-3">メールアドレス</th>
-          <td class="d-block d-md-table-cell"><%= @therapist.email %></td>
+          <th scope="row" class="d-block d-md-table-cell col-lg-4 col-xl-3 th_responsive">メールアドレス</th>
+          <td class="d-block d-md-table-cell td_responsive"><%= @therapist.email %></td>
         </tr>
         <tr>
-          <th scope="row" class="d-block d-md-table-cell col-lg-4 col-xl-3">担当利用者</th>
-          <td class="d-block d-md-table-cell"><%= @therapist.clients.count %>人</td>
+          <th scope="row" class="d-block d-md-table-cell col-lg-4 col-xl-3 th_responsive">担当利用者</th>
+          <td class="d-block d-md-table-cell td_responsive"><%= @therapist.clients.count %>人</td>
         </tr>
         <tr>
-          <th scope="row" class="d-block d-md-table-cell col-lg-4 col-xl-3">ステータス</th>
-          <td class="d-block d-md-table-cell"><%= render "admin/therapists/therapist_status", therapist: @therapist %></td>
+          <th scope="row" class="d-block d-md-table-cell col-lg-4 col-xl-3 th_responsive">ステータス</th>
+          <td class="d-block d-md-table-cell td_responsive"><%= render "admin/therapists/therapist_status", therapist: @therapist %></td>
         </tr>
       </table>
     </div>

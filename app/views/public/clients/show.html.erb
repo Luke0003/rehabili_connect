@@ -28,24 +28,24 @@
       <div class="row justify-content-center">
         <table class="table table-borderless col-10 mt-3">
           <tr>
-            <th scope="row" class="d-block d-md-table-cell col-lg-4 col-xl-3">お名前</th>
-            <td class="d-block d-md-table-cell"><%= current_client.client_name %></td>
+            <th scope="row" class="d-block d-md-table-cell col-lg-4 col-xl-3 th_responsive">お名前</th>
+            <td class="d-block d-md-table-cell td_responsive"><%= current_client.client_name %></td>
           </tr>
           <tr>
-            <th scope="row" class="d-block d-md-table-cell col-lg-4 col-xl-3">フリガナ</th>
-            <td class="d-block d-md-table-cell"><%= current_client.client_name_kana %></td>
+            <th scope="row" class="d-block d-md-table-cell col-lg-4 col-xl-3 th_responsive">フリガナ</th>
+            <td class="d-block d-md-table-cell td_responsive"><%= current_client.client_name_kana %></td>
           </tr>
           <tr>
-            <th scope="row" class="d-block d-md-table-cell col-lg-4 col-xl-3">リハゴール</th>
-            <td class="d-block d-md-table-cell"><%= current_client.purpose %></td>
+            <th scope="row" class="d-block d-md-table-cell col-lg-4 col-xl-3 th_responsive">リハゴール</th>
+            <td class="d-block d-md-table-cell td_responsive"><%= current_client.purpose %></td>
           </tr>
           <tr>
-            <th scope="row" class="d-block d-md-table-cell col-lg-4 col-xl-3">メールアドレス</th>
-            <td class="d-block d-md-table-cell"><%= current_client.email %></td>
+            <th scope="row" class="d-block d-md-table-cell col-lg-4 col-xl-3 th_responsive">メールアドレス</th>
+            <td class="d-block d-md-table-cell td_responsive"><%= current_client.email %></td>
           </tr>
           <tr>
-            <th scope="row" class="d-block d-md-table-cell col-lg-4 col-xl-3">担当セラピスト</th>
-            <td class="d-block d-md-table-cell"><%= current_client.therapist.therapist_name %></td>
+            <th scope="row" class="d-block d-md-table-cell col-lg-4 col-xl-3 th_responsive">担当セラピスト</th>
+            <td class="d-block d-md-table-cell td_responsive"><%= current_client.therapist.therapist_name %></td>
           </tr>
         </table>
       </div>
@@ -66,22 +66,22 @@
       <div class="row justify-content-center">
         <table class="table table-borderless col-10 mt-3">
           <tr>
-            <th scope="row" class="d-block d-md-table-cell col-lg-4 col-xl-3">お名前</th>
-            <td class="d-block d-md-table-cell"><%= @therapist.therapist_name %></td>
+            <th scope="row" class="d-block d-md-table-cell col-lg-4 col-xl-3 th_responsive">お名前</th>
+            <td class="d-block d-md-table-cell td_responsive"><%= @therapist.therapist_name %></td>
           </tr>
           <tr>
-            <th scope="row" class="d-block d-md-table-cell col-lg-4 col-xl-3">フリガナ</th>
-            <td class="d-block d-md-table-cell"><%= @therapist.therapist_name_kana %></td>
+            <th scope="row" class="d-block d-md-table-cell col-lg-4 col-xl-3 th_responsive">フリガナ</th>
+            <td class="d-block d-md-table-cell td_responsive"><%= @therapist.therapist_name_kana %></td>
           </tr>
           <tr>
-            <th scope="row" class="d-block d-md-table-cell col-lg-4 col-xl-3">メールアドレス</th>
-            <td class="d-block d-md-table-cell"><%= @therapist.email %></td>
+            <th scope="row" class="d-block d-md-table-cell col-lg-4 col-xl-3 th_responsive">メールアドレス</th>
+            <td class="d-block d-md-table-cell td_responsive"><%= @therapist.email %></td>
           </tr>
         </table>
       </div>
       <div class="row justify-content-md-end">
         <div class="col-6 ml-auto col-md-4 ml-md-0">
-          <%= link_to "チャット", chat_path(current_client.id), class: "btn btn-lg btn_pink" %>
+          <%= link_to "チャット", chat_path(current_client), class: "btn btn-lg btn_pink" %>
         </div>
       </div>
     </div>

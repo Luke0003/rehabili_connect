@@ -12,7 +12,7 @@
         <%= image_tag @client.get_client_image(100, 100), class: "rounded-circle" %>
       </div>
       <div class="col-lg-8 mt-auto d-flex justify-content-between">
-        <%= link_to "メニュー設定", therapist_client_client_menus_path(@client), class: "mb-2 d-block btn btn-info btn-md" %>
+        <%= link_to "メニュー設定", therapist_client_client_menus_path(@client), class: "mb-2 d-block btn btn-primary btn-md" %>
         <%= link_to "記録確認", therapist_client_client_records_path(@client), class: "mb-2 d-block btn btn-warning btn-md" %>
         <%= link_to "チャット", therapist_client_chat_path(@client), class: "mb-2 d-block btn btn_pink btn-md" %>
       </div>
@@ -21,24 +21,24 @@
   <div class="row justify-content-center">
     <table class="table table-borderless col-10 mt-3">
       <tr>
-        <th scope="row" class="d-block d-md-table-cell col-lg-4 col-xl-3">お名前</th>
-        <td class="d-block d-md-table-cell"><%= @client.client_name %></td>
+        <th scope="row" class="d-block d-md-table-cell col-lg-4 col-xl-3 th_responsive">お名前</th>
+        <td class="d-block d-md-table-cell td_responsive"><%= @client.client_name %></td>
       </tr>
       <tr>
-        <th scope="row" class="d-block d-md-table-cell col-lg-4 col-xl-3">フリガナ</th>
-        <td class="d-block d-md-table-cell"><%= @client.client_name_kana %></td>
+        <th scope="row" class="d-block d-md-table-cell col-lg-4 col-xl-3 th_responsive">フリガナ</th>
+        <td class="d-block d-md-table-cell td_responsive"><%= @client.client_name_kana %></td>
       </tr>
       <tr>
-        <th scope="row" class="d-block d-md-table-cell col-lg-4 col-xl-3">リハゴール</th>
-        <td class="d-block d-md-table-cell"><%= @client.purpose %></td>
+        <th scope="row" class="d-block d-md-table-cell col-lg-4 col-xl-3 th_responsive">リハゴール</th>
+        <td class="d-block d-md-table-cell td_responsive"><%= @client.purpose %></td>
       </tr>
       <tr>
-        <th scope="row" class="d-block d-md-table-cell col-lg-4 col-xl-3">メールアドレス</th>
-        <td class="d-block d-md-table-cell"><%= @client.email %></td>
+        <th scope="row" class="d-block d-md-table-cell col-lg-4 col-xl-3 th_responsive">メールアドレス</th>
+        <td class="d-block d-md-table-cell td_responsive"><%= @client.email %></td>
       </tr>
       <tr>
-        <th scope="row" class="d-block d-md-table-cell col-lg-4 col-xl-3">ステータス</th>
-        <td class="d-block d-md-table-cell"><%= render "admin/clients/client_status", client: @client %></td>
+        <th scope="row" class="d-block d-md-table-cell col-lg-4 col-xl-3 th_responsive">ステータス</th>
+        <td class="d-block d-md-table-cell td_responsive"><%= render "admin/clients/client_status", client: @client %></td>
       </tr>
     </table>
   </div>
