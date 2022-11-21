@@ -42,9 +42,9 @@
       <div class="col-5 ml-auto col-md-2 ml-md-0">
         <div class="form-group">
           <% if @client_record.id.nil? %>
-            <%= f.submit "記録する", class: "btn btn-success" %>
+            <%= f.submit "記録", class: "btn btn-warning btn-lg" %>
           <% else %>
-            <%= f.submit "更新する", class: "btn btn-primary" %>
+            <%= f.submit "更新", class: "btn btn_update btn-lg" %>
           <% end %>
         </div>
       </div>

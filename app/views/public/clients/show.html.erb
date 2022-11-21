@@ -51,7 +51,7 @@
       </div>
       <div class="row justify-content-md-end">
         <div class="col-5 ml-auto col-md-4">
-          <%= link_to "編集する", clients_information_edit_path, class: "btn btn-md btn-success" %>
+          <%= link_to "編集", clients_information_edit_path, class: "btn btn-lg btn-success" %>
         </div>
       </div>
     </div>
@@ -80,8 +80,8 @@
         </table>
       </div>
       <div class="row justify-content-md-end">
-        <div class="col-5 ml-auto col-md-4 ml-md-0">
-          <%= link_to "チャットする", chat_path(current_client.id), class: "btn btn-md btn_pink" %>
+        <div class="col-6 ml-auto col-md-4 ml-md-0">
+          <%= link_to "チャット", chat_path(current_client.id), class: "btn btn-lg btn_pink" %>
         </div>
       </div>
     </div>

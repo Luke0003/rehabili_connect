@@ -19,8 +19,8 @@
             <td><%= client_menu.menu.menu_name %></td>
             <td><%= client_menu.start_date.strftime("%Y年%m月%d日") %></td>
             <td>
-              <%= link_to "編集", edit_therapist_client_client_menu_path(client, client_menu), class: "btn btn-success" %>
-              <%= link_to "削除", therapist_client_client_menu_path(client, client_menu), method: :delete, data: {confirm: '本当に消しますか？'}, remote: true, class: "btn btn-danger" %>
+              <%= link_to "編集", edit_therapist_client_client_menu_path(client, client_menu), class: "btn btn-success btn-lg" %>
+              <%= link_to "削除", therapist_client_client_menu_path(client, client_menu), method: :delete, data: {confirm: "本当に消しますか？"}, remote: true, class: "btn btn-danger btn-lg" %>
             </td>
           </tr>
         <% end %>
