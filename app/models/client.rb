@@ -20,8 +20,8 @@ class Client < ApplicationRecord
   # クライアント画像を取得しリサイズ
   def get_client_image(width, height)
     unless client_image.attached?
-      file_path = Rails.root.join("app/assets/images/no_image.jpeg")
-      client_image.attach(io: File.open(file_path), filename: "no_image.jpeg", content_type: "image/jpeg")
+      file_path = Rails.root.join("app/assets/images/no_image.jpg")
+      client_image.attach(io: File.open(file_path), filename: "no_image.jpg", content_type: "image/jpeg")
     end
     client_image.variant(resize_to_fill: [width, height]).processed
   end

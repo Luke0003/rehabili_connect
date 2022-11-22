@@ -17,8 +17,8 @@ class Therapist < ApplicationRecord
   # セラピスト画像を取得しリサイズ
   def get_therapist_image(width, height)
     unless therapist_image.attached?
-      file_path = Rails.root.join("app/assets/images/no_image.jpeg")
-      therapist_image.attach(io: File.open(file_path), filename: "no_image.jpeg", content_type: "image/jpeg")
+      file_path = Rails.root.join("app/assets/images/no_image.jpg")
+      therapist_image.attach(io: File.open(file_path), filename: "no_image.jpg", content_type: "image/jpeg")
     end
     therapist_image.variant(resize_to_fill: [width, height]).processed
   end
