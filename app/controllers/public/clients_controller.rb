@@ -2,6 +2,7 @@ class Public::ClientsController < ApplicationController
   before_action :authenticate_client!
   def show
     @therapist = current_client.therapist
+    @notifications_count = Notification.client_notifications_count(current_client)
   end
 
   def edit

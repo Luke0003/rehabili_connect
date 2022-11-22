@@ -7,6 +7,7 @@ class Therapist < ApplicationRecord
   has_many :clients
   has_many :chats
   has_many :rooms
+  has_many :notifications
   has_one_attached :therapist_image
 
   validates :last_name, presence: :true, format: {with:/\A[一-龥ぁ-ん]/,message: "は、漢字・ひらがなのどちらかで入力して下さい"}

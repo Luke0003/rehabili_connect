@@ -22,6 +22,7 @@ import '../stylesheets/card_box.css'
 import '../stylesheets/chat.css'
 import '../stylesheets/client_record.css'
 import '../stylesheets/btn.css'
+import '../stylesheets/notification.css'
 
 Rails.start()
 Turbolinks.start()

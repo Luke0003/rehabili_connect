@@ -12,11 +12,18 @@ class Public::ChatsController < ApplicationController
 
     @chat = current_client.chats.new
     @chats = @room.chats.all
+    @notifications = current_client.notifications
+    @notifications.each do |notification|
+      if notification.checked_client == false
+        notification.update(checked_client: true)
+      end
+    end
   end
 
   def create
     @chat = current_client.chats.new(chat_params)
     render :validater unless @chat.save
+    @notification = current_client.notifications.create(chat_id: @chat.id, therapist_id: current_client.therapist.id, checked_client: true)
   end
 
   private

@@ -3,6 +3,7 @@ class Therapist::ClientsController < ApplicationController
   layout "therapist_application"
   def show
     @client = Client.find(params[:id])
+    @notifications_count = Notification.therapist_notifications_count(@client, current_therapist)
   end
 
   def edit
