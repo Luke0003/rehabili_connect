@@ -21,7 +21,12 @@
               </li>
               <li class="nav-item btn">
                 <%= link_to chat_path(current_client), class: 'nav-link active text-light text-right' do %>
-                  <i class="far fa-comment-dots mr-1"></i>チャット
+                  <span class="header_chat_btn">
+                    <i class="far fa-comment-dots mr-1"></i>チャット
+                    <% if Notification.client_notifications_count(current_client) > 0 %>
+                      <span class="header_chat_notification"><%= Notification.client_notifications_count(current_client) %></span>
+                    <% end %>
+                  </span>
                 <% end %>
               </li>
               <li class="nav-item btn">

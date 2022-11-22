@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_11_14_131622) do
+ActiveRecord::Schema.define(version: 2022_11_22_032930) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -126,6 +126,16 @@ ActiveRecord::Schema.define(version: 2022_11_14_131622) do
     t.string "menu_name", null: false
     t.text "menu_content", null: false
     t.string "menu_purpose", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.integer "client_id", null: false
+    t.integer "therapist_id", null: false
+    t.integer "chat_id", null: false
+    t.boolean "checked_client", default: false, null: false
+    t.boolean "checked_therapist", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
