@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     patch 'clients/information' => 'clients#update'
     resources :client_records, only: [:show, :create, :update]
     resources :chats, only: [:show, :create]
+    resources :menus, only: [:show]
   end
 
   namespace :therapist do

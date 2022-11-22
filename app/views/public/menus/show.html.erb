@@ -1,0 +1,42 @@
+<div class="row mt-5">
+  <div class="col-12 mb-3">
+    <h3><%= @menu.menu_name %></h3>
+  </div>
+</div>
+<div class="row">
+<div class="card_box col-12 d-md-flex">
+  <% if @menu.menu_video.attached? %>
+    <div class="col-6 col-md-4">
+      <video src="<%= rails_blob_path(@menu.menu_video) %>" type="video/mp4" width="200" height="300" controls></video>
+    </div>
+  <% else %>
+    <div class="col-6 col-md-4">
+      <%= image_tag "default-image.jpg", size: "200x300" %>
+    </div>
+  <% end %>
+  <div class="table-responsive col-12 col-md-8">
+  <table class="table table-borderless text-nowrap">
+    <thead></thead>
+    <tbody>
+      <tr>
+        <th scope="row" class="col-3 pl-0">メニュー名</th>
+        <td><%= @menu.menu_name %></td>
+      </tr>
+      <tr>
+        <th scope="row" class="d-flex pl-0 align-items-start">メニュー説明</th>
+        <td><%= @menu.menu_content %></td>
+      </tr>
+      <tr>
+        <th scope="row" class="d-flex pl-0 align-items-start">メニュー目的</th>
+        <td><%= @menu.menu_purpose %></td>
+      </tr>
+      <tr>
+        <th scope="row" class="col-3 pl-0">ジャンル</th>
+        <td><%= @menu.genre.genre_name %></td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</div>
+</div>
+
