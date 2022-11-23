@@ -5,8 +5,8 @@
 </div>
 
 <div class="card_box">
-  <%= form_with model: @therapist, url: therapist_invitation_path, method: :put do |f| %>
-    <%= render "layouts/errors", obj: @therapist %>
+  <%= form_with model: @client, url: client_invitation_path, method: :put do |f| %>
+    <%= render "layouts/errors", obj: @client %>
     <%= f.hidden_field :invitation_token, readonly: true %>
 
     <% if f.object.class.require_password_on_accepting %>

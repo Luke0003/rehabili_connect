@@ -41,14 +41,31 @@
 <div id="errors">
   <%= render "layouts/errors", obj: @chat %>
 </div>
-<%= form_with model: @chat, local: false, class: "mb-3 d-flex justify-content-center" do |f| %>
-  <%= f.text_area :message, placeholder: "メッセージを入力してください", class: "message" %>
+<!--<div class="row">-->
+<%= form_with model: @chat, local: false do |f| %>
+<!--<div class="">-->
+  <!--<div>-->
+  <%= f.text_area :message, placeholder: "メッセージを入力してください", class: "message", rows: 1, style: '' %>
   <%= f.hidden_field :room_id, value: @room.id %>
-  <%= f.submit "送信", class: "btn btn-info" %>
+  <%= f.submit "送信", class: "btn btn-sm btn-info mb-4" %>
+  <!--</div>-->
+
+<!--</div>-->
 <% end %>
+<!--</div>-->
 
 <script>
-  $('textarea').autosize();
+  // $('textarea').autosize();
+  $(function() {
+    $("#chat_message").on('input', function() {
+      if ($(this).outerHeight() > this.scrollHeight) {
+        $(this).height(1)
+      }
+      while ($(this).outerHeight() < this.scrollHeight) {
+        $(this).height($(this).height() + 1)
+      }
+    })
+  });
   $(document.body).delay(1000).queue(function () {
     var element = document.documentElement;
     var bottom = element.scrollHeight - element.clientHeight;
