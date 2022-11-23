@@ -42,7 +42,16 @@
   <%= render "layouts/errors", obj: @chat %>
 </div>
 <%= form_with model: @chat, local: false, class: "mb-3 d-flex justify-content-center" do |f| %>
-  <%= f.text_field :message, placeholder: "メッセージを入力してください", class: "message" %>
+  <%= f.text_area :message, placeholder: "メッセージを入力してください", class: "message" %>
   <%= f.hidden_field :room_id, value: @room.id %>
   <%= f.submit "送信", class: "btn btn-info" %>
 <% end %>
+
+<script>
+  $('textarea').autosize();
+  $(document.body).delay(1000).queue(function () {
+    var element = document.documentElement;
+    var bottom = element.scrollHeight - element.clientHeight;
+    window.scroll(0, bottom);
+  });
+</script>
