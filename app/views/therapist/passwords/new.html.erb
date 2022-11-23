@@ -1,16 +1,20 @@
-<h2>Forgot your password?</h2>
-
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= render "therapists/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+<div class="row mt-5">
+  <div class="col-12 mb-3">
+    <h3>パスワード再設定</h3>
   </div>
+</div>
 
-  <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
-  </div>
-<% end %>
+<div class="card_box">
+  <%= form_with model: @therapist, url: therapist_password_path, method: :post do |f| %>
+    <%= render "layouts/errors", obj: @therapist %>
 
-<%= render "therapists/shared/links" %>
+    <div class="field row mb-">
+      <%= f.label :email, class: "col-12 col-md-4 col-lg-3" %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "ml-3 ml-md-0 col-md-8 col-lg-3" %>
+    </div>
+
+    <div class="actions form-group d-flex justify-content-end">
+      <%= f.submit "送信", class: 'btn btn-info btn-md mt-3 mt-lg-0' %>
+    </div>
+  <% end %>
+</div>

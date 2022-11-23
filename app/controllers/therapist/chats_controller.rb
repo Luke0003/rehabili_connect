@@ -14,7 +14,7 @@ class Therapist::ChatsController < ApplicationController
 
     @chat = current_therapist.chats.new
     @chats = @room.chats.all
-    @notifications = current_client.notifications
+    @notifications = current_therapist.notifications.where(client_id: params[:client_id])
     @notifications.each do |notification|
       if notification.checked_therapist == false
         notification.update(checked_therapist: true)

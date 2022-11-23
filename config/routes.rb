@@ -1,13 +1,15 @@
 Rails.application.routes.draw do
 
-  devise_for :clients, skip: [:registrations, :passwords], controllers: {
+  devise_for :clients, skip: [:registrations], controllers: {
     sessions: 'public/sessions',
-    invitations: 'therapist/invitations'
+    invitations: 'therapist/invitations',
+    passwords: 'public/passwords'
   }
 
-  devise_for :therapist, skip: [:registrations, :passwords], controllers: {
+  devise_for :therapist, skip: [:registrations], controllers: {
     sessions: 'therapist/sessions',
-    invitations: 'admin/invitations'
+    invitations: 'admin/invitations',
+    passwords: 'therapist/passwords'
   }
 
   devise_for :admin, skip: [:registrations, :passwords, :invitations], controllers: {
