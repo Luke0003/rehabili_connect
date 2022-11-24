@@ -14,10 +14,10 @@
       <div class="col-lg-8 mt-auto d-flex justify-content-between">
         <%= link_to "メニュー設定", therapist_client_client_menus_path(@client), class: "mb-2 d-block btn btn-primary btn-md" %>
         <%= link_to "記録確認", therapist_client_client_records_path(@client), class: "mb-2 d-block btn btn-warning btn-md" %>
-        <span class="therapist_chat_btn">
+        <span class="chat_notification">
           <%= link_to "チャット", therapist_client_chat_path(@client), class: "mb-2 d-block btn btn_pink btn-md" %>
           <% if @notifications_count > 0 %>
-            <span class="therapist_chat_notification"><%= @notifications_count %></span>
+            <span class="therapist_show_chat_notification chat_notification_mark"><%= @notifications_count %></span>
           <% end %>
         </span>
       </div>

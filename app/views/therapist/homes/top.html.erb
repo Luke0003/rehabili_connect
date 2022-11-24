@@ -18,6 +18,7 @@
         <th>氏名</th>
         <th>メールアドレス</th>
         <th>ステータス</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -26,7 +27,15 @@
           <td><%= client.id %></td>
           <td><%= link_to client.client_name, therapist_client_path(client), class: "text-dark text-decoration-none" %></td>
           <td><%= client.email %></td>
-          <th><%= render "admin/clients/client_status", client: client %></th>
+          <td><%= render "admin/clients/client_status", client: client %></td>
+          <td>
+            <span class="chat_notification">
+              <%= link_to "チャット", therapist_client_chat_path(client, client), class: "btn btn_pink btn-md" %>
+              <% if Notification.therapist_notifications_count(client, current_therapist) > 0 %>
+                <span class="therapist_top_chat_notification chat_notification_mark"><%= Notification.therapist_notifications_count(client, current_therapist) %></span>
+              <% end %>
+            </span>
+          </td>
         </tr>
       <% end %>
     </tbody>

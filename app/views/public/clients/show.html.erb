@@ -81,10 +81,10 @@
       </div>
       <div class="row justify-content-md-end">
         <div class="col-6 ml-auto col-md-4 ml-md-0">
-          <span class="client_chat_btn">
+          <span class="chat_notification">
             <%= link_to "チャット", chat_path(current_client), class: "btn btn-lg btn_pink" %>
             <% if @notifications_count > 0 %>
-              <span class="client_chat_notification"><%= @notifications_count %></span>
+              <span class="client_chat_notification chat_notification_mark"><%= @notifications_count %></span>
             <% end %>
           </span>
         </div>
