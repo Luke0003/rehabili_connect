@@ -15,9 +15,22 @@ class Therapist::ClientMenusController < ApplicationController
   def create
     @client_menus = ClientMenu.page(params[:page])
     @client = Client.find(params[:client_id])
-    @client_menu = ClientMenu.new(client_menu_params)
-    @client_menu.client_id = @client.id
-    render :validater_create unless @client_menu.save
+    @client_menu_start_date = client_menu_params[:start_date]
+    @client_menu_finsh_date = params[:finish_date][:finish_date]
+    # 開始日が終了日と同じに日にちになるまで繰り返し保存
+    # 保存に失敗した場合は繰り返し処理を抜け、エラーメッセージを返す
+    if @client_menu_start_date <= @client_menu_finsh_date
+      while  @client_menu_start_date <= @client_menu_finsh_date do
+        @client_menu = ClientMenu.new(menu_id: client_menu_params[:menu_id], start_date: @client_menu_start_date)
+        @client_menu.client_id = @client.id
+        break render :validater_create unless @client_menu.save
+        @client_menu_start_date = (@client_menu_start_date.to_date + 1).to_s
+      end
+    else
+      @client_menu = ClientMenu.new(client_menu_params)
+      @client_menu.errors[:base] <<  "終了日が不適切です"
+      render :validater_create
+    end
   end
 
   def update
