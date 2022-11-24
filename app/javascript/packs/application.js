@@ -56,4 +56,8 @@ $(document).on('turbolinks:load', function () {
     var bottom = element.scrollHeight - element.clientHeight;
     window.scroll(0, bottom);
   });
+  // 自主トレメニュー設定画面のセレクトボックスとデイトフィールドのサイズを揃える
+  var menuWidth = $("#client_menu_menu_id").outerWidth();
+  $('#client_menu_start_date').outerWidth(menuWidth);
+  $('#finish_date_finish_date').outerWidth(menuWidth);
 })
