@@ -9,6 +9,7 @@
     <div id="errors">
       <%= render "layouts/errors", obj: @client_menu %>
     </div>
+    <div>
     <div class="form-group row">
       <%= f.label :menu_id, "メニュー名", class: "col-12 col-md-2" %>
       <%= f.select :menu_id, options_from_collection_for_select(Menu.all, :id, :menu_name), {include_blank: '選択してください'}, {class: "col-12 col-md-8"} %>
@@ -17,12 +18,13 @@
       <%= f.label :start_date, "開始日", class: "col-12 col-md-2" %>
       <%= f.date_field :start_date, class: "col-12 col-md-8" %>
     </div>
-    <div class="form-group row">
+    <div class="form-group w-100">
       <%= label :finish_date, :finish_date, "終了日", class: "col-12 col-md-2" %>
-      <%= date_field :finish_date, :finish_date, {class: "col-12 col-md-8 mr-3"} %>
+      <%= date_field :finish_date, :finish_date, {class: "col-12 col-md-8"} %>
     </div>
     <div class="form-group d-flex justify-content-end">
       <%= f.submit "登録", class: "btn btn-info btn-lg" %>
+    </div>
     </div>
   <% end %>
 </div>
