@@ -18,7 +18,7 @@
       <%= f.label :start_date, "開始日", class: "col-12 col-md-2" %>
       <%= f.date_field :start_date, class: "col-12 col-md-8" %>
     </div>
-    <div class="form-group w-100">
+    <div class="form-group row">
       <%= label :finish_date, :finish_date, "終了日", class: "col-12 col-md-2" %>
       <%= date_field :finish_date, :finish_date, {class: "col-12 col-md-8"} %>
     </div>
@@ -32,3 +32,8 @@
 <div class="row mt-3" id="table">
   <%= render "table", client_menus: @client_menus, client: @client %>
 </div>
+
+<script>
+  var menuWidth = $("#client_menu_menu_id").outerWidth();
+  $('#client_menu_start_date').outerWidth(menuWidth);
+</script>
