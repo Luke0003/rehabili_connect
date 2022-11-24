@@ -38,4 +38,22 @@ $(document).on('turbolinks:load', function () {
     $('#therapist_infomation_content').removeClass('d-none');
     $('#basic_infomation_content').addClass('d-none');
   })
+
+  // チャットのテキストエリアの高さを広げる
+  $("#chat_message").on('input', function() {
+    if ($(this).outerHeight() > this.scrollHeight) {
+      $(this).height(1)
+    }
+    while ($(this).outerHeight() < this.scrollHeight) {
+      $(this).height($(this).height() + 1)
+    }
+  });
+
+  // チャット画面を表示する際、最下部へ自動スクロール
+  // ディレイをかけることで#chat_viewを全て読み込んでから処理
+  $('#chat_view').delay(500).queue(function () {
+    var element = document.documentElement;
+    var bottom = element.scrollHeight - element.clientHeight;
+    window.scroll(0, bottom);
+  });
 })

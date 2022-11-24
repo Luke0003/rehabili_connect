@@ -1,74 +1,50 @@
-<div class="row mt-5">
-  <div class="col-12 mb-3">
-    <h3><%= @therapist.therapist_name %>さんとのチャット</h3>
+<div id="chat_view">
+  <div class="row mt-5">
+    <div class="col-12 mb-3">
+      <h3><%= @therapist.therapist_name %>さんとのチャット</h3>
+    </div>
   </div>
-</div>
 
-<div id="messages_all" class="mx-auto">
-  <% @chats.each do |chat| %>
-    <% if chat.client_id == current_client.id %>
-      <div class="d-flex justify-content-end">
-        <%= image_tag current_client.get_client_image(50, 50), class: "mb-2 rounded-circle" %>
-      </div>
-      <div class="d-flex justify-content-end">
-        <p class="text-left my_chat mr-5 mb-0">
-          <%= chat.message %>
-        </p>
-      </div>
-      <div class="d-flex justify-content-end">
-        <p class="text-left mr-5">
-          <span class="created_at"><%= chat.created_at.strftime('%m/%d %H:%M') %></span>
-        </p>
-      </div>
-    <% else %>
-      <div class="d-flex justify-content-start">
-        <%= image_tag @therapist.get_therapist_image(50, 50), class: "mb-2 rounded-circle" %>
-      </div>
-      <div class="d-flex justify-content-start">
-        <p class="another_chat ml-5 mb-0">
-          <%= chat.message %>
-        </p>
-      </div>
-      <div class="d-flex justify-content-start">
-        <p class="text-left ml-5">
-          <span class="created_at"><%= chat.created_at.strftime('%m/%d %H:%M') %></span>
-        </p>
-      </div>
+  <div id="messages_all" class="mx-auto">
+    <% @chats.each do |chat| %>
+      <% if chat.client_id == current_client.id %>
+        <div class="d-flex justify-content-end">
+          <%= image_tag current_client.get_client_image(50, 50), class: "mb-2 rounded-circle" %>
+        </div>
+        <div class="d-flex justify-content-end">
+          <p class="text-left my_chat mr-5 mb-0">
+            <%= chat.message %>
+          </p>
+        </div>
+        <div class="d-flex justify-content-end">
+          <p class="text-left mr-5">
+            <span class="created_at"><%= chat.created_at.strftime('%m/%d %H:%M') %></span>
+          </p>
+        </div>
+      <% else %>
+        <div class="d-flex justify-content-start">
+          <%= image_tag @therapist.get_therapist_image(50, 50), class: "mb-2 rounded-circle" %>
+        </div>
+        <div class="d-flex justify-content-start">
+          <p class="another_chat ml-5 mb-0">
+            <%= chat.message %>
+          </p>
+        </div>
+        <div class="d-flex justify-content-start">
+          <p class="text-left ml-5">
+            <span class="created_at"><%= chat.created_at.strftime('%m/%d %H:%M') %></span>
+          </p>
+        </div>
+      <% end %>
     <% end %>
+  </div>
+
+  <div id="errors">
+    <%= render "layouts/errors", obj: @chat %>
+  </div>
+  <%= form_with model: @chat, class: "text-center", local: false do |f| %>
+    <%= f.text_area :message, rows: "1", placeholder: "メッセージを入力", class: "message form-control d-inline"%>
+    <%= f.hidden_field :room_id, value: @room.id %>
+    <%= f.submit "送信", class: "btn btn-md btn-info chat_btn" %>
   <% end %>
 </div>
-
-<div id="errors">
-  <%= render "layouts/errors", obj: @chat %>
-</div>
-<!--<div class="row">-->
-<%= form_with model: @chat, local: false do |f| %>
-<!--<div class="">-->
-  <!--<div>-->
-  <%= f.text_area :message, placeholder: "メッセージを入力してください", class: "message", rows: 1, style: '' %>
-  <%= f.hidden_field :room_id, value: @room.id %>
-  <%= f.submit "送信", class: "btn btn-sm btn-info mb-4" %>
-  <!--</div>-->
-
-<!--</div>-->
-<% end %>
-<!--</div>-->
-
-<script>
-  // $('textarea').autosize();
-  $(function() {
-    $("#chat_message").on('input', function() {
-      if ($(this).outerHeight() > this.scrollHeight) {
-        $(this).height(1)
-      }
-      while ($(this).outerHeight() < this.scrollHeight) {
-        $(this).height($(this).height() + 1)
-      }
-    })
-  });
-  $(document.body).delay(1000).queue(function () {
-    var element = document.documentElement;
-    var bottom = element.scrollHeight - element.clientHeight;
-    window.scroll(0, bottom);
-  });
-</script>

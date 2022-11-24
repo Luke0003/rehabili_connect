@@ -43,6 +43,10 @@
   width: 70%;
 }
 
+.chat_btn{
+  margin-bottom: 29px;
+}
+
 @media screen and (min-width: 1024px) {
   #messages_all{
     width: 80%;
