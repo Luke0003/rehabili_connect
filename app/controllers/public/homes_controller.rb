@@ -8,6 +8,5 @@ class Public::HomesController < ApplicationController
     @client_records.each do |client_record|
       @conditions[client_record.record_date] = client_record.condition
     end
-    @client_records = ClientRecord.page(params[:page])
   end
 end

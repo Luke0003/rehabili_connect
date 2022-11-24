@@ -3,25 +3,29 @@
     <h3><%= @day.strftime("%Y年%m月%d日") %>のリハビリ</h3>
   </div>
 </div>
-<div class="card_box">
-  <div class="table-responsive">
-    <table class="table text-nowrap table-borderless">
-      <tr>
-        <th scope="row">体調</th>
-        <td>
-          <%= @client_record.condition_to_string %>
-        </td>
-      </tr>
-      <% @client_record.client_menus.each do |client_menu| %>
+<% if @client_record.nil? %>
+  <h4>記録がありません。</h4>
+<% else %>
+  <div class="card_box">
+    <div class="table-responsive">
+      <table class="table text-nowrap table-borderless">
         <tr>
-          <th scope="row"><%= client_menu.menu.menu_name %></th>
-          <td><%= client_menu.is_completed_to_string %></td>
+          <th scope="row">体調</th>
+          <td>
+            <%= @client_record.condition_to_string %>
+          </td>
         </tr>
-      <% end %>
-      <tr>
-        <th scope="row">コメント</th>
-        <td><%= @client_record.comment %></td>
-      </tr>
-    </table>
+        <% @client_record.client_menus.each do |client_menu| %>
+          <tr>
+            <th scope="row"><%= client_menu.menu.menu_name %></th>
+            <td><%= client_menu.is_completed_to_string %></td>
+          </tr>
+        <% end %>
+        <tr>
+          <th scope="row">コメント</th>
+          <td><%= @client_record.comment %></td>
+        </tr>
+      </table>
+    </div>
   </div>
-</div>
+<% end %>

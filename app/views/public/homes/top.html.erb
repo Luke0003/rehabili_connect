@@ -3,13 +3,13 @@
   <%= link_to client_record_path(date), class: "text-decoration-none" do %>
     <%= date.day %>
   <% end %>
-    <% if @conditions[date] ==1 %>
-      <i class="far fa-laugh-beam"></i>
-    <% elsif @conditions[date] == 2 %>
-      <i class="far fa-smile"></i>
-    <% elsif @conditions[date] == 3 %>
-      <i class="far fa-frown"></i>
-    <% end %>
+  <% if @conditions[date] ==1 %>
+    <i class="far fa-laugh-beam"></i>
+  <% elsif @conditions[date] == 2 %>
+    <i class="far fa-smile"></i>
+  <% elsif @conditions[date] == 3 %>
+    <i class="far fa-frown"></i>
+  <% end %>
   <div>
     <% count = 0 %>
     <% client_menus.each do |client_menu| %>
