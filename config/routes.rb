@@ -36,6 +36,7 @@ Rails.application.routes.draw do
     resources :clients, only: [:show, :edit, :update] do
       resources :client_records, only: [:index, :show]
       resources :client_menus, only: [:index, :edit, :create, :update, :destroy]
+      get 'serarch' => 'client_menus#search'
       resources :chats, only: [:show, :create]
     end
   end
