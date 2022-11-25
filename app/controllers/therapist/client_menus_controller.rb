@@ -4,7 +4,7 @@ class Therapist::ClientMenusController < ApplicationController
   def index
     @client = Client.find(params[:client_id])
     @client_menu = ClientMenu.new
-    @client_menus = ClientMenu.page(params[:page])
+    @client_menus = @client.client_menus.page(params[:page])
   end
 
   def edit
@@ -50,6 +50,12 @@ class Therapist::ClientMenusController < ApplicationController
     @client = Client.find(params[:client_id])
     @client_menu = ClientMenu.find(params[:id])
     @client_menu.destroy
+  end
+
+  def search
+    @date = params[:start_date].to_date
+    @client = Client.find(params[:client_id])
+    @client_menus = Kaminari.paginate_array(@client.client_menus.where(start_date: @date)).page(params[:page])
   end
 
   private
