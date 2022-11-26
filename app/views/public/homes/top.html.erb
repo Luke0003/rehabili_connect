@@ -1,4 +1,21 @@
-<h3>リハゴール: <%= current_client.purpose %></h3>
+<div class="row">
+  <div class="col-12 d-flex align-items-center justify-content-end">
+    <div class="weather mb-3 p-2">
+      <h6 id="place" class="mb-md-0 mb-3"></h6>
+      <span>最高気温 :</span>
+      <span id="temp_max"></span>
+      <span> ℃</span>
+      <span>最低気温 :</span>
+      <span id="temp_min"></span>
+      <span> ℃</span><br class="d-md-none">
+      <span>天気 :</span>
+      <span id="icon"><img id="img"></span>
+    </div>
+  </div>
+</div>
+
+<h3><i class="far fa-flag"></i>リハゴール</h3>
+<h3><%= current_client.purpose %></h3>
 <%= month_calendar(attribute: :start_date, events: @client_menus) do |date, client_menus| %>
   <%= link_to client_record_path(date), class: "text-decoration-none" do %>
     <%= date.day %>
@@ -26,3 +43,40 @@
     <% end %>
   </div>
 <% end %>
+
+<script>
+  const API_KEY = "032b97370436e04541836dc118326ffb";
+
+  $.ajax({
+    url: "https://1b1c637d56b34afe834bc7e185be2980.vfs.cloud9.ap-northeast-1.amazonaws.com/api/v1/prefectures",
+    dataType : 'json',
+  }).done(function(prefecture){
+    var clientPrefecture = prefecture.prefectures[<%= Client.prefectures[current_client.prefecture] %>].prefecture_name;
+    var clientPrefectureLatitude = prefecture.prefectures[<%= Client.prefectures[current_client.prefecture] %>].latitude;
+    var clientPrefectureLongitude = prefecture.prefectures[<%= Client.prefectures[current_client.prefecture] %>].longitude;
+    $('#place').text(clientPrefecture + "の天気");
+    openWeatherMap(clientPrefectureLatitude, clientPrefectureLongitude);
+  });
+
+  function openWeatherMap(clientPrefectureLatitude, clientPrefectureLongitude){
+    $.ajax({
+      url: "https://api.openweathermap.org/data/2.5/weather?lat=" + clientPrefectureLatitude + "&lon=" + clientPrefectureLongitude + "&APPID=" + API_KEY,
+      dataType : 'jsonp',
+    }).done(function (data){
+      //通信成功
+      // 最高気温
+      $('#temp_max').text(Math.round(data.main.temp_max - 273.15));
+      // 最低気温
+      $('#temp_min').text(Math.round(data.main.temp_min - 273.15));
+      // 天気
+      $('#weather').text(data.weather[0].main);
+      // 天気アイコン
+      $('#img').attr("src","http://openweathermap.org/img/w/" + data.weather[0].icon + ".png");
+      $('#img').attr("alt",data.weather[0].main);
+    }).fail(function (data) {
+      //通信失敗
+      alert('通信に失敗しました。');
+    });
+  };
+</script>
+

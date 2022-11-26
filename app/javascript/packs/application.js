@@ -23,6 +23,7 @@ import '../stylesheets/chat.css'
 import '../stylesheets/client_record.css'
 import '../stylesheets/btn.css'
 import '../stylesheets/notification.css'
+import '../stylesheets/weather.css'
 
 Rails.start()
 Turbolinks.start()
@@ -60,4 +61,5 @@ $(document).on('turbolinks:load', function () {
   var menuWidth = $("#client_menu_menu_id").outerWidth();
   $('#client_menu_start_date').outerWidth(menuWidth);
   $('#finish_date_finish_date').outerWidth(menuWidth);
+
 })
