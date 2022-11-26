@@ -16,6 +16,12 @@ Rails.application.routes.draw do
     sessions: 'admin/sessions',
   }
 
+  namespace 'api' do
+    namespace 'v1' do
+      resources :prefectures, only: [:index]
+    end
+  end
+
   scope module: :public do
     root 'homes#top'
     get 'clients/my_page' => 'clients#show'

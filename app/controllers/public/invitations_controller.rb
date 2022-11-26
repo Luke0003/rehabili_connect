@@ -47,7 +47,7 @@ class Public::InvitationsController < Devise::InvitationsController
   protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:invite, keys: [:first_name, :last_name, :first_name_kana, :last_name_kana, :therapist_id, :purpose, :admin_id])
+    devise_parameter_sanitizer.permit(:invite, keys: [:first_name, :last_name, :first_name_kana, :last_name_kana, :therapist_id, :purpose, :prefecture])
   end
 
   # セラピストがログインしているかを確認

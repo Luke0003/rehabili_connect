@@ -31,6 +31,10 @@
       <%= f.text_field :purpose, class: "ml-3 ml-md-0 col-md-8 col-lg-7" %>
     </div>
     <div class="field row mb-3">
+      <%= f.label :prefecture,"お住まい", class: "col-md-4 col-lg-3" %>
+      <%= f.select :prefecture, Client.prefectures.keys.map {|k| [I18n.t("enums.client.prefecture.#{k}"), k]}, {include_blank: '選択してください'}, {class: "ml-3 ml-md-0 col-md-3"} %>
+    </div>
+    <div class="field row mb-3">
       <%= f.label :email,"メールアドレス", class: "col-md-4 col-lg-3" %>
       <%= f.text_field :email, class: "ml-3 ml-md-0 col-md-8 col-lg-3" %>
     </div>
