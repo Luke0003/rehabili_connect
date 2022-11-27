@@ -45,8 +45,6 @@
 <% end %>
 
 <script>
-  const API_KEY = "032b97370436e04541836dc118326ffb";
-
   $.ajax({
     url: "https://1b1c637d56b34afe834bc7e185be2980.vfs.cloud9.ap-northeast-1.amazonaws.com/api/v1/prefectures",
     dataType : 'json',
@@ -60,7 +58,7 @@
 
   function openWeatherMap(clientPrefectureLatitude, clientPrefectureLongitude){
     $.ajax({
-      url: "https://api.openweathermap.org/data/2.5/weather?lat=" + clientPrefectureLatitude + "&lon=" + clientPrefectureLongitude + "&APPID=" + API_KEY,
+      url: "https://api.openweathermap.org/data/2.5/weather?lat=" + clientPrefectureLatitude + "&lon=" + clientPrefectureLongitude + "&APPID=" + "<%= ENV['SECRET_API_KEY'] %>",
       dataType : 'jsonp',
     }).done(function (data){
       //通信成功

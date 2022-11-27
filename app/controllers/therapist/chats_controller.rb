@@ -30,7 +30,7 @@ class Therapist::ChatsController < ApplicationController
       @notification.save!
     end
   rescue => e
-    puts "セラピストエラー: #{e}"
+    puts "セラピストチャットエラー: #{e}"
     render :validater
   end
 
