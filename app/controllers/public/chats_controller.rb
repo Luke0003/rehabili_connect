@@ -21,9 +21,15 @@ class Public::ChatsController < ApplicationController
   end
 
   def create
-    @chat = current_client.chats.new(chat_params)
-    render :validater unless @chat.save
-    @notification = current_client.notifications.create(chat_id: @chat.id, therapist_id: current_client.therapist.id, checked_client: true)
+    ApplicationRecord.transaction do
+      @chat = current_client.chats.new(chat_params)
+      @chat.save!
+      @notification = current_client.notifications.new(chat_id: @chat.id, therapist_id: current_client.therapist.id, checked_client: true)
+      @notification.save!
+    end
+  rescue => e
+    puts "クライアントチャットエラー: #{e}"
+    render :validater
   end
 
   private

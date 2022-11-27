@@ -26,11 +26,11 @@ class Therapist::ChatsController < ApplicationController
     ApplicationRecord.transaction do
       @chat = current_therapist.chats.new(chat_params)
       @chat.save!
-      @notification = current_therapist.notifications.new(chat_id: 0, client_id: params[:client_id], checked_therapist: true)
+      @notification = current_therapist.notifications.new(chat_id: @chat.id, client_id: params[:client_id], checked_therapist: true)
       @notification.save!
     end
   rescue => e
-    print e
+    puts "セラピストエラー: #{e}"
     render :validater
   end
 
