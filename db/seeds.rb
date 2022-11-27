@@ -7,9 +7,40 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Admin.create!(
-  email: ENV['SECRET_EMAIL'],
-  password: ENV['SECRET_PASSWORD']
+  email: ENV['SECRET_ADMIN_EMAIL'],
+  password: ENV['SECRET_ADMIN_PASSWORD']
 )
+
+Therapist.create!(
+  email: ENV['SECRET_THERAPIST_EMAIL'], password: ENV['SECRET_THERAPIST_PASSWORD'], last_name: "東京", first_name: "太郎",
+  last_name_kana: "トウキョウ", first_name_kana: "タロウ",
+  therapist_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/app/assets/images/portrait-3353699_640.jpg"), filename:"portrait-3353699_640.jpg")
+)
+
+Client.create!(
+  email: ENV['SECRET_CLIENT_EMAIL'], password: ENV['SECRET_CLIENT_PASSWORD'], last_name: "大阪", first_name: "次郎",
+  last_name_kana: "オオサカ", first_name_kana: "ジロウ", therapist_id: 1,
+  purpose: "買い物に一人で行けるようになる", prefecture: "osaka",
+  client_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/app/assets/images/beard-1845166_640.jpg"), filename:"beard-1845166_640.jpg")
+)
+
+genres = ["上肢", "下肢", "体幹"]
+
+genres.each do |genre_name|
+  Genre.create!(genre_name: genre_name)
+end
+
+menus = [
+  [1, "肩の上下運動", "肩の力を抜いて座り、息を吸いながら両肩をあげ(すぼめ)、息を吐きながらストンと両肩を下ろしてください。(1セット5回)", "僧帽筋のリラックス"],
+  [2, "つま先上げ", "膝を90度に曲げて椅子に座り、踵をつけたままつま先を上げてください。(1セット10回)", "前脛骨筋の強化"],
+  [3, "ヒップリフト", "仰向けに寝た状態で膝を90度に立て、肩・腰・膝が一直線になるように腰を上げてください。(1セット10回)", "大臀筋の強化"]
+]
+
+menus.each do |genre_id, menu_name, menu_content, menu_purpose|
+  Menu.create!(genre_id: genre_id, menu_name: menu_name, menu_content: menu_content, menu_purpose: menu_purpose)
+end
+
+Menu.find(1).menu_video.attach(io: File.open(Rails.root.join('app/assets/videos/IMG_8225.mp4')), filename: 'IMG_8225.mp4')
 
 prefectures = [
   ["北海道", 43.06417, 141.34694], ["青森", 40.82444, 140.74], ["岩手", 39.70361, 141.1525], ["宮城", 38.26889, 140.87194], ["秋田", 39.71861, 140.1025],
@@ -25,5 +56,5 @@ prefectures = [
 ]
 
 prefectures.each do |prefecture_name, latitude, longitude|
-  Prefecture.create(prefecture_name: prefecture_name, latitude: latitude, longitude: longitude)
+  Prefecture.create!(prefecture_name: prefecture_name, latitude: latitude, longitude: longitude)
 end

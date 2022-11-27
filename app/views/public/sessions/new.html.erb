@@ -5,12 +5,12 @@
     <%= form_with model: @client, url: client_session_path, local: true do |f| %>
       <div class="row field mb-3">
         <%= f.label :email, "メール", class: "form-label" %><br />
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "クライアントe-mail", class: "form-control" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "利用者e-mail", class: "form-control" %>
       </div>
 
       <div class="row field mb-5">
         <%= f.label :password, "パスワード", class: "form-label" %><br />
-        <%= f.password_field :password, autocomplete: "current-password", placeholder: "クライアントパスワード", class: "form-control" %>
+        <%= f.password_field :password, autocomplete: "current-password", placeholder: "利用者パスワード", class: "form-control" %>
       </div>
 
       <div class="row actions">
