@@ -14,7 +14,6 @@
   <table class="table text-nowrap table-hover table-borderless">
     <thead>
       <tr>
-        <th>ID</th>
         <th>メニュー名</th>
         <th>メニュー目的</th>
         <th>ジャンル</th>
@@ -23,7 +22,6 @@
     <tbody>
       <% @menus.each do |menu| %>
         <tr>
-          <td><%= menu.id %></td>
           <td><%= link_to menu.menu_name, therapist_menu_path(menu), class: "text-dark text-decoration-none" %></td>
           <td><%= menu.menu_purpose %></td>
           <td><%= menu.genre.genre_name %></td>

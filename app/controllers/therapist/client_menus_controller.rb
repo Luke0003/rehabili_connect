@@ -4,7 +4,7 @@ class Therapist::ClientMenusController < ApplicationController
   def index
     @client = Client.find(params[:client_id])
     @client_menu = ClientMenu.new
-    @client_menus = @client.client_menus.page(params[:page])
+    @client_menus = @client.client_menus.page(params[:page]).order(start_date: :DESC)
   end
 
   def edit
