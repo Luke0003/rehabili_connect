@@ -40,7 +40,9 @@ menus.each do |genre_id, menu_name, menu_content, menu_purpose|
   Menu.create!(genre_id: genre_id, menu_name: menu_name, menu_content: menu_content, menu_purpose: menu_purpose)
 end
 
-Menu.find(1).menu_video.attach(io: File.open(Rails.root.join('app/assets/videos/IMG_8225.mp4')), filename: 'IMG_8225.mp4')
+Menu.find(2).menu_video.attach(io: File.open(Rails.root.join('app/assets/videos/IMG_8298.mp4')), filename: 'IMG_8298.mp4')
+
+# ClientMenu.create!(client_id: 1, menu_id: 1, client_record_id: 1, start_date: )
 
 prefectures = [
   ["北海道", 43.06417, 141.34694], ["青森", 40.82444, 140.74], ["岩手", 39.70361, 141.1525], ["宮城", 38.26889, 140.87194], ["秋田", 39.71861, 140.1025],
