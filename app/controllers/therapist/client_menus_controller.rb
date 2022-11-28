@@ -55,7 +55,7 @@ class Therapist::ClientMenusController < ApplicationController
   def search
     @date = params[:start_date].to_date
     @client = Client.find(params[:client_id])
-    @client_menus = Kaminari.paginate_array(@client.client_menus.where(start_date: @date)).page(params[:page])
+    @client_menus = @client.client_menus.where(start_date: @date)
     render :validater_search if @date.nil?
   end
 

@@ -45,3 +45,6 @@
 <div class="row mt-3" id="table">
   <%= render "table", client_menus: @client_menus, client: @client %>
 </div>
+<div class="d-flex justify-content-center" id="paginate">
+  <%= paginate @client_menus %>
+</div>
