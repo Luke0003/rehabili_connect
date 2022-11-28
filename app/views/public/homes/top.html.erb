@@ -46,7 +46,7 @@
 
 <script>
   $.ajax({
-    url: "http://35.76.228.205/api/v1/prefectures",
+    url: "<%= ENV['API_ENDPOINT'] %>/api/v1/prefectures",
     dataType : 'json',
   }).done(function(prefecture){
     var clientPrefecture = prefecture.prefectures[<%= Client.prefectures[current_client.prefecture] %>].prefecture_name;
@@ -54,6 +54,9 @@
     var clientPrefectureLongitude = prefecture.prefectures[<%= Client.prefectures[current_client.prefecture] %>].longitude;
     $('#place').text(clientPrefecture + "の天気");
     openWeatherMap(clientPrefectureLatitude, clientPrefectureLongitude);
+  }).fail(function (data) {
+    //通信失敗
+    alert('通信に失敗しました。');
   });
 
   function openWeatherMap(clientPrefectureLatitude, clientPrefectureLongitude){
