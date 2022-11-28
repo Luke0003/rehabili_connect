@@ -46,7 +46,7 @@
 
 <script>
   $.ajax({
-    url: "https://35.76.228.205/api/v1/prefectures",
+    url: "http://35.76.228.205/api/v1/prefectures",
     dataType : 'json',
   }).done(function(prefecture){
     var clientPrefecture = prefecture.prefectures[<%= Client.prefectures[current_client.prefecture] %>].prefecture_name;

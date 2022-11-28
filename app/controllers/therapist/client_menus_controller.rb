@@ -40,7 +40,7 @@ class Therapist::ClientMenusController < ApplicationController
       redirect_to therapist_client_client_menus_path
     else
       flash[:notice] = "クライアントメニューの更新に失敗しました"
-       @client = Client.find(params[:client_id])
+      @client = Client.find(params[:client_id])
       render :edit
     end
   end
@@ -56,6 +56,7 @@ class Therapist::ClientMenusController < ApplicationController
     @date = params[:start_date].to_date
     @client = Client.find(params[:client_id])
     @client_menus = Kaminari.paginate_array(@client.client_menus.where(start_date: @date)).page(params[:page])
+    render :validater_search if @date.nil?
   end
 
   private
