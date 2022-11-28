@@ -33,7 +33,8 @@ end
 menus = [
   [1, "肩の上下運動", "肩の力を抜いて座り、息を吸いながら両肩をあげ(すぼめ)、息を吐きながらストンと両肩を下ろしてください。(1セット5回)", "僧帽筋のリラックス"],
   [2, "つま先上げ", "膝を90度に曲げて椅子に座り、踵をつけたままつま先を上げてください。(1セット10回)", "前脛骨筋の強化"],
-  [3, "ヒップリフト", "仰向けに寝た状態で膝を90度に立て、肩・腰・膝が一直線になるように腰を上げてください。(1セット10回)", "大臀筋の強化"]
+  [3, "ヒップリフト", "仰向けに寝た状態で膝を90度に立て、肩・腰・膝が一直線になるように腰を上げてください。(1セット10回)", "大臀筋の強化"],
+  [1, "指折り運動", "手をパーに開いた状態から、指を1本ずつ折り曲げていき、その後指を1本ずつ開いてください。(1セット3往復)", "手指の巧緻性の維持"]
 ]
 
 menus.each do |genre_id, menu_name, menu_content, menu_purpose|
@@ -42,7 +43,15 @@ end
 
 Menu.find(2).menu_video.attach(io: File.open(Rails.root.join('app/assets/videos/IMG_8298.mp4')), filename: 'IMG_8298.mp4')
 
-# ClientMenu.create!(client_id: 1, menu_id: 1, client_record_id: 1, start_date: )
+ClientRecord.create!(client_id: 1, condition: 1, comment: "今日は身体の調子が良かったです。", record_date: "Sun, 27 Nov 2022")
+
+client_menus = [
+  [1, 1, 1, "Sun, 27 Nov 2022", true], [1, 2, 1, "Sun, 27 Nov 2022", true], [1, 3, 1, "Sun, 27 Nov 2022", true], [1, 4, 1, "Sun, 27 Nov 2022", true]
+]
+
+client_menus.each do |client_id, menu_id, client_record_id, start_date, is_completed|
+  ClientMenu.create!(client_id: client_id, menu_id: menu_id, client_record_id: client_record_id, start_date: start_date, is_completed: is_completed)
+end
 
 prefectures = [
   ["北海道", 43.06417, 141.34694], ["青森", 40.82444, 140.74], ["岩手", 39.70361, 141.1525], ["宮城", 38.26889, 140.87194], ["秋田", 39.71861, 140.1025],
