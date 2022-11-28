@@ -10,7 +10,7 @@
       <tr>
         <td><%= genre.genre_name %></td>
         <td class="text-right"><span id="genre_edit_<%= genre.id %>"><%= link_to "編集", edit_therapist_genre_path(genre), class: "btn btn-success btn-lg", remote: true %></span>
-        <%= link_to "削除", therapist_genre_path(genre), method: :delete, remote: true, class: "btn btn-danger btn-lg" %></td>
+        <%= link_to "削除", therapist_genre_path(genre), method: :delete, data: {confirm: "本当に消しますか？"}, remote: true, class: "btn btn-danger btn-lg" %></td>
       </tr>
     <% end %>
   </tbody>

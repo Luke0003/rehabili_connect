@@ -7,8 +7,7 @@
   <table class="table table-hover table-borderless text-nowrap">
     <thead>
       <tr>
-        <th>ID</th>
-        <th>氏名</th>
+        <th>お名前</th>
         <th>メールアドレス</th>
         <th>担当セラピスト</th>
         <th>ステータス</th>
@@ -17,7 +16,6 @@
     <tbody>
       <% @clients.each do |client| %>
         <tr>
-          <td><%= client.id %></td>
           <td><%= link_to client.client_name, admin_client_path(client), class: "text-dark text-decoration-none" %></td>
           <td><%= client.email %></td>
           <td><%= link_to client.therapist.therapist_name, admin_therapist_path(client.therapist), class: "text-dark text-decoration-none" %></td>

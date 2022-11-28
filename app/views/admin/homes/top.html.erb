@@ -14,8 +14,7 @@
   <table class="table text-nowrap table-hover table-borderless">
     <thead>
       <tr>
-        <th>ID</th>
-        <th>氏名</th>
+        <th>お名前</th>
         <th>メールアドレス</th>
         <th>担当クライアント数</th>
         <th>ステータス</th>
@@ -24,7 +23,6 @@
     <tbody>
       <% @therapists.each do |therapist| %>
         <tr>
-          <td><%= therapist.id %></td>
           <td><%= link_to therapist.therapist_name, admin_therapist_path(therapist), class: "text-dark text-decoration-none" %></td>
           <td><%= therapist.email %></td>
           <td><%= therapist.clients.count %>人</td>

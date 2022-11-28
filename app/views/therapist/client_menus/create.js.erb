@@ -4,3 +4,4 @@ $('#errors').html("<%= j(render 'layouts/errors', obj: @client_menu) %>");
 $('#client_menu_menu_id').val("");
 $('#client_menu_start_date').val("");
 $('#finish_date_finish_date').val("");
+$('#paginate').html('<%= j(paginate @client_menus) %>');
