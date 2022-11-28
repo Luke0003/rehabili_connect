@@ -2,6 +2,7 @@
 
 class Therapist::PasswordsController < Devise::PasswordsController
   before_action :authenticate_therapist!
+  before_action :therapist_state, only: [:create]
   layout "therapist_application"
   # GET /resource/password/new
   # def new
@@ -33,4 +34,16 @@ class Therapist::PasswordsController < Devise::PasswordsController
   # def after_sending_reset_password_instructions_path_for(resource_name)
   #   super(resource_name)
   # end
+
+   protected
+
+   # セラピストへのサービスがすでに終了しているかを確認
+  def therapist_state
+    @therapist = Therapist.find_by(email: params[:therapist][:email])
+    return if !@therapist
+    if @therapist.is_deleted == true
+      flash[:notice] = "退職済みのため、ご利用いただけません"
+      redirect_to new_therapist_session_path
+    end
+  end
 end
