@@ -8,10 +8,10 @@
   color: black;
 }
 
-.prev-month a{
+.prev-month a, .prev-month svg, .prev-month div{
   display: none;
 }
-.next-month a{
+.next-month a, .next-month svg, .next-month div{
   display: none;
 }
 

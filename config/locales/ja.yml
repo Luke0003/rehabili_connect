@@ -89,6 +89,7 @@ ja:
         purpose: "リハビリ目的"
         email: "メールアドレス"
         password: "パスワード"
+        prefecture: "お住まい"
       therapist:
         last_name: "(姓)"
         first_name: "(名)"
@@ -106,7 +107,7 @@ ja:
         menu_purpose: "メニュー目的"
       client_menu:
         menu: "メニュー名"
-        start_date: "実施日"
+        start_date: "日付"
       chat:
         message: "メッセージ"
     errors:
