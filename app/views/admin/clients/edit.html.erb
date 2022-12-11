@@ -26,6 +26,8 @@
     </div>
     <div class="field row mb-3">
       <%= f.label :prefecture,"お住まい", class: "col-md-4 col-lg-3" %>
+      <!--和訳された都道府県名を選択できる-->
+      <!--keyは英語表記の都道府県名-->
       <%= f.select :prefecture, Client.prefectures.keys.map {|k| [I18n.t("enums.client.prefecture.#{k}"), k]}, {include_blank: '選択してください'}, {class: "ml-3 ml-md-0 col-md-3"} %>
     </div>
     <div class="field row mb-3">
@@ -34,7 +36,8 @@
     </div>
     <div class="field row mb-3">
       <%= f.label :therapist,"担当セラピスト", class: "col-12 col-md-4 col-lg-3" %>
-      <%= f.select :therapist_id, options_from_collection_for_select(Therapist.where(is_deleted: false), :id, :therapist_name), {include_blank: '選択してください'}, {class: "ml-3 ml-md-0 col-md-3"} %>
+      <!--在職中のセラピストを選択できる-->
+      <%= f.select :therapist_id, options_from_collection_for_select(Therapist.where(is_deleted: false), :id, :full_name), {include_blank: '選択してください'}, {class: "ml-3 ml-md-0 col-md-3"} %>
     </div>
     <div class="field row mb-3">
       <%= f.label :is_deleted, "ステータス", class: "col-12 col-md-4 col-lg-3" %>
