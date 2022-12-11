@@ -23,7 +23,7 @@
     <tbody>
       <% @therapists.each do |therapist| %>
         <tr>
-          <td><%= link_to therapist.therapist_name, admin_therapist_path(therapist), class: "text-dark text-decoration-none" %></td>
+          <td><%= link_to therapist.full_name, admin_therapist_path(therapist), class: "text-dark text-decoration-none" %></td>
           <td><%= therapist.email %></td>
           <td><%= therapist.clients.count %>人</td>
           <th><%= render "admin/therapists/therapist_status", therapist: therapist %></th>
