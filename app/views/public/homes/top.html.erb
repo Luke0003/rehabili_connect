@@ -16,17 +16,22 @@
 
 <h3><i class="far fa-flag"></i>リハゴール</h3>
 <h3><%= current_client.purpose %></h3>
+<!--デフォルトではattributeがstar_timeとなっているが、client_menusテーブルのカラム名(start_date)に変更-->
+<!--eventsで日付とclient_menuを紐付けている-->
 <%= month_calendar(attribute: :start_date, events: @client_menus) do |date, client_menus| %>
   <%= link_to client_record_path(date), class: "text-decoration-none" do %>
     <%= date.day %>
   <% end %>
-  <% if @conditions[date] ==1 %>
+  
+  <% case @conditions[date] %>
+  <% when 1 %>
     <i class="far fa-laugh-beam"></i>
-  <% elsif @conditions[date] == 2 %>
+  <% when 2 %>
     <i class="far fa-smile"></i>
-  <% elsif @conditions[date] == 3 %>
+  <% when 3 %>
     <i class="far fa-frown"></i>
   <% end %>
+  
   <div>
     <% count = 0 %>
     <% client_menus.each do |client_menu| %>
@@ -44,6 +49,7 @@
   </div>
 <% end %>
 
+<!--TODO: gem "gon"を利用して、viewファイルにJavaScriptのコードを書かずに済むようにしたい-->
 <script>
   $.ajax({
     url: "<%= ENV['API_ENDPOINT'] %>/api/v1/prefectures",
