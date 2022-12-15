@@ -1,6 +1,6 @@
 <div class="row mt-5">
   <div class="col-12 mb-3">
-    <h3><%= @client.client_name %>さんの詳細</h3>
+    <h3><%= @client.full_name %>さんの詳細</h3>
   </div>
 </div>
 
@@ -27,11 +27,11 @@
     <table class="table table-borderless col-10 mt-3">
       <tr>
         <th scope="row" class="d-block d-md-table-cell col-lg-4 col-xl-3 th_responsive">お名前</th>
-        <td class="d-block d-md-table-cell td_responsive"><%= @client.client_name %></td>
+        <td class="d-block d-md-table-cell td_responsive"><%= @client.full_name %></td>
       </tr>
       <tr>
         <th scope="row" class="d-block d-md-table-cell col-lg-4 col-xl-3 th_responsive">フリガナ</th>
-        <td class="d-block d-md-table-cell td_responsive"><%= @client.client_name_kana %></td>
+        <td class="d-block d-md-table-cell td_responsive"><%= @client.full_name_kana %></td>
       </tr>
       <tr>
         <th scope="row" class="d-block d-md-table-cell col-lg-4 col-xl-3 th_responsive">リハゴール</th>
