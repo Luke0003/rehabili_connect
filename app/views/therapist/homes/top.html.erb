@@ -23,7 +23,7 @@
     <tbody>
       <% @clients.each do |client| %>
         <tr>
-          <td><%= link_to client.client_name, therapist_client_path(client), class: "text-dark text-decoration-none" %></td>
+          <td><%= link_to client.full_name, therapist_client_path(client), class: "text-dark text-decoration-none" %></td>
           <td><%= client.email %></td>
           <td><%= render "admin/clients/client_status", client: client %></td>
           <td>

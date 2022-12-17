@@ -13,4 +13,15 @@ class ClientRecord < ApplicationRecord
     end
     return @condition_status
   end
+  
+   # キーを登録記録日、バリューを体調としたハッシュを取得
+  def self.gen_hash_k_record_date_v_condition(client)
+    client_records = ClientRecord.where(client_id: client.id)
+    conditions = {}
+    client_records.each do |client_record|
+      conditions[client_record.record_date] = client_record.condition
+    end
+    return conditions
+  end
+  
 end

@@ -12,20 +12,15 @@ class Public::ChatsController < ApplicationController
 
     @chat = current_client.chats.new
     @chats = @room.chats.all
-    @notifications = current_client.notifications
-    @notifications.each do |notification|
-      if notification.checked_client == false
-        notification.update(checked_client: true)
-      end
-    end
+    Notification.change_from_unread_to_read(current_client)
   end
 
   def create
     ApplicationRecord.transaction do
       @chat = current_client.chats.new(chat_params)
       @chat.save!
-      @notification = current_client.notifications.new(chat_id: @chat.id, therapist_id: current_client.therapist.id, checked_client: true)
-      @notification.save!
+      notification = current_client.notifications.new(chat_id: @chat.id, therapist_id: current_client.therapist.id, checked_client: true)
+      notification.save!
     end
   rescue => e
     puts "クライアントチャットエラー: #{e}"
