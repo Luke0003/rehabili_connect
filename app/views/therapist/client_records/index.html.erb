@@ -1,6 +1,6 @@
 <div class="row mt-5">
   <div class="col-12 mb-3">
-    <h3 class="col-11 mb-3"><%= @client.client_name %>さんの自主トレ記録</h3>
+    <h3 class="col-11 mb-3"><%= @client.full_name %>さんの自主トレ記録</h3>
   </div>
 </div>
 <%= month_calendar(attribute: :start_date, events: @client_menus) do |date, client_menus| %>
