@@ -12,7 +12,7 @@ class Public::ChatsController < ApplicationController
 
     @chat = current_client.chats.new
     @chats = @room.chats.all
-    Notification.change_from_unread_to_read(current_client)
+    Notification.change_from_unread_to_read_for_client(current_client)
   end
 
   def create

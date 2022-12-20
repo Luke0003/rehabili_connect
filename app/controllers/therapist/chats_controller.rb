@@ -14,12 +14,7 @@ class Therapist::ChatsController < ApplicationController
 
     @chat = current_therapist.chats.new
     @chats = @room.chats.all
-    @notifications = current_therapist.notifications.where(client_id: params[:client_id])
-    @notifications.each do |notification|
-      if notification.checked_therapist == false
-        notification.update(checked_therapist: true)
-      end
-    end
+    Notification.change_from_unread_to_read_for_therapist(current_therapist, @client)
   end
 
   def create

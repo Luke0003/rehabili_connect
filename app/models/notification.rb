@@ -26,13 +26,22 @@ class Notification < ApplicationRecord
     end
     return count
   end
-  
+
   # クライアントへの通知を未読から既読へ変更
-  def self.change_from_unread_to_read(client)
+  def self.change_from_unread_to_read_for_client(client)
     notifications = client.notifications
     notifications.each do |notification|
       if notification.checked_client == false
         notification.update(checked_client: true)
+      end
+    end
+  end
+  # セラピストへの通知を未読から既読へ変更
+  def self.change_from_unread_to_read_for_therapist(therapist, client)
+    notifications = therapist.notifications.where(client_id: client.id)
+    notifications.each do |notification|
+      if notification.checked_therapist == false
+        notification.update(checked_therapist: true)
       end
     end
   end
