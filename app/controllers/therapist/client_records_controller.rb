@@ -3,13 +3,9 @@ class Therapist::ClientRecordsController < ApplicationController
   layout "therapist_application"
   def index
     @client = Client.find(params[:client_id])
-    @client_records = @client.client_records
     @client_menus = @client.client_menus
-     # キーを登録記録日、バリューを体調としたハッシュを取得
-    @conditions = {}
-    @client_records.each do |client_record|
-      @conditions[client_record.record_date] = client_record.condition
-    end
+    # カレンダーに紐付けることを目的とし、ハッシュを生成
+    @conditions = ClientRecord.gen_hash_k_record_date_v_condition(@client)
   end
 
   def show
