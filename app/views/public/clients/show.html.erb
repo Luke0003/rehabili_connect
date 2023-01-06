@@ -29,11 +29,11 @@
         <table class="table table-borderless col-10 mt-3">
           <tr>
             <th scope="row" class="d-block d-md-table-cell col-lg-4 col-xl-3 th_responsive">お名前</th>
-            <td class="d-block d-md-table-cell td_responsive"><%= current_client.client_name %></td>
+            <td class="d-block d-md-table-cell td_responsive"><%= current_client.full_name %></td>
           </tr>
           <tr>
             <th scope="row" class="d-block d-md-table-cell col-lg-4 col-xl-3 th_responsive">フリガナ</th>
-            <td class="d-block d-md-table-cell td_responsive"><%= current_client.client_name_kana %></td>
+            <td class="d-block d-md-table-cell td_responsive"><%= current_client.full_name_kana %></td>
           </tr>
           <tr>
             <th scope="row" class="d-block d-md-table-cell col-lg-4 col-xl-3 th_responsive">リハゴール</th>
@@ -49,7 +49,7 @@
           </tr>
           <tr>
             <th scope="row" class="d-block d-md-table-cell col-lg-4 col-xl-3 th_responsive">担当セラピスト</th>
-            <td class="d-block d-md-table-cell td_responsive"><%= current_client.therapist.therapist_name %></td>
+            <td class="d-block d-md-table-cell td_responsive"><%= current_client.therapist.full_name %></td>
           </tr>
         </table>
       </div>
@@ -59,7 +59,8 @@
         </div>
       </div>
     </div>
-
+    
+    <!--画面の切り替えをする際、画像を読み込む時間がかかってしまうため、あらかじめセラピスト情報も読み込んでおく-->
     <div id="therapist_infomation_content" class="d-none">
       <h3>セラピスト情報</h3>
       <div class="row justify-content-center">
@@ -71,11 +72,11 @@
         <table class="table table-borderless col-10 mt-3">
           <tr>
             <th scope="row" class="d-block d-md-table-cell col-lg-4 col-xl-3 th_responsive">お名前</th>
-            <td class="d-block d-md-table-cell td_responsive"><%= @therapist.therapist_name %></td>
+            <td class="d-block d-md-table-cell td_responsive"><%= @therapist.full_name %></td>
           </tr>
           <tr>
             <th scope="row" class="d-block d-md-table-cell col-lg-4 col-xl-3 th_responsive">フリガナ</th>
-            <td class="d-block d-md-table-cell td_responsive"><%= @therapist.therapist_name_kana %></td>
+            <td class="d-block d-md-table-cell td_responsive"><%= @therapist.full_name_kana %></td>
           </tr>
           <tr>
             <th scope="row" class="d-block d-md-table-cell col-lg-4 col-xl-3 th_responsive">メールアドレス</th>

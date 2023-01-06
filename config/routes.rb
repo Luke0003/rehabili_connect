@@ -38,6 +38,7 @@ Rails.application.routes.draw do
     get 'information/edit' => 'therapists#edit'
     patch 'information' => 'therapists#update'
     resources :menus
+    get 'serarch' => 'menus#search'
     resources :genres, only: [:index, :edit, :create, :update, :destroy]
     resources :clients, only: [:show, :edit, :update] do
       resources :client_records, only: [:index, :show]

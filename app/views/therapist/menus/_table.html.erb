@@ -1,0 +1,20 @@
+<div class="table-responsive">
+  <table class="table text-nowrap table-hover table-borderless">
+    <thead>
+      <tr>
+        <th>メニュー名</th>
+        <th>メニュー目的</th>
+        <th>ジャンル</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% menus.each do |menu| %>
+        <tr>
+          <td><%= link_to menu.menu_name, therapist_menu_path(menu), class: "text-dark text-decoration-none" %></td>
+          <td><%= menu.menu_purpose %></td>
+          <td><%= menu.genre.genre_name %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

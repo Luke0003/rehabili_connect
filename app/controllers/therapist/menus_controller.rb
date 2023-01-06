@@ -46,6 +46,13 @@ class Therapist::MenusController < ApplicationController
     redirect_to therapist_menus_path
   end
 
+  def search
+    genre_name = params[:genre_name]
+    render :validater_search if genre_name.empty?
+    genres = Genre.where("genre_name LIKE ?", "%#{genre_name}%")
+    @menus = genres.inject(init = []){|result, genre| result + genre.menus}
+  end
+
   private
   def menu_params
     params.require(:menu).permit(:menu_video, :menu_name, :menu_content, :menu_purpose, :genre_id)

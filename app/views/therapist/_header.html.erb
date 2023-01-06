@@ -3,7 +3,7 @@
     <div class="container-fluid">
       <%= link_to "リハコネ", therapist_root_path, class: "navbar-brand text-light col-12 col-sm-3" %>
         <% if therapist_signed_in? %>
-          <h6 class="text-light ml-3 ml-sm-5 mt-2">こんにちは、<%= current_therapist.therapist_name %>さん！</h6>
+          <h6 class="text-light ml-3 ml-sm-5 mt-2">こんにちは、<%= current_therapist.full_name %>さん！</h6>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>

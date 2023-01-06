@@ -1,4 +1,5 @@
 $('#table').html('<%= j(render "search", client_menus: @client_menus, client: @client) %>');
 $('#table_title').html('<%= @date.strftime("%Y年%m月%d日") %>の自主トレメニュー');
 $('#search_error').html('');
+<!--非同期で検索をする際は、ページネーション機能を使わない-->
 $('#paginate').html('');

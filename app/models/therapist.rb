@@ -23,14 +23,7 @@ class Therapist < ApplicationRecord
     end
     therapist_image.variant(resize_to_fill: [width, height]).processed
   end
-
-  # セラピストの氏名を表示
-  def therapist_name
-    last_name + " " + first_name
-  end
-
-   # セラピストの氏名(カタカナ)を表示
-  def therapist_name_kana
-    last_name_kana + " " + first_name_kana
-  end
+  
+  # フルネーム(カタカナも可)を返すモジュール
+  include UserFullName
 end

@@ -26,4 +26,19 @@ class ClientMenu < ApplicationRecord
     end
     return @count
   end
+
+  # 実施したメニューのステータスを更新
+  def self.update_is_completed(hash_client_menus)
+    hash_client_menus.each do |key, value|
+      ClientMenu.find(key).update(is_completed: value)
+    end
+  end
+
+  # client_menuのclient_record_idを更新
+  def self.update_client_record_id(hash_client_menus, client_record_id)
+    hash_client_menus.each do |key, value|
+      ClientMenu.find(key).update(client_record_id: client_record_id)
+    end
+  end
+
 end
