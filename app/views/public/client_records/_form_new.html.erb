@@ -20,7 +20,7 @@
           <!--第一引数 : name, 第二引数 : 送信値, 第三引数 : 初期値(client_menu.is_completed), 第四引数 : オプション-->
           <%= check_box_tag "client_menus[#{client_menu.id}]", true, client_menu.is_completed, {} %>
           <label class="mr-3">
-            <%= link_to menu_path(client_menu.menu), class: "text-dark text-decoration-none" do %>
+            <%= link_to menu_path(client_menu.menu), class: "text-decoration-none" do %>
               <%= client_menu.menu.menu_name %>
             <% end %>
           </label>
