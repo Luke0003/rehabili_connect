@@ -24,6 +24,7 @@ import '../stylesheets/client_record.css'
 import '../stylesheets/btn.css'
 import '../stylesheets/notification.css'
 import '../stylesheets/weather.css'
+import '../stylesheets/today_menus.css'
 
 Rails.start()
 Turbolinks.start()
