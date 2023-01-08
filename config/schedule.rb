@@ -16,7 +16,7 @@ set :output, 'log/cron.log'
 # ジョブの実行環境の指定
 set :environment, rails_env
 #
-every 1.minutes do
+every 1.days, at: '7:59 pm' do
   # Rails内のメソッド実行
   rake 'client_notification:mail_to_client'
 end

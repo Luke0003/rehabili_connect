@@ -7,6 +7,7 @@ class ForgotToRecordMailer < ApplicationMailer
   #   en.forgot_to_record_mailer.forgot_to_record_notification.subject
   #
   def forgot_to_record_notification
+    puts Time.zone.now
     @url = ENV['API_ENDPOINT']
     forgot_to_record_client =
       Client.all.select do |client|
