@@ -9,6 +9,7 @@ class Public::ClientRecordsController < ApplicationController
        @client_record = current_client.client_records.find_by(record_date: @day)
     end
     @client_menus = current_client.client_menus.where(start_date: @day)
+    @rehabili_time_of_the_day = RehabiliTime.get_rehabili_time_of_the_day_for_record(RehabiliTime.array_rehabili_time_of_the_day(current_client, @day))
   end
 
   def create
@@ -40,6 +41,6 @@ class Public::ClientRecordsController < ApplicationController
 
   private
   def client_record_params
-    params.require(:client_record).permit(:condition, :comment, :record_date)
+    params.require(:client_record).permit(:condition, :comment, :record_date, :rehabili_time_of_the_day)
   end
 end

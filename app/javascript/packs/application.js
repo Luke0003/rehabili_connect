@@ -63,4 +63,77 @@ $(document).on('turbolinks:load', function () {
   $('#client_menu_start_date').outerWidth(menuWidth);
   $('#finish_date_finish_date').outerWidth(menuWidth);
 
+  // ストップウォッチ
+  $(function () {
+    var sec = 0;
+    var min = 0;
+    var hour = 0;
+
+    var timer;
+
+    // 開始
+    $('#start').click(function() {
+      // 00:00:00から開始
+      sec = 0;
+      min = 0;
+      hour = 0;
+      $('#clock').html('00:00:00');
+      timer = setInterval(countup, 1000);
+
+      $(this).prop('disabled', true);
+      $('#stop,#reset').prop('disabled', false);
+    });
+    // 停止
+    $('#stop').click(function() {
+      // 一時停止
+      clearInterval(timer);
+
+      $(this).prop('disabled', true);
+      $('#restart').prop('disabled', false);
+    });
+    // 再開
+    $('#restart').click(function() {
+      // 一時停止から再開
+      timer = setInterval(countup, 1000);
+
+      $(this).prop('disabled', true);
+      $('#stop').prop('disabled', false);
+    });
+    // リセット
+    $('#reset').click(function() {
+      // 初期状態
+      sec = 0;
+      min = 0;
+      hour = 0;
+      $('#clock').html('00:00:00');
+      $('#clock').val('00:00:00');
+      clearInterval(timer);
+
+      $('#stop,#restart,#reset').prop('disabled', true);
+      $('#start').prop('disabled', false);
+    });
+
+    // カウントアップ
+    function countup(){
+      sec += 1;
+
+      if (sec > 59) {
+        sec = 0;
+        min += 1;
+      }
+
+      if (min > 59) {
+        min = 0;
+        hour += 1;
+      }
+
+      // 0埋め
+      var sec_number = ('0' + sec).slice(-2);
+      var min_number = ('0' + min).slice(-2);
+      var hour_number = ('0' + hour).slice(-2);
+
+      $('#clock').val(hour_number + ':' +  min_number + ':' + sec_number);
+      $('#clock').html(hour_number + ':' +  min_number + ':' + sec_number);
+    };
+  });
 })
