@@ -13,7 +13,7 @@ class ClientRecord < ApplicationRecord
     end
     return @condition_status
   end
-  
+
    # キーを登録記録日、バリューを体調としたハッシュを取得
   def self.gen_hash_k_record_date_v_condition(client)
     client_records = ClientRecord.where(client_id: client.id)
@@ -23,5 +23,11 @@ class ClientRecord < ApplicationRecord
     end
     return conditions
   end
-  
+
+  # ◯時間△分×秒という形でその日のリハビリ時間を取得
+  def get_rehabili_time_of_the_day_for_display
+    array = self.rehabili_time_of_the_day.split(":")
+    return array[0] + "時間" + array[1] + "分" + array[2] + "秒"
+  end
+
 end

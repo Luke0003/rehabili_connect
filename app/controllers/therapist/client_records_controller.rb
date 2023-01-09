@@ -12,6 +12,7 @@ class Therapist::ClientRecordsController < ApplicationController
     @day = params[:id].to_date
     client = Client.find(params[:client_id])
     @client_record = client.client_records.find_by(record_date: @day)
+    @rehabili_time_of_the_day = @client_record.get_rehabili_time_of_the_day_for_display
   end
 
 end
