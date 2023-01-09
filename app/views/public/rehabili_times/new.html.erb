@@ -7,7 +7,7 @@
 <div class="card_box" >
   <%= form_with model: @rehabili_time, local: true do |f| %>
     <%= f.label :record_time, "リハビリ時間計測" %>
-    <%= f.text_field :record_time, value: @initial_value, id: "clock", class: "col-12 col-md-3 my-2" %>
+    <%= f.text_field :record_time, readonly: true, value: @initial_value, id: "clock", class: "col-12 col-md-3 my-2" %>
     <%= button_tag '開始', type: 'button', id: "start" %>
     <%= button_tag '停止', disabled: true, type: 'button', id: "stop" %>
     <%= button_tag '再開', disabled: true, type: 'button', id: "restart" %>
