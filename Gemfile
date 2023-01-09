@@ -63,6 +63,7 @@ gem 'devise_invitable'
 gem 'enum_help'
 gem 'gon'
 gem 'whenever', require: false
+gem "chartkick"
 gem 'net-smtp'
 gem 'net-pop'
 gem 'net-imap'

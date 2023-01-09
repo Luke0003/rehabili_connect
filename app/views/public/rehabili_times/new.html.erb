@@ -15,3 +15,9 @@
     <%= f.submit("登録", class: "btn btn-info my-2") %>
   <% end %>
 </div>
+<%
+@data = [[2.day.ago.strftime("%m/%d"), RehabiliTime.find(7).record_time.split(":")[2]],
+	 [1.day.ago.strftime("%m/%d"), RehabiliTime.find(8).record_time.split(":")[2]],
+	 [Time.current.strftime("%m/%d"), RehabiliTime.find(9).record_time.split(":")[2]]]
+%>
+<%= line_chart @data %>
