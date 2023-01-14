@@ -13,6 +13,7 @@ consumer.subscriptions.create("ChatChannel", {
     // Called when there's incoming data on the websocket for this channel
     if (data.user == 1 ) {
       const clientImage = document.getElementById('client_image');
+      console.log(clientImage["src"])
       const html = `
       <div class="d-flex justify-content-end">
         <img src="${clientImage["src"]}" class="mb-2 rounded-circle">
