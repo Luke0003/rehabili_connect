@@ -9,7 +9,7 @@
     <% @chats.each do |chat| %>
       <% if chat.therapist_id == current_therapist.id %>
         <div class="d-flex justify-content-end">
-          <%= image_tag current_therapist.get_therapist_image(50, 50), class: "mb-2 rounded-circle" %>
+          <%= image_tag current_therapist.get_therapist_image(50, 50), id: "therapist_image", class: "mb-2 rounded-circle" %>
         </div>
         <div class="d-flex justify-content-end">
           <p class="text-left my_chat mr-5 mb-0">
@@ -42,7 +42,7 @@
   <div id="errors">
     <%= render "layouts/errors", obj: @chat %>
   </div>
-  <%= form_with model: @chat, url: therapist_client_chats_path, class:"text-center", local: false do |f| %>
+  <%= form_with model: @chat, url: therapist_client_chats_path, class:"text-center" do |f| %>
     <%= f.text_area :message, rows: "1", placeholder: "メッセージを入力", class: "message form-control d-inline" %>
     <%= f.hidden_field :room_id, value: @room.id %>
     <%= f.submit "送信", class: "btn  btn-md btn-info chat_btn" %>
