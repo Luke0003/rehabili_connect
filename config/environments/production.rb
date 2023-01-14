@@ -45,6 +45,11 @@ Rails.application.configure do
   # config.action_cable.url = 'wss://example.com/cable'
   # config.action_cable.allowed_request_origins = [ 'http://example.com', /http:\/\/example.*/ ]
 
+  # 追記(websocket通信の設定)
+  ActionCable.server.config.disable_request_forgery_protection = true
+  config.action_cable.url = "ws://【Elastic IP】/cable"
+  config.action_cable.allowed_request_origins = ['http://【Elastic IP】']
+
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   # config.force_ssl = true
 
