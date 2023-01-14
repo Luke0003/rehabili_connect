@@ -24,6 +24,7 @@ import '../stylesheets/client_record.css'
 import '../stylesheets/btn.css'
 import '../stylesheets/notification.css'
 import '../stylesheets/weather.css'
+import '../stylesheets/today_menus.css'
 
 Rails.start()
 Turbolinks.start()
@@ -62,40 +63,77 @@ $(document).on('turbolinks:load', function () {
   $('#client_menu_start_date').outerWidth(menuWidth);
   $('#finish_date_finish_date').outerWidth(menuWidth);
 
+  // ストップウォッチ
+  $(function () {
+    var sec = 0;
+    var min = 0;
+    var hour = 0;
 
-  // 緯度経度を取得し、天気を表示する自作API
-  $.ajax({
-    url: gon.api_endpoint + "/api/v1/prefectures",
-    dataType : 'json',
-  }).done(function(prefecture){
-    var clientPrefecture = prefecture.prefectures[gon.prefecture_id].prefecture_name;
-    var clientPrefectureLatitude = prefecture.prefectures[gon.prefecture_id].latitude;
-    var clientPrefectureLongitude = prefecture.prefectures[gon.prefecture_id].longitude;
-    $('#place').text(clientPrefecture + "の天気");
-    openWeatherMap(clientPrefectureLatitude, clientPrefectureLongitude);
-  }).fail(function (data) {
-    //通信失敗
-    alert('通信に失敗しました。');
-  });
+    var timer;
 
-  function openWeatherMap(clientPrefectureLatitude, clientPrefectureLongitude){
-    $.ajax({
-      url: "https://api.openweathermap.org/data/2.5/weather?lat=" + clientPrefectureLatitude + "&lon=" + clientPrefectureLongitude + "&APPID=" + gon.secret_api_key,
-      dataType : 'jsonp',
-    }).done(function (data){
-      //通信成功
-      // 最高気温
-      $('#temp_max').text(Math.round(data.main.temp_max - 273.15));
-      // 最低気温
-      $('#temp_min').text(Math.round(data.main.temp_min - 273.15));
-      // 天気
-      $('#weather').text(data.weather[0].main);
-      // 天気アイコン
-      $('#img').attr("src","https://openweathermap.org/img/w/" + data.weather[0].icon + ".png");
-      $('#img').attr("alt",data.weather[0].main);
-    }).fail(function (data) {
-      //通信失敗
-      alert('通信に失敗しました。');
+    // 開始
+    $('#start').click(function() {
+      // 00:00:00から開始
+      sec = 0;
+      min = 0;
+      hour = 0;
+      $('#clock').html('00:00:00');
+      timer = setInterval(countup, 1000);
+
+      $(this).prop('disabled', true);
+      $('#stop,#reset').prop('disabled', false);
     });
-  };
+    // 停止
+    $('#stop').click(function() {
+      // 一時停止
+      clearInterval(timer);
+
+      $(this).prop('disabled', true);
+      $('#restart').prop('disabled', false);
+    });
+    // 再開
+    $('#restart').click(function() {
+      // 一時停止から再開
+      timer = setInterval(countup, 1000);
+
+      $(this).prop('disabled', true);
+      $('#stop').prop('disabled', false);
+    });
+    // リセット
+    $('#reset').click(function() {
+      // 初期状態
+      sec = 0;
+      min = 0;
+      hour = 0;
+      $('#clock').html('00:00:00');
+      $('#clock').val('00:00:00');
+      clearInterval(timer);
+
+      $('#stop,#restart,#reset').prop('disabled', true);
+      $('#start').prop('disabled', false);
+    });
+
+    // カウントアップ
+    function countup(){
+      sec += 1;
+
+      if (sec > 59) {
+        sec = 0;
+        min += 1;
+      }
+
+      if (min > 59) {
+        min = 0;
+        hour += 1;
+      }
+
+      // 0埋め
+      var sec_number = ('0' + sec).slice(-2);
+      var min_number = ('0' + min).slice(-2);
+      var hour_number = ('0' + hour).slice(-2);
+
+      $('#clock').val(hour_number + ':' +  min_number + ':' + sec_number);
+      $('#clock').html(hour_number + ':' +  min_number + ':' + sec_number);
+    };
+  });
 })

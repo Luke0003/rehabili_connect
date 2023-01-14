@@ -30,6 +30,7 @@ Rails.application.routes.draw do
     resources :client_records, only: [:show, :create, :update]
     resources :chats, only: [:show, :create]
     resources :menus, only: [:show]
+    resources :rehabili_times, only: [:new, :create]
   end
 
   namespace :therapist do

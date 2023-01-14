@@ -1,3 +1,4 @@
+<%= javascript_pack_tag 'ajax' %>
 <div class="row">
   <div class="col-12 d-flex align-items-center justify-content-end">
     <div class="weather mb-3 p-2">
@@ -16,5 +17,25 @@
 
 <h3><i class="far fa-flag"></i>リハゴール</h3>
 <h3><%= current_client.purpose %></h3>
-
+<div class="row">
+  <div class="col-12 d-flex align-items-center justify-content-end">
+    <div class="today_menus mb-3">
+      <h3>本日の予定</h3>
+      <% if @today_client_menus.empty? %>
+        <p>本日のメニューはありません。</p>
+      <% else %>
+        <% @today_client_menus.each do |today_client_menu| %>
+          <ul>
+            <li>
+              <%= link_to menu_path(today_client_menu.menu), class: "text-decoration-none" do %>
+                <%= today_client_menu.menu.menu_name %>
+              <% end %>
+            </li>
+          </ul>
+        <% end %>
+      <% end %>
+      <%= link_to "リハビリをする", new_rehabili_time_path, class: "btn btn-primary" %>
+    </div>
+  </div>
+</div>
 <%= render "therapist/client_records/calendar",path: @path, client: @client, client_menus: @client_menus, conditions: @conditions %>

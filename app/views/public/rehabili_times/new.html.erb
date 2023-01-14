@@ -1,0 +1,17 @@
+<div class="row mt-5">
+  <div class="col-12 mb-3">
+    <h3>リハビリ記録</h3>
+  </div>
+</div>
+<h4>本日のリハビリ合計時間は、<%= @rehabili_times[0]%>時間<%= @rehabili_times[1] %>分<%= @rehabili_times[2] %>秒です</h4>
+<div class="card_box" >
+  <%= form_with model: @rehabili_time, local: true do |f| %>
+    <%= f.label :record_time, "リハビリ時間計測" %>
+    <%= f.text_field :record_time, readonly: true, value: @initial_value, id: "clock", class: "col-12 col-md-3 my-2" %>
+    <%= button_tag '開始', type: 'button', id: "start" %>
+    <%= button_tag '停止', disabled: true, type: 'button', id: "stop" %>
+    <%= button_tag '再開', disabled: true, type: 'button', id: "restart" %>
+    <%= button_tag 'リセット', disabled: true, type: 'button', id: "reset" %>
+    <%= f.submit("登録", class: "btn btn-info my-2") %>
+  <% end %>
+</div>

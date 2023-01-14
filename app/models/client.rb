@@ -9,6 +9,7 @@ class Client < ApplicationRecord
   has_many :client_menus
   has_many :chats
   has_many :notifications
+  has_many :rehabili_times
   has_one :room
   has_one_attached :client_image
 
