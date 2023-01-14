@@ -22,11 +22,11 @@ class Therapist::ChatsController < ApplicationController
       @chat = current_therapist.chats.new(chat_params)
       @chat.save!
       @notification = current_therapist.notifications.new(chat_id: @chat.id, client_id: params[:client_id], checked_therapist: true)
-      @notification.save!
+      ActionCable.server.broadcast 'chat_channel', {user: 2, content: @chat, created_at: @chat.created_at.strftime('%m/%d %H:%M')} if @notification.save!
     end
   rescue => e
     puts "セラピストチャットエラー: #{e}"
-    render :validater
+    # render :validater
   end
 
   private
