@@ -22,6 +22,15 @@
 .day{
   height: 100px;
   width : calc(100% / 7) ;
+  position: relative;
+}
+
+.day a{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
 }
 
 .calendar-heading span{
