@@ -12,28 +12,30 @@
     <% end %>
   <% end %>
 
-  <% case conditions[date] %>
-  <% when 1 %>
-    <i class="far fa-laugh-beam"></i>
-  <% when 2 %>
-    <i class="far fa-smile"></i>
-  <% when 3 %>
-    <i class="far fa-frown"></i>
-  <% end %>
+  <div class="mt-3">
+    <% case conditions[date] %>
+    <% when 1 %>
+      <i class="far fa-laugh-beam"></i>
+    <% when 2 %>
+      <i class="far fa-smile"></i>
+    <% when 3 %>
+      <i class="far fa-frown"></i>
+    <% end %>
 
-  <div>
-    <% count = 0 %>
-    <% client_menus.each do |client_menu| %>
-      <% if client_menu.is_completed == true %>
-        <% count += 1 %>
+    <div>
+      <% count = 0 %>
+      <% client_menus.each do |client_menu| %>
+        <% if client_menu.is_completed == true %>
+          <% count += 1 %>
+        <% end %>
       <% end %>
-    <% end %>
-    <% if count > 3 %>
-      <%= image_tag "big_muscle.png", size: "40x40" %>
-    <% else %>
-      <% count.times do %>
-        <%= image_tag "small_muscle.png", size: "20x20" %>
+      <% if count > 3 %>
+        <%= image_tag "big_muscle.png", size: "40x40" %>
+      <% else %>
+        <% count.times do %>
+          <%= image_tag "small_muscle.png", size: "20x20" %>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
   </div>
 <% end %>
