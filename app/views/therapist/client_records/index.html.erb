@@ -3,4 +3,8 @@
     <h3 class="col-11 mb-3"><%= @client.full_name %>さんの自主トレ記録</h3>
   </div>
 </div>
+<div class="card_box" >
+  <h4>これまでのリハビリ合計時間</h4>
+  <%=  RehabiliTime.rehabili_time_to_sentence(@total_rehabili_time) %>
+</div>
 <%= render "calendar",path: @path, client: @client, client_menus: @client_menus, conditions: @conditions %>
