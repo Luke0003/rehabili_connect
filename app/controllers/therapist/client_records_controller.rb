@@ -13,7 +13,7 @@ class Therapist::ClientRecordsController < ApplicationController
     @day = params[:id].to_date
     client = Client.find(params[:client_id])
     @client_record = client.client_records.find_by(record_date: @day)
-    @rehabili_time_of_the_day = @client_record.get_rehabili_time_of_the_day_for_display
+    @rehabili_time_of_the_day = @client_record.get_rehabili_time_of_the_day_for_display unless @client_record.nil?
 
      # 前日比を取得
     the_day_rehabili_time = RehabiliTime.array_rehabili_time_of_the_day(client, @day)
