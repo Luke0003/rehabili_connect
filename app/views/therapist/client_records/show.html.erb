@@ -22,8 +22,8 @@
           </tr>
         <% end %>
         <tr>
-          <th scope="row">リハビリ合計時間</th>
-          <td><%= @rehabili_time_of_the_day %></td>
+          <th scope="row">リハビリ合計時間(前日比)</th>
+          <td><%= @rehabili_time_of_the_day %>(<%= @the_day_before_per %>)</td>
         </tr>
         <tr>
           <th scope="row">コメント</th>
