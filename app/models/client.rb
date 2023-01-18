@@ -9,6 +9,7 @@ class Client < ApplicationRecord
   has_many :client_menus
   has_many :chats
   has_many :notifications
+  has_many :rehabili_times
   has_one :room
   has_one_attached :client_image
 
@@ -37,13 +38,6 @@ class Client < ApplicationRecord
     client_image.variant(resize_to_fill: [width, height]).processed
   end
 
-  # クライアントの氏名を表示
-  def client_name
-    last_name + " " + first_name
-  end
-
-   # クライアントの氏名(カタカナ)を表示
-  def client_name_kana
-    last_name_kana + " " + first_name_kana
-  end
+   # フルネーム(カタカナも可)を返すモジュール
+  include UserFullName
 end

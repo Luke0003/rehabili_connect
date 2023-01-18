@@ -13,18 +13,24 @@
     <h4>やったメニューチェック</h4>
     <div class="client_record form-group col-12">
       <% client_menus.each do |client_menu| %>
-        <%# hidden_fieldでまずはfalseをセットして絶対データを送る仕組みを作っている。%>
+        <!--チェックがない場合は、falseを送る-->
         <%= hidden_field_tag "client_menus[#{client_menu.id}]", false %>
         <div>
-          <%# 第一引数 : name, 第二引数 : 送信値, 第三引数 : 初期値(client_menu.is_completed), 第四引数 : オプション %>
+          <!--チェックがある場合はtrueを送る-->
+          <!--第一引数 : name, 第二引数 : 送信値, 第三引数 : 初期値(client_menu.is_completed), 第四引数 : オプション-->
           <%= check_box_tag "client_menus[#{client_menu.id}]", true, client_menu.is_completed, {} %>
           <label class="mr-3">
-            <%= link_to menu_path(client_menu.menu), class: "text-dark text-decoration-none" do %>
+            <%= link_to menu_path(client_menu.menu), class: "text-decoration-none" do %>
               <%= client_menu.menu.menu_name %>
             <% end %>
           </label>
         </div>
       <% end %>
+    </div>
+
+    <h4>今日のリハビリ合計時間</h4>
+    <div class="form-group">
+      <%= f.text_field :rehabili_time_of_the_day, readonly: true, value: @rehabili_time_of_the_day %>
     </div>
 
     <h4>今日の一言</h4>

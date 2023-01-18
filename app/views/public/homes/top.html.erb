@@ -1,3 +1,4 @@
+<%= javascript_pack_tag 'ajax' %>
 <div class="row">
   <div class="col-12 d-flex align-items-center justify-content-end">
     <div class="weather mb-3 p-2">
@@ -16,68 +17,25 @@
 
 <h3><i class="far fa-flag"></i>リハゴール</h3>
 <h3><%= current_client.purpose %></h3>
-<%= month_calendar(attribute: :start_date, events: @client_menus) do |date, client_menus| %>
-  <%= link_to client_record_path(date), class: "text-decoration-none" do %>
-    <%= date.day %>
-  <% end %>
-  <% if @conditions[date] ==1 %>
-    <i class="far fa-laugh-beam"></i>
-  <% elsif @conditions[date] == 2 %>
-    <i class="far fa-smile"></i>
-  <% elsif @conditions[date] == 3 %>
-    <i class="far fa-frown"></i>
-  <% end %>
-  <div>
-    <% count = 0 %>
-    <% client_menus.each do |client_menu| %>
-      <% if client_menu.is_completed == true %>
-        <% count += 1 %>
+<div class="row">
+  <div class="col-12 d-flex align-items-center justify-content-end">
+    <div class="today_menus mb-3">
+      <h3>本日の予定</h3>
+      <% if @today_client_menus.empty? %>
+        <p>本日のメニューはありません。</p>
+      <% else %>
+        <% @today_client_menus.each do |today_client_menu| %>
+          <ul>
+            <li>
+              <%= link_to menu_path(today_client_menu.menu), class: "text-decoration-none" do %>
+                <%= today_client_menu.menu.menu_name %>
+              <% end %>
+            </li>
+          </ul>
+        <% end %>
       <% end %>
-    <% end %>
-    <% if count > 3 %>
-      <%= image_tag "big_muscle.png", size: "40x40" %>
-    <% else %>
-      <% count.times do %>
-        <%= image_tag "small_muscle.png", size: "20x20" %>
-      <% end %>
-    <% end %>
+      <%= link_to "リハビリをする", new_rehabili_time_path, class: "btn btn-primary" %>
+    </div>
   </div>
-<% end %>
-
-<script>
-  $.ajax({
-    url: "<%= ENV['API_ENDPOINT'] %>/api/v1/prefectures",
-    dataType : 'json',
-  }).done(function(prefecture){
-    var clientPrefecture = prefecture.prefectures[<%= Client.prefectures[current_client.prefecture] %>].prefecture_name;
-    var clientPrefectureLatitude = prefecture.prefectures[<%= Client.prefectures[current_client.prefecture] %>].latitude;
-    var clientPrefectureLongitude = prefecture.prefectures[<%= Client.prefectures[current_client.prefecture] %>].longitude;
-    $('#place').text(clientPrefecture + "の天気");
-    openWeatherMap(clientPrefectureLatitude, clientPrefectureLongitude);
-  }).fail(function (data) {
-    //通信失敗
-    alert('通信に失敗しました。');
-  });
-
-  function openWeatherMap(clientPrefectureLatitude, clientPrefectureLongitude){
-    $.ajax({
-      url: "https://api.openweathermap.org/data/2.5/weather?lat=" + clientPrefectureLatitude + "&lon=" + clientPrefectureLongitude + "&APPID=" + "<%= ENV['SECRET_API_KEY'] %>",
-      dataType : 'jsonp',
-    }).done(function (data){
-      //通信成功
-      // 最高気温
-      $('#temp_max').text(Math.round(data.main.temp_max - 273.15));
-      // 最低気温
-      $('#temp_min').text(Math.round(data.main.temp_min - 273.15));
-      // 天気
-      $('#weather').text(data.weather[0].main);
-      // 天気アイコン
-      $('#img').attr("src","http://openweathermap.org/img/w/" + data.weather[0].icon + ".png");
-      $('#img').attr("alt",data.weather[0].main);
-    }).fail(function (data) {
-      //通信失敗
-      alert('通信に失敗しました。');
-    });
-  };
-</script>
-
+</div>
+<%= render "therapist/client_records/calendar",path: @path, client: @client, client_menus: @client_menus, conditions: @conditions %>

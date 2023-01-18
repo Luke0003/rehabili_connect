@@ -4,6 +4,7 @@
       <thead>
         <tr>
           <th>メニュー名</th>
+          <th>ジャンル名</th>
           <th>実施日</th>
           <th></th>
         </tr>
@@ -12,6 +13,7 @@
         <% client_menus.each do |client_menu| %>
           <tr>
             <td><%= client_menu.menu.menu_name %></td>
+            <td><%= client_menu.menu.genre.genre_name %></td>
             <td><%= client_menu.start_date.strftime("%Y年%m月%d日") %></td>
             <td>
               <%= link_to "編集", edit_therapist_client_client_menu_path(client, client_menu), class: "btn btn-success btn-lg" %>

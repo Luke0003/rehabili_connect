@@ -1,0 +1,4 @@
+$('#table').html('<%= j(render "table", menus: @menus) %>');
+$('#search_error').html('');
+<!--非同期で検索をする際は、ページネーション機能を使わない-->
+$('#paginate').html('');

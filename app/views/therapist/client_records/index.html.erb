@@ -1,32 +1,10 @@
 <div class="row mt-5">
   <div class="col-12 mb-3">
-    <h3 class="col-11 mb-3"><%= @client.client_name %>さんの自主トレ記録</h3>
+    <h3 class="col-11 mb-3"><%= @client.full_name %>さんの自主トレ記録</h3>
   </div>
 </div>
-<%= month_calendar(attribute: :start_date, events: @client_menus) do |date, client_menus| %>
-  <%= link_to therapist_client_client_record_path(@client, date), class: "text-decoration-none" do %>
-    <%= date.day %>
-  <% end %>
-  <% if @conditions[date] ==1 %>
-    <i class="far fa-laugh-beam"></i>
-  <% elsif @conditions[date] == 2 %>
-    <i class="far fa-smile"></i>
-  <% elsif @conditions[date] == 3 %>
-    <i class="far fa-frown"></i>
-  <% end %>
-  <div>
-    <% count = 0 %>
-    <% client_menus.each do |client_menu| %>
-      <% if client_menu.is_completed == true %>
-        <% count += 1 %>
-      <% end %>
-    <% end %>
-    <% if count > 3 %>
-      <%= image_tag "big_muscle.png", size: "40x40" %>
-    <% else %>
-      <% count.times do %>
-        <%= image_tag "small_muscle.png", size: "20x20" %>
-      <% end %>
-    <% end %>
-  </div>
-<% end %>
+<div class="card_box" >
+  <h4>これまでのリハビリ合計時間</h4>
+  <%=  RehabiliTime.rehabili_time_to_sentence(@total_rehabili_time) %>
+</div>
+<%= render "calendar",path: @path, client: @client, client_menus: @client_menus, conditions: @conditions %>

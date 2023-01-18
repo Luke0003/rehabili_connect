@@ -14,12 +14,7 @@ class Therapist::ChatsController < ApplicationController
 
     @chat = current_therapist.chats.new
     @chats = @room.chats.all
-    @notifications = current_therapist.notifications.where(client_id: params[:client_id])
-    @notifications.each do |notification|
-      if notification.checked_therapist == false
-        notification.update(checked_therapist: true)
-      end
-    end
+    Notification.change_from_unread_to_read_for_therapist(current_therapist, @client)
   end
 
   def create
@@ -27,11 +22,15 @@ class Therapist::ChatsController < ApplicationController
       @chat = current_therapist.chats.new(chat_params)
       @chat.save!
       @notification = current_therapist.notifications.new(chat_id: @chat.id, client_id: params[:client_id], checked_therapist: true)
-      @notification.save!
+      @client = Client.find(params[:client_id])
+      ActionCable.server.broadcast 'chat_channel', {user: "therapist", chat_partner_name: @client.full_name, content: @chat, created_at: @chat.created_at.strftime('%m/%d %H:%M')} if @notification.save!
     end
   rescue => e
     puts "セラピストチャットエラー: #{e}"
-    render :validater
+    @client = Client.find(params[:client_id])
+    @room = @client.room
+    @chats = @room.chats.all
+    render :show
   end
 
   private
