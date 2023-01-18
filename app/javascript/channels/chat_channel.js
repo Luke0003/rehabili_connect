@@ -89,7 +89,6 @@ consumer.subscriptions.create("ChatChannel", {
         const newMessage = document.getElementById('chat_message');
         messages.insertAdjacentHTML('beforeend', html);
         newMessage.value = '';
-        errorMessage.value = '';
         $('#errors').html("");
         $(".chat_btn").removeAttr("disabled");
       }else{
