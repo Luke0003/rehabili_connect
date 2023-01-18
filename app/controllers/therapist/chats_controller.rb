@@ -4,7 +4,6 @@ class Therapist::ChatsController < ApplicationController
 
   def show
     @client = Client.find(params[:client_id])
-# テスト
     if @client.room.nil?
       @room = Room.new(client_id: @client.id, therapist_id: current_therapist.id)
       @room.save
