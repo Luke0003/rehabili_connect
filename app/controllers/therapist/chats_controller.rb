@@ -27,7 +27,10 @@ class Therapist::ChatsController < ApplicationController
     end
   rescue => e
     puts "セラピストチャットエラー: #{e}"
-    # render :validater
+    @client = Client.find(params[:client_id])
+    @room = @client.room
+    @chats = @room.chats.all
+    render :show
   end
 
   private

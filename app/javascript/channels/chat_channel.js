@@ -24,7 +24,7 @@ consumer.subscriptions.create("ChatChannel", {
           </div>
           <div class="d-flex justify-content-start">
             <p class="another_chat ml-5 mb-0">
-              ${data.content.message}
+              ${data.content.message.replace(/\n/g, '<br>')}
             </p>
           </div>
           <div class="d-flex justify-content-start">
@@ -37,6 +37,7 @@ consumer.subscriptions.create("ChatChannel", {
         const newMessage = document.getElementById('chat_message');
         messages.insertAdjacentHTML('beforeend', html);
         newMessage.value = '';
+        $('#errors').html("");
         $(".chat_btn").removeAttr("disabled");
       }else{
          // 利用者側のview
@@ -46,7 +47,7 @@ consumer.subscriptions.create("ChatChannel", {
           </div>
           <div class="d-flex justify-content-end">
             <p class="text-left my_chat mr-5 mb-0">
-              ${data.content.message}
+              ${data.content.message.replace(/\n/g, '<br>')}
             </p>
           </div>
           <div class="d-flex justify-content-end">
@@ -59,6 +60,7 @@ consumer.subscriptions.create("ChatChannel", {
         const newMessage = document.getElementById('chat_message');
         messages.insertAdjacentHTML('beforeend', html);
         newMessage.value = '';
+        $('#errors').html("");
         $(".chat_btn").removeAttr("disabled");
       }
     }else{
@@ -74,7 +76,7 @@ consumer.subscriptions.create("ChatChannel", {
           </div>
           <div class="d-flex justify-content-start">
             <p class="another_chat ml-5 mb-0">
-               ${data.content.message}
+               ${data.content.message.replace(/\n/g, '<br>')}
             </p>
           </div>
           <div class="d-flex justify-content-start">
@@ -87,6 +89,8 @@ consumer.subscriptions.create("ChatChannel", {
         const newMessage = document.getElementById('chat_message');
         messages.insertAdjacentHTML('beforeend', html);
         newMessage.value = '';
+        errorMessage.value = '';
+        $('#errors').html("");
         $(".chat_btn").removeAttr("disabled");
       }else{
          // セラピスト側のview
@@ -96,7 +100,7 @@ consumer.subscriptions.create("ChatChannel", {
           </div>
           <div class="d-flex justify-content-end">
             <p class="text-left my_chat mr-5 mb-0">
-              ${data.content.message}
+              ${data.content.message.replace(/\n/g, '<br>')}
             </p>
           </div>
           <div class="d-flex justify-content-end">
@@ -109,6 +113,7 @@ consumer.subscriptions.create("ChatChannel", {
         const newMessage = document.getElementById('chat_message');
         messages.insertAdjacentHTML('beforeend', html);
         newMessage.value = '';
+        $('#errors').html("");
         $(".chat_btn").removeAttr("disabled");
       }
     }
