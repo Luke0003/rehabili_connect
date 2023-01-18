@@ -1,7 +1,7 @@
 class Therapist::ChatsController < ApplicationController
   before_action :authenticate_therapist!
   layout "therapist_application"
-
+# テスト
   def show
     @client = Client.find(params[:client_id])
     if @client.room.nil?
