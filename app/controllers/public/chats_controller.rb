@@ -25,7 +25,10 @@ class Public::ChatsController < ApplicationController
     end
   rescue => e
     puts "クライアントチャットエラー: #{e}"
-    # render :validater
+    @therapist = current_client.therapist
+    @room = current_client.room
+    @chats = @room.chats.all
+    render :show
   end
 
   private
